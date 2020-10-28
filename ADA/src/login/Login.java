@@ -36,7 +36,7 @@ public class Login extends javax.swing.JFrame {
         txtCorreo = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        btnFakePass = new javax.swing.JButton();
+        lblFakePass = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
         btnOlvidar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -50,6 +50,21 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel1FocusGained(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/btnIngresar.png"))); // NOI18N
@@ -86,19 +101,18 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 230, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 230, 10));
 
-        btnFakePass.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        btnFakePass.setForeground(new java.awt.Color(222, 221, 221));
-        btnFakePass.setText("Contraseña");
-        btnFakePass.setBorder(null);
-        btnFakePass.setContentAreaFilled(false);
-        btnFakePass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnFakePass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFakePassActionPerformed(evt);
+        lblFakePass.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        lblFakePass.setForeground(new java.awt.Color(222, 221, 221));
+        lblFakePass.setText("Contraseña");
+        lblFakePass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFakePassMouseClicked(evt);
             }
         });
-        jPanel1.add(btnFakePass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 281, 230, 30));
+        jPanel1.add(lblFakePass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 230, 30));
 
+        txtPass.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        txtPass.setForeground(new java.awt.Color(56, 51, 51));
         txtPass.setBorder(null);
         txtPass.setEchoChar('\u2022');
         txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -138,26 +152,58 @@ public class Login extends javax.swing.JFrame {
             txtCorreo.setText("");
             txtCorreo.setForeground(new Color(56,51,51));   //Aqui cambiamos el color de la fuente de gris a negro
         }
+        //Esto es para que el label que dice contraseña se ponga automaticamente si detecta que no ha escrito nada
+        char[] pass = txtPass.getPassword();
+        String password = new String(pass);
+        if(password.equals("")){
+            lblFakePass.setVisible(true);
+        }
     }//GEN-LAST:event_txtCorreoMouseClicked
-    //Aqui tuve que crear un boton y lo puse encima del txtPass porque el JPassworField no permite escribir texto visible solo ***
-    private void btnFakePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFakePassActionPerformed
-        btnFakePass.setVisible(false);
-        txtPass.getFocusListeners();        //Esta instruccion es para que gane el foco el txtPass
-    }//GEN-LAST:event_btnFakePassActionPerformed
-    //Aqui verifica que si pierde el foco y el txtCorreo esta vacio se le vuelva a poner Correo Electronico
+
+   //Aqui verifica que si pierde el foco y el txtCorreo esta vacio se le vuelva a poner Correo Electronico
     private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
         if(txtCorreo.getText().equals("")){
             txtCorreo.setText("Correo electronico");
             txtCorreo.setForeground(new Color(222,221,221));
         }
     }//GEN-LAST:event_txtCorreoFocusLost
-
+    //Esto es para que el label que dice contraseña se ponga automaticamente si detecta que no ha escrito nada
     private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
-        if(txtPass.getText().equals("")){
-            btnFakePass.setVisible(true);
+        char[] pass = txtPass.getPassword();
+        String password = new String(pass);
+        if(password.equals("")){
+            lblFakePass.setVisible(true);
         }
         
     }//GEN-LAST:event_txtPassFocusLost
+    //Mover el frame
+    int xx,xy;
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        xx=evt.getX();
+        xy=evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+    
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        int x=evt.getXOnScreen();
+        int y=evt.getYOnScreen();
+        
+        this.setLocation(x-xx, y-xy);
+    }//GEN-LAST:event_jPanel1MouseDragged
+    //Esto es para que el label que dice contraseña se ponga automaticamente si detecta que no ha escrito nada
+    private void lblFakePassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFakePassMouseClicked
+        if(lblFakePass.getText().equals("Contraseña")){
+            lblFakePass.setVisible(false);
+            txtPass.requestFocus();
+        }
+    }//GEN-LAST:event_lblFakePassMouseClicked
+    //Esto es para que el label que dice contraseña se ponga automaticamente si detecta que no ha escrito nada
+    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
+        char[] pass = txtPass.getPassword();
+        String password = new String(pass);
+        if(password.equals("")){
+            lblFakePass.setVisible(true);
+        }
+    }//GEN-LAST:event_jPanel1FocusGained
 
     /**
      * @param args the command line arguments
@@ -196,7 +242,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnFakePass;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnOlvidar;
     private javax.swing.JLabel jLabel1;
@@ -204,6 +249,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblFakePass;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JPasswordField txtPass;
     // End of variables declaration//GEN-END:variables
