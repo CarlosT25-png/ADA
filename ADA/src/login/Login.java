@@ -209,7 +209,8 @@ public class Login extends javax.swing.JFrame {
             lblFakePass.setVisible(true);
         }
     }//GEN-LAST:event_jPanel1FocusGained
-
+    
+    //Evento para que al darle olvidar contraseña te lleve al Frame Contraseña1
     private void btnOlvidarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOlvidarMouseClicked
         Contraseña1 volver = new Contraseña1();
         volver.setVisible(true);
