@@ -127,6 +127,11 @@ public class Login extends javax.swing.JFrame {
         btnOlvidar.setText("He olvidado mi contraseña");
         btnOlvidar.setBorder(null);
         btnOlvidar.setContentAreaFilled(false);
+        btnOlvidar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOlvidarMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnOlvidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
@@ -204,6 +209,12 @@ public class Login extends javax.swing.JFrame {
             lblFakePass.setVisible(true);
         }
     }//GEN-LAST:event_jPanel1FocusGained
+
+    private void btnOlvidarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOlvidarMouseClicked
+        Contraseña1 volver = new Contraseña1();
+        volver.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnOlvidarMouseClicked
 
     /**
      * @param args the command line arguments
