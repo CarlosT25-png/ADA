@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package alumno;
 
-/**
- *
- */
+import utilities.*;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 public class alumnoPerfil extends javax.swing.JFrame {
 
     /**
@@ -15,6 +13,8 @@ public class alumnoPerfil extends javax.swing.JFrame {
      */
     public alumnoPerfil() {
         initComponents();
+        ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
+        ScaleImage.setScaleImage(avatar, imagen);
     }
 
     /**
@@ -35,6 +35,8 @@ public class alumnoPerfil extends javax.swing.JFrame {
         lblHorario = new javax.swing.JLabel();
         lblAjustes = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
+        marcoAvatar = new javax.swing.JLabel();
+        avatar = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,6 +90,14 @@ public class alumnoPerfil extends javax.swing.JFrame {
         lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/salir.png"))); // NOI18N
         jPanel1.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
 
+        marcoAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/avatarMarco.png"))); // NOI18N
+        jPanel1.add(marcoAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        avatar.setMaximumSize(new java.awt.Dimension(102, 102));
+        avatar.setMinimumSize(new java.awt.Dimension(102, 102));
+        avatar.setPreferredSize(new java.awt.Dimension(102, 102));
+        jPanel1.add(avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 560));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,6 +149,7 @@ public class alumnoPerfil extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -175,8 +186,11 @@ public class alumnoPerfil extends javax.swing.JFrame {
             }
         });
     }
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel avatar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -202,5 +216,6 @@ public class alumnoPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel lblNeg_Perfil;
     private javax.swing.JLabel lblNotas;
     private javax.swing.JLabel lblSalir;
+    private javax.swing.JLabel marcoAvatar;
     // End of variables declaration//GEN-END:variables
 }
