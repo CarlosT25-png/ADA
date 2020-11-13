@@ -1,14 +1,23 @@
-package alumno;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package profesor;
 
-import utilities.*;
 import javax.swing.ImageIcon;
+import utilities.ScaleImage;
 
-public class alumnoPerfil extends javax.swing.JFrame {
+/**
+ *
+ * @author Usuario
+ */
+public class profePerfil extends javax.swing.JFrame {
 
     /**
-     * Creates new form alumnoPerfil
+     * Creates new form profePerfil
      */
-    public alumnoPerfil() {
+    public profePerfil() {
         initComponents();
         ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
         ScaleImage.setScaleImage(avatar, imagen);
@@ -23,17 +32,6 @@ public class alumnoPerfil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        lblNeg_Perfil = new javax.swing.JLabel();
-        lblGestion = new javax.swing.JLabel();
-        lblMatricula = new javax.swing.JLabel();
-        lblNotas = new javax.swing.JLabel();
-        lblHorario = new javax.swing.JLabel();
-        lblAjustes = new javax.swing.JLabel();
-        lblSalir = new javax.swing.JLabel();
-        marcoAvatar = new javax.swing.JLabel();
-        avatar = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,57 +45,23 @@ public class alumnoPerfil extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblNeg_Perfil = new javax.swing.JLabel();
+        lblNotas = new javax.swing.JLabel();
+        lblHorario = new javax.swing.JLabel();
+        lblAjustes = new javax.swing.JLabel();
+        lblSalir = new javax.swing.JLabel();
+        marcoAvatar = new javax.swing.JLabel();
+        avatar = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(900, 600));
         setUndecorated(true);
-        setResizable(false);
-        setSize(new java.awt.Dimension(900, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(243, 242, 241));
-        jPanel1.setPreferredSize(new java.awt.Dimension(154, 555));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblNeg_Perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-perfil.png"))); // NOI18N
-        jPanel1.add(lblNeg_Perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 160, -1, -1));
-
-        lblGestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/gestion.png"))); // NOI18N
-        jPanel1.add(lblGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 280, -1, -1));
-
-        lblMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/matricula.png"))); // NOI18N
-        lblMatricula.setToolTipText("");
-        jPanel1.add(lblMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 220, -1, -1));
-
-        lblNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/notas.png"))); // NOI18N
-        jPanel1.add(lblNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 340, -1, -1));
-
-        lblHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/horario.png"))); // NOI18N
-        jPanel1.add(lblHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 400, -1, -1));
-
-        lblAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/ajustes.png"))); // NOI18N
-        jPanel1.add(lblAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 460, -1, -1));
-
-        lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/salir.png"))); // NOI18N
-        jPanel1.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
-
-        marcoAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/avatarMarco.png"))); // NOI18N
-        jPanel1.add(marcoAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-
-        avatar.setMaximumSize(new java.awt.Dimension(102, 102));
-        avatar.setMinimumSize(new java.awt.Dimension(102, 102));
-        avatar.setPreferredSize(new java.awt.Dimension(102, 102));
-        jPanel1.add(avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 560));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new java.awt.CardLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,17 +99,44 @@ public class alumnoPerfil extends javax.swing.JFrame {
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
         jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 200, -1));
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+        jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 160, -1));
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel9.setText("Dirección:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, -1));
-        jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 160, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
 
-        jPanel2.add(jPanel3, "card2");
+        jPanel1.setBackground(new java.awt.Color(243, 242, 241));
+        jPanel1.setPreferredSize(new java.awt.Dimension(154, 555));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
+        lblNeg_Perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-perfil.png"))); // NOI18N
+        jPanel1.add(lblNeg_Perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 160, -1, -1));
+
+        lblNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/notas.png"))); // NOI18N
+        jPanel1.add(lblNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 220, -1, -1));
+
+        lblHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/horario.png"))); // NOI18N
+        jPanel1.add(lblHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 280, -1, -1));
+
+        lblAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/ajustes.png"))); // NOI18N
+        jPanel1.add(lblAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 340, -1, -1));
+
+        lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/salir.png"))); // NOI18N
+        jPanel1.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
+
+        marcoAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/avatarMarco.png"))); // NOI18N
+        jPanel1.add(marcoAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        avatar.setMaximumSize(new java.awt.Dimension(102, 102));
+        avatar.setMinimumSize(new java.awt.Dimension(102, 102));
+        avatar.setPreferredSize(new java.awt.Dimension(102, 102));
+        jPanel1.add(avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 560));
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/cerrar.png"))); // NOI18N
         btnCerrar.setBorderPainted(false);
@@ -159,16 +150,6 @@ public class alumnoPerfil extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(248, 90, 27));
         jLabel1.setOpaque(true);
-        jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jLabel1MouseDragged(evt);
-            }
-        });
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
-            }
-        });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 40));
 
         pack();
@@ -179,22 +160,10 @@ public class alumnoPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnCerrarActionPerformed
-    
-    //Mover el Frame
-    int xx,xy;
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        xx = evt.getX();
-        xy = evt.getY();
-    }//GEN-LAST:event_jLabel1MousePressed
 
-    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
-        // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        
-        this.setLocation(x-xx, y-xy);
-    }//GEN-LAST:event_jLabel1MouseDragged
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -209,25 +178,23 @@ public class alumnoPerfil extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(alumnoPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(profePerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(alumnoPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(profePerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(alumnoPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(profePerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(alumnoPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(profePerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new alumnoPerfil().setVisible(true);
+                new profePerfil().setVisible(true);
             }
         });
     }
-    
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel avatar;
@@ -243,7 +210,6 @@ public class alumnoPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -252,9 +218,7 @@ public class alumnoPerfil extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel lblAjustes;
-    private javax.swing.JLabel lblGestion;
     private javax.swing.JLabel lblHorario;
-    private javax.swing.JLabel lblMatricula;
     private javax.swing.JLabel lblNeg_Perfil;
     private javax.swing.JLabel lblNotas;
     private javax.swing.JLabel lblSalir;
