@@ -6,6 +6,8 @@
 package login;
 
 import java.awt.Color;
+import java.net.URL;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,7 +20,14 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        iconoFormulario();
         //btnIngresar.setBackground(new Color(248,90,27));
+    }
+    //Establecer el icono
+    public void iconoFormulario() {
+        URL url = getClass().getResource("/imagesLogin/logoLoginXL.png");
+        ImageIcon icono_formulario = new ImageIcon(url);
+        setIconImage(icono_formulario.getImage()); 
     }
 
     /**
@@ -43,6 +52,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ADA");
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(450, 500));
         setUndecorated(true);

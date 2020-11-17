@@ -1,6 +1,7 @@
 
 package administrador;
 
+import java.net.URL;
 import utilities.*;
 import javax.swing.ImageIcon;
 
@@ -13,6 +14,14 @@ public class adminPerfil extends javax.swing.JFrame {
         initComponents();
         ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
         ScaleImage.setScaleImage(avatar, imagen);
+        iconoFormulario();
+    }
+    
+    //Establecer el icono
+    public void iconoFormulario() {
+        URL url = getClass().getResource("/imagesLogin/logoLoginXL.png");
+        ImageIcon icono_formulario = new ImageIcon(url);
+        setIconImage(icono_formulario.getImage()); 
     }
 
     /**
@@ -36,6 +45,7 @@ public class adminPerfil extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -126,6 +136,9 @@ public class adminPerfil extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 40));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new java.awt.CardLayout());
+
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -170,7 +183,9 @@ public class adminPerfil extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
+        jPanel2.add(jPanel3, "card2");
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
 
         pack();
         setLocationRelativeTo(null);
@@ -199,9 +214,7 @@ public class adminPerfil extends javax.swing.JFrame {
     
     //Para ir a la pantalla Admin Asignacion Crear
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        adminAsignacionCrear cambio = new adminAsignacionCrear();
-        cambio.setVisible(true);
-        this.dispose();
+        
         
     }//GEN-LAST:event_jLabel11MouseClicked
 
@@ -268,6 +281,7 @@ public class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
