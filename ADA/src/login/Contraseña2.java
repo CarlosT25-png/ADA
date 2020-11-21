@@ -5,6 +5,8 @@
  */
 package login;
 import java.awt.Color;
+import java.net.URL;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Usuario
@@ -17,6 +19,14 @@ public class Contraseña2 extends javax.swing.JFrame {
     public Contraseña2() {
         initComponents();
         this.setLocationRelativeTo(null);
+        iconoFormulario();
+    }
+    
+    //Establecer el icono
+    public void iconoFormulario() {
+        URL url = getClass().getResource("/imagesLogin/logoLoginXL.png");
+        ImageIcon icono_formulario = new ImageIcon(url);
+        setIconImage(icono_formulario.getImage()); 
     }
 
     /**
