@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package login;
 
+import java.awt.Color;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.Icon;
+import javax.swing.UIManager;
 
 /**
  *
  * @author Usuario
  */
-public class Contraseña3 extends javax.swing.JFrame {
+public final class Contraseña3 extends javax.swing.JFrame {
 
     /**
      * Creates new form Contraseña3
@@ -21,16 +21,25 @@ public class Contraseña3 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         iconoFormulario();
+        btnOjoAbierto1.setVisible(false);
+        btnOjoAbierto1.setEnabled(false);
+        btnOjoAbierto.setVisible(false);
+        btnOjoAbierto.setEnabled(false);
+        Pass1.setEchoChar(('•'));
+        Pass2.setEchoChar(('•'));
+
+      
+
     }
     
+
     //Establecer el icono
     public void iconoFormulario() {
         URL url = getClass().getResource("/imagesLogin/logoLoginXL.png");
         ImageIcon icono_formulario = new ImageIcon(url);
-        setIconImage(icono_formulario.getImage()); 
+        setIconImage(icono_formulario.getImage());
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,10 +53,16 @@ public class Contraseña3 extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        btnOjoAbierto1 = new javax.swing.JButton();
+        btnOjoCerrado1 = new javax.swing.JButton();
+        btnOjoAbierto = new javax.swing.JButton();
+        btnOjoCerrado = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lblContra1 = new javax.swing.JLabel();
+        lblContra2 = new javax.swing.JLabel();
+        Pass2 = new javax.swing.JPasswordField();
+        Pass1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -57,11 +72,6 @@ public class Contraseña3 extends javax.swing.JFrame {
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel1MouseDragged(evt);
-            }
-        });
-        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel1FocusGained(evt);
             }
         });
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -115,25 +125,84 @@ public class Contraseña3 extends javax.swing.JFrame {
         jLabel3.setText("8 caracteres como mínimo, distingue mayúsculas de minúsculas");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 200, -1, -1));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jTextField3.setText("Vuelve a ingresar la contraseña:");
-        jTextField3.setBorder(null);
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 245, 260, -1));
+        btnOjoAbierto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/ojo_abierto.png"))); // NOI18N
+        btnOjoAbierto1.setBorderPainted(false);
+        btnOjoAbierto1.setContentAreaFilled(false);
+        btnOjoAbierto1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOjoAbierto1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnOjoAbierto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jTextField4.setText("Ingresa tu nueva contraseña:");
-        jTextField4.setBorder(null);
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 114, -1, -1));
+        btnOjoCerrado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/ojo_cerrado.png"))); // NOI18N
+        btnOjoCerrado1.setBorderPainted(false);
+        btnOjoCerrado1.setContentAreaFilled(false);
+        btnOjoCerrado1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOjoCerrado1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnOjoCerrado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(222, 221, 221));
-        jLabel4.setText("Nueva contraseña");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 297, -1, -1));
+        btnOjoAbierto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/ojo_abierto.png"))); // NOI18N
+        btnOjoAbierto.setBorderPainted(false);
+        btnOjoAbierto.setContentAreaFilled(false);
+        btnOjoAbierto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOjoAbiertoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnOjoAbierto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(222, 221, 221));
-        jLabel5.setText("Nueva contraseña");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 170, -1, -1));
+        btnOjoCerrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/ojo_cerrado.png"))); // NOI18N
+        btnOjoCerrado.setBorderPainted(false);
+        btnOjoCerrado.setContentAreaFilled(false);
+        btnOjoCerrado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOjoCerradoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnOjoCerrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel6.setText("Ingrese tu nueva contraseña:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 114, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel7.setText("Vuelva a ingresar la contraseña:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 245, -1, -1));
+
+        lblContra1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lblContra1.setForeground(new java.awt.Color(222, 221, 221));
+        lblContra1.setText("Nueva contraseña");
+        jPanel1.add(lblContra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 281, 260, 40));
+
+        lblContra2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lblContra2.setForeground(new java.awt.Color(222, 221, 221));
+        lblContra2.setText("Nueva contraseña");
+        jPanel1.add(lblContra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 151, 270, 50));
+
+        Pass2.setBorder(null);
+        Pass2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Pass2FocusGained(evt);
+            }
+        });
+        Pass2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Pass2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(Pass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 280, 40));
+
+        Pass1.setBorder(null);
+        Pass1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Pass1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(Pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 280, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,7 +221,7 @@ public class Contraseña3 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     //Cerrar el programa
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         System.exit(0);
@@ -164,33 +233,127 @@ public class Contraseña3 extends javax.swing.JFrame {
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarMouseClicked
-    
+
     //Eventos para poder mover el frame
-    int xx,yy;
+    int xx, yy;
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx,y-yy);
+        this.setLocation(x - xx, y - yy);
     }//GEN-LAST:event_jPanel1MouseDragged
-    
+
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         xx = evt.getX();
         yy = evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
-    //Evento para que al guardar cambios me lleve al login
+    //Validacion de la contraseña
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        Login guardar = new Login();
-        guardar.setVisible(true);
-        this.dispose();
+        char password[] = Pass1.getPassword();
+        char password2[] = Pass2.getPassword();
+        int cont = 0, mayus = 0;
+        int cont1 = 0, mayus1 = 0;
+
+        if (Pass1.getText().equals("") || Pass2.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Los dos campos contraseña deben de ser rellenados.\nIntentalo de nuevo.", "ERROR", JOptionPane.PLAIN_MESSAGE,icono("/imagesLogin/lg2.png",40,40));
+        } else {
+            for (int i = 0; i < password.length; i++) {
+                cont++;
+                if (password[i] >= 65 && password[i] <= 90) {
+                    mayus++;
+                }
+            }
+
+            for (int i = 0; i < password2.length; i++) {
+                cont1++;
+                if (password2[i] >= 65 && password2[i] <= 90) {
+                    mayus1++;
+                }
+            }
+
+            if (cont < 8 || mayus < 1 || cont1 < 8 || mayus1 < 1) {
+                JOptionPane.showMessageDialog(null, "La contraseña debe de tener 8 caracteres y 1 letra mayúscula como mínimo.\nIntentalo de nuevo.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (Pass1.getText().equals(Pass2.getText())) {
+                    JOptionPane.showMessageDialog(null, "La nueva contraseña se ha restablecido con exito!", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                    Login guardar = new Login();
+                    guardar.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden, inténtelo de nuevo.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+
     }//GEN-LAST:event_btnGuardarActionPerformed
-    
-  
-    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
-        
-    }//GEN-LAST:event_jPanel1FocusGained
-    
+
+    // Configuracion de la imagen del ojo
+    private void btnOjoAbierto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOjoAbierto1MouseClicked
+        btnOjoAbierto1.setEnabled(false);
+        btnOjoCerrado1.setEnabled(true);
+        btnOjoCerrado1.setVisible(true);
+        btnOjoAbierto1.setVisible(false);
+
+        Pass2.setEchoChar(('•'));
+    }//GEN-LAST:event_btnOjoAbierto1MouseClicked
+
+    private void btnOjoCerrado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOjoCerrado1MouseClicked
+        btnOjoAbierto1.setEnabled(true);
+        btnOjoCerrado1.setEnabled(false);
+        btnOjoAbierto1.setVisible(true);
+        btnOjoCerrado1.setVisible(false);
+
+        Pass2.setEchoChar((char) 0);
+
+    }//GEN-LAST:event_btnOjoCerrado1MouseClicked
+
+    private void btnOjoAbiertoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOjoAbiertoMouseClicked
+        btnOjoAbierto.setEnabled(false);
+        btnOjoCerrado.setEnabled(true);
+        btnOjoCerrado.setVisible(true);
+        btnOjoAbierto.setVisible(false);
+
+        Pass1.setEchoChar(('•'));
+    }//GEN-LAST:event_btnOjoAbiertoMouseClicked
+
+    private void btnOjoCerradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOjoCerradoMouseClicked
+        btnOjoAbierto.setEnabled(true);
+        btnOjoCerrado.setEnabled(false);
+        btnOjoAbierto.setVisible(true);
+        btnOjoCerrado.setVisible(false);
+
+        Pass1.setEchoChar((char) 0);
+    }//GEN-LAST:event_btnOjoCerradoMouseClicked
+
+    //Eventos para que se borre el texto del label cuando se escriba la contraseña
+    private void Pass2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Pass2MouseClicked
+        lblContra2.setVisible(false);
+        if (Pass1.getText().equals("")) {
+            lblContra1.setText("Nueva contraseña");
+            lblContra1.setVisible(true);
+        }
+    }//GEN-LAST:event_Pass2MouseClicked
+
+    private void Pass1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Pass1MouseClicked
+        lblContra1.setVisible(false);
+        if (Pass2.getText().equals("")) {
+            lblContra2.setText("Nueva contraseña");
+            lblContra2.setVisible(true);
+        }
+    }//GEN-LAST:event_Pass1MouseClicked
+
+    private void Pass2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Pass2FocusGained
+        if (Pass1.getText().equals("")) {
+            lblContra1.setText("Nueva contraseña");
+            lblContra1.setVisible(true);
+        }
+    }//GEN-LAST:event_Pass2FocusGained
+
+    public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
+        return img;
+    }
     /**
      * @param args the command line arguments
      */
@@ -227,19 +390,24 @@ public class Contraseña3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField Pass1;
+    private javax.swing.JPasswordField Pass2;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnOjoAbierto;
+    private javax.swing.JButton btnOjoAbierto1;
+    private javax.swing.JButton btnOjoCerrado;
+    private javax.swing.JButton btnOjoCerrado1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lblContra1;
+    private javax.swing.JLabel lblContra2;
     // End of variables declaration//GEN-END:variables
 }
-

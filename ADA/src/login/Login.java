@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package login;
 
 import java.awt.Color;
@@ -13,7 +9,7 @@ import javax.swing.ImageIcon;
  *
  * @author Carlos Torres
  */
-public class Login extends javax.swing.JFrame {
+public final class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
@@ -142,6 +138,11 @@ public class Login extends javax.swing.JFrame {
                 btnOlvidarMouseClicked(evt);
             }
         });
+        btnOlvidar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOlvidarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnOlvidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
@@ -226,6 +227,10 @@ public class Login extends javax.swing.JFrame {
         volver.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnOlvidarMouseClicked
+
+    private void btnOlvidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOlvidarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOlvidarActionPerformed
 
     /**
      * @param args the command line arguments
