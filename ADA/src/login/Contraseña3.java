@@ -1,12 +1,10 @@
 
 package login;
 
-import java.awt.Color;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.Icon;
-import javax.swing.UIManager;
 
 /**
  *
