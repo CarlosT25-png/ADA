@@ -119,6 +119,11 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnPerfilNeg.setBorder(null);
         btnPerfilNeg.setBorderPainted(false);
         btnPerfilNeg.setContentAreaFilled(false);
+        btnPerfilNeg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPerfilNegMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnPerfilNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 160, -1, -1));
 
         btnMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/matricula.png"))); // NOI18N
@@ -126,8 +131,11 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnMatricula.setBorderPainted(false);
         btnMatricula.setContentAreaFilled(false);
         btnMatricula.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMatriculaMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMatriculaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMatriculaMouseExited(evt);
             }
         });
         jPanel1.add(btnMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 220, -1, -1));
@@ -137,8 +145,11 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnGestion.setBorderPainted(false);
         btnGestion.setContentAreaFilled(false);
         btnGestion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGestionMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGestionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGestionMouseExited(evt);
             }
         });
         jPanel1.add(btnGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 280, -1, -1));
@@ -148,8 +159,11 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnNotas.setBorderPainted(false);
         btnNotas.setContentAreaFilled(false);
         btnNotas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnNotasMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNotasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNotasMouseExited(evt);
             }
         });
         jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 340, -1, -1));
@@ -159,8 +173,11 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnHorario.setBorderPainted(false);
         btnHorario.setContentAreaFilled(false);
         btnHorario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnHorarioMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnHorarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnHorarioMouseExited(evt);
             }
         });
         jPanel1.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 400, -1, -1));
@@ -170,8 +187,11 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnAjustes.setBorderPainted(false);
         btnAjustes.setContentAreaFilled(false);
         btnAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAjustesMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAjustesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAjustesMouseExited(evt);
             }
         });
         jPanel1.add(btnAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 460, -1, -1));
@@ -184,6 +204,12 @@ public class alumnoPerfil extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalirMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
 
@@ -192,8 +218,11 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnPerfil.setBorderPainted(false);
         btnPerfil.setContentAreaFilled(false);
         btnPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPerfilMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPerfilMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPerfilMouseExited(evt);
             }
         });
         jPanel1.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 160, -1, -1));
@@ -202,30 +231,55 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnMatriculaNeg.setBorder(null);
         btnMatriculaNeg.setBorderPainted(false);
         btnMatriculaNeg.setContentAreaFilled(false);
+        btnMatriculaNeg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMatriculaNegMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnMatriculaNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 220, -1, -1));
 
         btnGestionNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-gestion.png"))); // NOI18N
         btnGestionNeg.setBorder(null);
         btnGestionNeg.setBorderPainted(false);
         btnGestionNeg.setContentAreaFilled(false);
+        btnGestionNeg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGestionNegMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnGestionNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 280, -1, -1));
 
         btnNotasNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-notas.png"))); // NOI18N
         btnNotasNeg.setBorder(null);
         btnNotasNeg.setBorderPainted(false);
         btnNotasNeg.setContentAreaFilled(false);
+        btnNotasNeg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNotasNegMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnNotasNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 340, -1, -1));
 
         btnHorarioNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-horario.png"))); // NOI18N
         btnHorarioNeg.setBorder(null);
         btnHorarioNeg.setBorderPainted(false);
         btnHorarioNeg.setContentAreaFilled(false);
+        btnHorarioNeg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHorarioNegMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnHorarioNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 400, -1, -1));
 
         btnAjustesNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-ajustes.png"))); // NOI18N
         btnAjustesNeg.setBorder(null);
         btnAjustesNeg.setBorderPainted(false);
         btnAjustesNeg.setContentAreaFilled(false);
+        btnAjustesNeg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAjustesNegMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnAjustesNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 460, -1, -1));
 
         btnSalirNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-salir.png"))); // NOI18N
@@ -272,34 +326,83 @@ public class alumnoPerfil extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnCerrarActionPerformed
 
-    private void btnMatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseClicked
-        btnPerfilNeg.setVisible(false);
-        btnPerfil.setVisible(true);
-        btnMatriculaNeg.setVisible(true);
-        btnMatricula.setVisible(false);
-        btnHorario.setVisible(true);
-        btnHorarioNeg.setVisible(false);
-        btnGestion.setVisible(true);
-        btnGestionNeg.setVisible(false);
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlmatricula, "Matricula Alumno");
-        vista.show(VistaPrincipal, "Matricula Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }//GEN-LAST:event_btnMatriculaMouseClicked
-
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         Login login = new Login();
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 
-    private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
+    private void btnPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseEntered
+        btnPerfil.setVisible(false);
+        btnPerfilNeg.setVisible(true);
+    }//GEN-LAST:event_btnPerfilMouseEntered
+
+    private void btnPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseExited
+        btnPerfil.setVisible(true);
+        btnPerfilNeg.setVisible(false);
+    }//GEN-LAST:event_btnPerfilMouseExited
+
+    private void btnMatriculaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseEntered
+        btnMatricula.setVisible(false);
+        btnMatriculaNeg.setVisible(true);
+    }//GEN-LAST:event_btnMatriculaMouseEntered
+
+    private void btnMatriculaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseExited
+        btnMatricula.setVisible(true);
+        btnMatriculaNeg.setVisible(false);
+    }//GEN-LAST:event_btnMatriculaMouseExited
+
+    private void btnGestionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseEntered
+        btnGestion.setVisible(false);
+        btnGestionNeg.setVisible(true);
+    }//GEN-LAST:event_btnGestionMouseEntered
+
+    private void btnGestionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseExited
+        btnGestion.setVisible(true);
+        btnGestionNeg.setVisible(false);
+    }//GEN-LAST:event_btnGestionMouseExited
+
+    private void btnNotasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseEntered
+        btnNotas.setVisible(false);
+        btnNotasNeg.setVisible(true);
+    }//GEN-LAST:event_btnNotasMouseEntered
+
+    private void btnNotasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseExited
+        btnNotas.setVisible(true);
+        btnNotasNeg.setVisible(false);
+    }//GEN-LAST:event_btnNotasMouseExited
+
+    private void btnHorarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseEntered
+        btnHorario.setVisible(false);
+        btnHorarioNeg.setVisible(true);
+    }//GEN-LAST:event_btnHorarioMouseEntered
+
+    private void btnHorarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseExited
+        btnHorario.setVisible(true);
+        btnHorarioNeg.setVisible(false);
+    }//GEN-LAST:event_btnHorarioMouseExited
+
+    private void btnAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseEntered
+        btnAjustes.setVisible(false);
+        btnAjustesNeg.setVisible(true);
+    }//GEN-LAST:event_btnAjustesMouseEntered
+
+    private void btnAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseExited
+        btnAjustes.setVisible(true);
+        btnAjustesNeg.setVisible(false);
+    }//GEN-LAST:event_btnAjustesMouseExited
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setVisible(false);
+        btnSalirNeg.setVisible(true);
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        btnSalir.setVisible(true);
+        btnSalirNeg.setVisible(false);
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnPerfilNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilNegMouseClicked
         btnPerfilNeg.setVisible(true);
         btnPerfil.setVisible(false);
         btnMatriculaNeg.setVisible(false);
@@ -318,30 +421,12 @@ public class alumnoPerfil extends javax.swing.JFrame {
         vista.show(VistaPrincipal, "Perfil Alumno");
         SwingUtilities.updateComponentTreeUI(this);
         this.repaint();
-    }//GEN-LAST:event_btnPerfilMouseClicked
+        
+    }//GEN-LAST:event_btnPerfilNegMouseClicked
 
-    private void btnGestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseClicked
-        btnPerfilNeg.setVisible(false);
-        btnPerfil.setVisible(true);
-        btnMatriculaNeg.setVisible(false);
-        btnMatricula.setVisible(true);
-        btnHorario.setVisible(true);
-        btnHorarioNeg.setVisible(false);
-        btnGestion.setVisible(false);
-        btnGestionNeg.setVisible(true);
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlgestion, "Gestion Alumno");
-        vista.show(VistaPrincipal, "Gestion Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }//GEN-LAST:event_btnGestionMouseClicked
-
-    private void btnNotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseClicked
+    private void btnAjustesNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesNegMouseClicked
+        btnAjustesNeg.setVisible(true);
+        btnAjustes.setVisible(false);
         btnPerfilNeg.setVisible(false);
         btnPerfil.setVisible(true);
         btnMatriculaNeg.setVisible(false);
@@ -350,19 +435,17 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnHorarioNeg.setVisible(false);
         btnGestion.setVisible(true);
         btnGestionNeg.setVisible(false);
-        btnNotas.setVisible(false);
-        btnNotasNeg.setVisible(true);
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
+        btnNotas.setVisible(true);
+        btnNotasNeg.setVisible(false);
         btnSalir.setVisible(true);
         btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlnotas,"Notas Alumno");
-        vista.show(VistaPrincipal,"Notas Alumno");
+        VistaPrincipal.add(pnlajustes,"Ajustes Alumno");
+        vista.show(VistaPrincipal, "Ajustes Alumno");
         SwingUtilities.updateComponentTreeUI(this);
         this.repaint();
-    }//GEN-LAST:event_btnNotasMouseClicked
+    }//GEN-LAST:event_btnAjustesNegMouseClicked
 
-    private void btnHorarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseClicked
+    private void btnHorarioNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioNegMouseClicked
         btnPerfilNeg.setVisible(false);
         btnPerfil.setVisible(true);
         btnMatriculaNeg.setVisible(false);
@@ -381,9 +464,9 @@ public class alumnoPerfil extends javax.swing.JFrame {
         vista.show(VistaPrincipal, "Horario Alumno");
         SwingUtilities.updateComponentTreeUI(this);
         this.repaint();
-    }//GEN-LAST:event_btnHorarioMouseClicked
+    }//GEN-LAST:event_btnHorarioNegMouseClicked
 
-    private void btnAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseClicked
+    private void btnNotasNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasNegMouseClicked
         btnPerfilNeg.setVisible(false);
         btnPerfil.setVisible(true);
         btnMatriculaNeg.setVisible(false);
@@ -392,17 +475,59 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnHorarioNeg.setVisible(false);
         btnGestion.setVisible(true);
         btnGestionNeg.setVisible(false);
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-        btnAjustes.setVisible(false);
-        btnAjustesNeg.setVisible(true);
+        btnNotas.setVisible(false);
+        btnNotasNeg.setVisible(true);
+        btnAjustes.setVisible(true);
+        btnAjustesNeg.setVisible(false);
         btnSalir.setVisible(true);
         btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlajustes,"Ajustes Alumno");
-        vista.show(VistaPrincipal, "Ajustes Alumno");
+        VistaPrincipal.add(pnlnotas,"Notas Alumno");
+        vista.show(VistaPrincipal,"Notas Alumno");
         SwingUtilities.updateComponentTreeUI(this);
         this.repaint();
-    }//GEN-LAST:event_btnAjustesMouseClicked
+    }//GEN-LAST:event_btnNotasNegMouseClicked
+
+    private void btnMatriculaNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaNegMouseClicked
+        btnPerfilNeg.setVisible(false);
+        btnPerfil.setVisible(true);
+        btnMatriculaNeg.setVisible(true);
+        btnMatricula.setVisible(false);
+        btnHorario.setVisible(true);
+        btnHorarioNeg.setVisible(false);
+        btnGestion.setVisible(true);
+        btnGestionNeg.setVisible(false);
+        btnNotas.setVisible(true);
+        btnNotasNeg.setVisible(false);
+        btnAjustes.setVisible(true);
+        btnAjustesNeg.setVisible(false);
+        btnSalir.setVisible(true);
+        btnSalirNeg.setVisible(false);
+        VistaPrincipal.add(pnlmatricula, "Matricula Alumno");
+        vista.show(VistaPrincipal, "Matricula Alumno");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_btnMatriculaNegMouseClicked
+
+    private void btnGestionNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionNegMouseClicked
+        btnPerfilNeg.setVisible(false);
+        btnPerfil.setVisible(true);
+        btnMatriculaNeg.setVisible(false);
+        btnMatricula.setVisible(true);
+        btnHorario.setVisible(true);
+        btnHorarioNeg.setVisible(false);
+        btnGestion.setVisible(false);
+        btnGestionNeg.setVisible(true);
+        btnNotas.setVisible(true);
+        btnNotasNeg.setVisible(false);
+        btnAjustes.setVisible(true);
+        btnAjustesNeg.setVisible(false);
+        btnSalir.setVisible(true);
+        btnSalirNeg.setVisible(false);
+        VistaPrincipal.add(pnlgestion, "Gestion Alumno");
+        vista.show(VistaPrincipal, "Gestion Alumno");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_btnGestionNegMouseClicked
 
     //Mover el Frame
     int xx, xy;

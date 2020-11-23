@@ -5,6 +5,9 @@
  */
 package alumno;
 
+import login.Contraseña3;
+import profesor.profePerfil;
+
 /**
  *
  * @author Usuario
@@ -12,10 +15,13 @@ package alumno;
 public class PnlAjustes extends javax.swing.JPanel {
 
     /**
-     * Creates new form PnlAjustes
+     * Creates new form PnlAjutes
      */
     public PnlAjustes() {
         initComponents();
+        btnNegEditar1.setVisible(false);
+        btnNegEditar2.setVisible(false);
+        btnNegEditar3.setVisible(false);
     }
 
     /**
@@ -27,30 +33,228 @@ public class PnlAjustes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        PnlAjustes = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        btnEditar1 = new javax.swing.JButton();
+        btnNegEditar1 = new javax.swing.JButton();
+        btnEditar2 = new javax.swing.JButton();
+        btnNegEditar2 = new javax.swing.JButton();
+        btnEditar3 = new javax.swing.JButton();
+        btnNegEditar3 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
-        jLabel1.setText("Ajustes");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+
+        PnlAjustes.setBackground(new java.awt.Color(255, 255, 255));
+        PnlAjustes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/llave.png"))); // NOI18N
+        PnlAjustes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel2.setText("Ajustes");
+        PnlAjustes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel1.setText("Cambio de contraseña");
+        PnlAjustes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel3.setText("Se recomienda usar una contraseña segura que no uses para ningún otro sitio");
+        PnlAjustes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 145, 380, 20));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlAjustes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+
+        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
+        btnEditar1.setBorder(null);
+        btnEditar1.setBorderPainted(false);
+        btnEditar1.setContentAreaFilled(false);
+        btnEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditar1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditar1MouseExited(evt);
+            }
+        });
+        PnlAjustes.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        btnNegEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
+        btnNegEditar1.setBorder(null);
+        btnNegEditar1.setBorderPainted(false);
+        btnNegEditar1.setContentAreaFilled(false);
+        btnNegEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNegEditar1MouseClicked(evt);
+            }
+        });
+        PnlAjustes.add(btnNegEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        btnEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
+        btnEditar2.setBorder(null);
+        btnEditar2.setBorderPainted(false);
+        btnEditar2.setContentAreaFilled(false);
+        btnEditar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseExited(evt);
+            }
+        });
+        PnlAjustes.add(btnEditar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
+
+        btnNegEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
+        btnNegEditar2.setBorder(null);
+        btnNegEditar2.setBorderPainted(false);
+        btnNegEditar2.setContentAreaFilled(false);
+        PnlAjustes.add(btnNegEditar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
+
+        btnEditar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
+        btnEditar3.setBorder(null);
+        btnEditar3.setBorderPainted(false);
+        btnEditar3.setContentAreaFilled(false);
+        btnEditar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditar3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditar3MouseExited(evt);
+            }
+        });
+        PnlAjustes.add(btnEditar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
+
+        btnNegEditar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
+        btnNegEditar3.setBorder(null);
+        btnNegEditar3.setBorderPainted(false);
+        btnNegEditar3.setContentAreaFilled(false);
+        PnlAjustes.add(btnNegEditar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel9.setText("Cambio de la foto de perfil");
+        PnlAjustes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/ayuda.png"))); // NOI18N
+        PnlAjustes.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/camara.png"))); // NOI18N
+        PnlAjustes.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(106, 151, 197));
+        jLabel18.setText("academicdesktopapplication@gmail.com");
+        PnlAjustes.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 450, 200, 20));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 420, -1));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel14.setText("Ayuda y asistencia");
+        PnlAjustes.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel15.setText("Envia tus dudas o sugerencias a: ");
+        PnlAjustes.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, 20));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 420, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(215, 215, 215)
-                .addComponent(jLabel1)
-                .addContainerGap(423, Short.MAX_VALUE))
+            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(PnlAjustes, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(jLabel1)
-                .addContainerGap(316, Short.MAX_VALUE))
+            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(PnlAjustes, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEditar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseEntered
+        btnEditar1.setVisible(false);
+        btnNegEditar1.setVisible(true);
+    }//GEN-LAST:event_btnEditar1MouseEntered
+
+    private void btnEditar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseEntered
+        btnEditar2.setVisible(false);
+        btnNegEditar2.setVisible(true);
+    }//GEN-LAST:event_btnEditar2MouseEntered
+
+    private void btnEditar3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar3MouseEntered
+        btnEditar3.setVisible(false);
+        btnNegEditar3.setVisible(true);
+    }//GEN-LAST:event_btnEditar3MouseEntered
+
+    private void btnEditar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseExited
+        btnEditar1.setVisible(true);
+        btnNegEditar1.setVisible(false);
+    }//GEN-LAST:event_btnEditar1MouseExited
+
+    private void btnEditar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseExited
+        btnEditar2.setVisible(true);
+        btnNegEditar2.setVisible(false);
+    }//GEN-LAST:event_btnEditar2MouseExited
+
+    private void btnEditar3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar3MouseExited
+        btnEditar3.setVisible(true);
+        btnNegEditar3.setVisible(false);
+    }//GEN-LAST:event_btnEditar3MouseExited
+
+    private void btnNegEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNegEditar1MouseClicked
+       
+    }//GEN-LAST:event_btnNegEditar1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PnlAjustes;
+    private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnEditar2;
+    private javax.swing.JButton btnEditar3;
+    private javax.swing.JButton btnNegEditar1;
+    private javax.swing.JButton btnNegEditar2;
+    private javax.swing.JButton btnNegEditar3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
