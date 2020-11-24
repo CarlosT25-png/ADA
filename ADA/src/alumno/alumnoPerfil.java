@@ -1,5 +1,6 @@
 package alumno;
 
+import java.awt.Component;
 import java.net.URL;
 import javax.swing.Icon;
 import utilities.*;
@@ -18,7 +19,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlPerfil);
         ParentPanel.revalidate();
         ParentPanel.repaint();
-        
+        panelSelected();
 
     }
 
@@ -27,6 +28,71 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         URL url = getClass().getResource("/imagesLogin/logoLoginXL.png");
         ImageIcon icono_formulario = new ImageIcon(url);
         setIconImage(icono_formulario.getImage());
+    }
+    
+    public void panelSelected(){
+        Component panelActual = ParentPanel.getComponent(0);
+        if(panelActual==PnlPerfil){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-perfil.png"));
+            btnPerfil.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnMatricula.setIcon(new ImageIcon(getClass().getResource("/imagesEst/matricula.png")));
+            btnGestion.setIcon(new ImageIcon(getClass().getResource("/imagesEst/gestion.png")));
+            btnHorario.setIcon(new ImageIcon(getClass().getResource("/imagesEst/horario.png")));
+            btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlMatricula){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-matricula.png"));
+            btnMatricula.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnGestion.setIcon(new ImageIcon(getClass().getResource("/imagesEst/gestion.png")));
+            btnHorario.setIcon(new ImageIcon(getClass().getResource("/imagesEst/horario.png")));
+            btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlHorario){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-horario.png"));
+            btnHorario.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnMatricula.setIcon(new ImageIcon(getClass().getResource("/imagesEst/matricula.png")));
+            btnGestion.setIcon(new ImageIcon(getClass().getResource("/imagesEst/gestion.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlGestion){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-gestion.png"));
+            btnGestion.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnMatricula.setIcon(new ImageIcon(getClass().getResource("/imagesEst/matricula.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnHorario.setIcon(new ImageIcon(getClass().getResource("/imagesEst/horario.png")));
+            btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlNotas){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-notas.png"));
+            btnNotas.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnMatricula.setIcon(new ImageIcon(getClass().getResource("/imagesEst/matricula.png")));
+            btnGestion.setIcon(new ImageIcon(getClass().getResource("/imagesEst/gestion.png")));
+            btnHorario.setIcon(new ImageIcon(getClass().getResource("/imagesEst/horario.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlAjustes){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-ajustes.png"));
+            btnAjustes.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnMatricula.setIcon(new ImageIcon(getClass().getResource("/imagesEst/matricula.png")));
+            btnGestion.setIcon(new ImageIcon(getClass().getResource("/imagesEst/gestion.png")));
+            btnHorario.setIcon(new ImageIcon(getClass().getResource("/imagesEst/horario.png")));
+            btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -575,7 +641,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlPerfil);
         ParentPanel.revalidate();
         ParentPanel.repaint();
-        
+        panelSelected();
     }//GEN-LAST:event_btnPerfilMouseClicked
 
     private void btnMatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseClicked
@@ -583,6 +649,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlMatricula);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnMatriculaMouseClicked
 
     private void btnGestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseClicked
@@ -590,6 +657,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlGestion);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnGestionMouseClicked
 
     private void btnNotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseClicked
@@ -597,6 +665,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlNotas);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnNotasMouseClicked
 
     private void btnHorarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseClicked
@@ -604,6 +673,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlHorario);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnHorarioMouseClicked
 
     private void btnAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseClicked
@@ -611,6 +681,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlAjustes);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnAjustesMouseClicked
 
     //Mover el Frame
