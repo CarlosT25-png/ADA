@@ -675,6 +675,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseExited
         btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+        panelSelected();
     }//GEN-LAST:event_btnPerfilMouseExited
 
     private void btnMatriculaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseEntered
@@ -683,6 +684,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnMatriculaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseExited
         btnMatricula.setIcon(new ImageIcon(getClass().getResource("/imagesEst/matricula.png")));
+        panelSelected();
     }//GEN-LAST:event_btnMatriculaMouseExited
 
     private void btnGestionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseEntered
@@ -691,6 +693,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnGestionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseExited
         btnGestion.setIcon(new ImageIcon(getClass().getResource("/imagesEst/gestion.png")));
+        panelSelected();
     }//GEN-LAST:event_btnGestionMouseExited
 
     private void btnNotasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseEntered
@@ -699,6 +702,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnNotasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseExited
         btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
+        panelSelected();
     }//GEN-LAST:event_btnNotasMouseExited
 
     private void btnHorarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseEntered
@@ -707,6 +711,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnHorarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseExited
         btnHorario.setIcon(new ImageIcon(getClass().getResource("/imagesEst/horario.png")));
+        panelSelected();
     }//GEN-LAST:event_btnHorarioMouseExited
 
     private void btnAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseEntered
@@ -715,6 +720,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseExited
         btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        panelSelected();
     }//GEN-LAST:event_btnAjustesMouseExited
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
@@ -723,6 +729,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
         btnSalir.setIcon(new ImageIcon(getClass().getResource("/imagesEst/salir.png")));
+        panelSelected();
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseClicked
