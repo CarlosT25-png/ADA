@@ -79,11 +79,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         btnEditar1 = new javax.swing.JButton();
-        btnNegEditar1 = new javax.swing.JButton();
         btnEditar2 = new javax.swing.JButton();
-        btnNegEditar2 = new javax.swing.JButton();
-        btnEditar3 = new javax.swing.JButton();
-        btnNegEditar3 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -277,7 +273,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         PnlAsignacionLayout.setVerticalGroup(
             PnlAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlAsignacionLayout.createSequentialGroup()
-                .addContainerGap(225, Short.MAX_VALUE)
+                .addContainerGap(241, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addGap(319, 319, 319))
         );
@@ -298,7 +294,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         PnlGruposLayout.setVerticalGroup(
             PnlGruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlGruposLayout.createSequentialGroup()
-                .addContainerGap(230, Short.MAX_VALUE)
+                .addContainerGap(246, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addGap(314, 314, 314))
         );
@@ -319,7 +315,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         PnlEstudiantesLayout.setVerticalGroup(
             PnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnlEstudiantesLayout.createSequentialGroup()
-                .addContainerGap(300, Short.MAX_VALUE)
+                .addContainerGap(316, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(244, 244, 244))
         );
@@ -342,7 +338,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             .addGroup(PnlProfesorLayout.createSequentialGroup()
                 .addGap(236, 236, 236)
                 .addComponent(jLabel14)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
 
         ParentPanel.add(PnlProfesor, "card6");
@@ -373,6 +369,9 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnEditar1.setBorderPainted(false);
         btnEditar1.setContentAreaFilled(false);
         btnEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditar1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEditar1MouseEntered(evt);
             }
@@ -381,17 +380,6 @@ public final class adminPerfil extends javax.swing.JFrame {
             }
         });
         PnlAjustes.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
-
-        btnNegEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
-        btnNegEditar1.setBorder(null);
-        btnNegEditar1.setBorderPainted(false);
-        btnNegEditar1.setContentAreaFilled(false);
-        btnNegEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnNegEditar1MouseClicked(evt);
-            }
-        });
-        PnlAjustes.add(btnNegEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
 
         btnEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
         btnEditar2.setBorder(null);
@@ -406,32 +394,6 @@ public final class adminPerfil extends javax.swing.JFrame {
             }
         });
         PnlAjustes.add(btnEditar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
-
-        btnNegEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
-        btnNegEditar2.setBorder(null);
-        btnNegEditar2.setBorderPainted(false);
-        btnNegEditar2.setContentAreaFilled(false);
-        PnlAjustes.add(btnNegEditar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
-
-        btnEditar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
-        btnEditar3.setBorder(null);
-        btnEditar3.setBorderPainted(false);
-        btnEditar3.setContentAreaFilled(false);
-        btnEditar3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEditar3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEditar3MouseExited(evt);
-            }
-        });
-        PnlAjustes.add(btnEditar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
-
-        btnNegEditar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
-        btnNegEditar3.setBorder(null);
-        btnNegEditar3.setBorderPainted(false);
-        btnNegEditar3.setContentAreaFilled(false);
-        PnlAjustes.add(btnNegEditar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
         PnlAjustes.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, -1));
@@ -500,42 +462,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 
-    private void btnEditar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseEntered
-        btnEditar1.setVisible(false);
-        btnNegEditar1.setVisible(true);
-    }//GEN-LAST:event_btnEditar1MouseEntered
-
-    private void btnEditar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseExited
-        btnEditar1.setVisible(true);
-        btnNegEditar1.setVisible(false);
-    }//GEN-LAST:event_btnEditar1MouseExited
-
-    private void btnNegEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNegEditar1MouseClicked
-        Contraseña3 contra = new Contraseña3();
-        contra.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnNegEditar1MouseClicked
-
-    private void btnEditar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseEntered
-        btnEditar2.setVisible(false);
-        btnNegEditar2.setVisible(true);
-    }//GEN-LAST:event_btnEditar2MouseEntered
-
-    private void btnEditar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseExited
-        btnEditar2.setVisible(true);
-        btnNegEditar2.setVisible(false);
-    }//GEN-LAST:event_btnEditar2MouseExited
-
-    private void btnEditar3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar3MouseEntered
-        btnEditar3.setVisible(false);
-        btnNegEditar3.setVisible(true);
-    }//GEN-LAST:event_btnEditar3MouseEntered
-
-    private void btnEditar3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar3MouseExited
-        btnEditar3.setVisible(true);
-        btnNegEditar3.setVisible(false);
-    }//GEN-LAST:event_btnEditar3MouseExited
-
     private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
         ParentPanel.removeAll();
         ParentPanel.add(PnlPerfil);
@@ -577,6 +503,28 @@ public final class adminPerfil extends javax.swing.JFrame {
         ParentPanel.revalidate();
         ParentPanel.repaint();
     }//GEN-LAST:event_btnAjustesMouseClicked
+
+    private void btnEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseClicked
+        Contraseña3 contra = new Contraseña3();
+        contra.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEditar1MouseClicked
+
+    private void btnEditar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseEntered
+        btnEditar1.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png")));
+    }//GEN-LAST:event_btnEditar1MouseEntered
+
+    private void btnEditar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseExited
+        btnEditar1.setIcon(new ImageIcon(getClass().getResource("/imagesEst/editar.png")));
+    }//GEN-LAST:event_btnEditar1MouseExited
+
+    private void btnEditar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseEntered
+        btnEditar2.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png")));
+    }//GEN-LAST:event_btnEditar2MouseEntered
+
+    private void btnEditar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseExited
+        btnEditar2.setIcon(new ImageIcon(getClass().getResource("/imagesEst/editar.png")));
+    }//GEN-LAST:event_btnEditar2MouseExited
 
     /**
      * @param args the command line arguments
@@ -629,12 +577,8 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnEditar2;
-    private javax.swing.JButton btnEditar3;
     private javax.swing.JButton btnEstudiantes;
     private javax.swing.JButton btnGrupos;
-    private javax.swing.JButton btnNegEditar1;
-    private javax.swing.JButton btnNegEditar2;
-    private javax.swing.JButton btnNegEditar3;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnProfesor;
     private javax.swing.JButton btnSalir;
