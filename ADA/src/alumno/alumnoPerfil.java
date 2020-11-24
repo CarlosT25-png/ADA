@@ -1,39 +1,24 @@
 package alumno;
 
-import java.awt.CardLayout;
 import java.net.URL;
+import javax.swing.Icon;
 import utilities.*;
 import javax.swing.ImageIcon;
-import javax.swing.SwingUtilities;
+import login.Contraseña3;
 import login.Login;
 
-public class alumnoPerfil extends javax.swing.JFrame {
-
-    PnlPerfilAlumno pnlperfil = new PnlPerfilAlumno();
-    PnlMatricula pnlmatricula = new PnlMatricula();
-    PnlGestion pnlgestion = new PnlGestion();
-    PnlNotas pnlnotas = new PnlNotas();
-    PnlHorario pnlhorario = new PnlHorario();
-    PnlAjustes pnlajustes = new PnlAjustes();
-    
-    CardLayout vista;
+public final class alumnoPerfil extends javax.swing.JFrame {
 
     public alumnoPerfil() {
         initComponents();
         ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
         ScaleImage.setScaleImage(avatar, imagen);
         iconoFormulario();
-        vista = (CardLayout) VistaPrincipal.getLayout();
-        btnPerfil.setVisible(false);
-        btnMatriculaNeg.setVisible(false);
-        btnHorarioNeg.setVisible(false);
-        btnGestionNeg.setVisible(false);
-        btnNotasNeg.setVisible(false);
-        btnAjustesNeg.setVisible(false);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlperfil, "Perfil Alumno");
-        vista.show(VistaPrincipal, "Perfil Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlPerfil);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
+        
 
     }
 
@@ -54,21 +39,60 @@ public class alumnoPerfil extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         marcoAvatar = new javax.swing.JLabel();
         avatar = new javax.swing.JLabel();
-        btnPerfilNeg = new javax.swing.JButton();
+        btnPerfil = new javax.swing.JButton();
         btnMatricula = new javax.swing.JButton();
         btnGestion = new javax.swing.JButton();
         btnNotas = new javax.swing.JButton();
         btnHorario = new javax.swing.JButton();
         btnAjustes = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnPerfil = new javax.swing.JButton();
-        btnMatriculaNeg = new javax.swing.JButton();
-        btnGestionNeg = new javax.swing.JButton();
-        btnNotasNeg = new javax.swing.JButton();
-        btnHorarioNeg = new javax.swing.JButton();
-        btnAjustesNeg = new javax.swing.JButton();
-        btnSalirNeg = new javax.swing.JButton();
-        VistaPrincipal = new javax.swing.JPanel();
+        ParentPanel = new javax.swing.JPanel();
+        PnlPerfil = new javax.swing.JPanel();
+        PnlPerfilAlumno = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
+        PnlMatricula = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        PnlGestion = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        PnlNotas = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        PnlHorario = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        PnlAjustes = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        btnEditar1 = new javax.swing.JButton();
+        btnNegEditar1 = new javax.swing.JButton();
+        btnEditar2 = new javax.swing.JButton();
+        btnNegEditar2 = new javax.swing.JButton();
+        btnEditar3 = new javax.swing.JButton();
+        btnNegEditar3 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(900, 600));
@@ -115,27 +139,24 @@ public class alumnoPerfil extends javax.swing.JFrame {
         avatar.setPreferredSize(new java.awt.Dimension(102, 102));
         jPanel1.add(avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        btnPerfilNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-perfil.png"))); // NOI18N
-        btnPerfilNeg.setBorder(null);
-        btnPerfilNeg.setBorderPainted(false);
-        btnPerfilNeg.setContentAreaFilled(false);
-        btnPerfilNeg.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/perfil.png"))); // NOI18N
+        btnPerfil.setBorder(null);
+        btnPerfil.setBorderPainted(false);
+        btnPerfil.setContentAreaFilled(false);
+        btnPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPerfilNegMouseClicked(evt);
+                btnPerfilMouseClicked(evt);
             }
         });
-        jPanel1.add(btnPerfilNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 160, -1, -1));
+        jPanel1.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 160, -1, -1));
 
         btnMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/matricula.png"))); // NOI18N
         btnMatricula.setBorder(null);
         btnMatricula.setBorderPainted(false);
         btnMatricula.setContentAreaFilled(false);
         btnMatricula.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMatriculaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMatriculaMouseExited(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMatriculaMouseClicked(evt);
             }
         });
         jPanel1.add(btnMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 220, -1, -1));
@@ -145,11 +166,8 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnGestion.setBorderPainted(false);
         btnGestion.setContentAreaFilled(false);
         btnGestion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnGestionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnGestionMouseExited(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGestionMouseClicked(evt);
             }
         });
         jPanel1.add(btnGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 280, -1, -1));
@@ -159,11 +177,8 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnNotas.setBorderPainted(false);
         btnNotas.setContentAreaFilled(false);
         btnNotas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnNotasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnNotasMouseExited(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNotasMouseClicked(evt);
             }
         });
         jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 340, -1, -1));
@@ -173,11 +188,8 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnHorario.setBorderPainted(false);
         btnHorario.setContentAreaFilled(false);
         btnHorario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnHorarioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHorarioMouseExited(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHorarioMouseClicked(evt);
             }
         });
         jPanel1.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 400, -1, -1));
@@ -187,11 +199,8 @@ public class alumnoPerfil extends javax.swing.JFrame {
         btnAjustes.setBorderPainted(false);
         btnAjustes.setContentAreaFilled(false);
         btnAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAjustesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAjustesMouseExited(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAjustesMouseClicked(evt);
             }
         });
         jPanel1.add(btnAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 460, -1, -1));
@@ -204,95 +213,288 @@ public class alumnoPerfil extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalirMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSalirMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSalirMouseExited(evt);
-            }
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
 
-        btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/perfil.png"))); // NOI18N
-        btnPerfil.setBorder(null);
-        btnPerfil.setBorderPainted(false);
-        btnPerfil.setContentAreaFilled(false);
-        btnPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPerfilMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPerfilMouseExited(evt);
-            }
-        });
-        jPanel1.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 160, -1, -1));
-
-        btnMatriculaNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-matricula.png"))); // NOI18N
-        btnMatriculaNeg.setBorder(null);
-        btnMatriculaNeg.setBorderPainted(false);
-        btnMatriculaNeg.setContentAreaFilled(false);
-        btnMatriculaNeg.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMatriculaNegMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnMatriculaNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 220, -1, -1));
-
-        btnGestionNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-gestion.png"))); // NOI18N
-        btnGestionNeg.setBorder(null);
-        btnGestionNeg.setBorderPainted(false);
-        btnGestionNeg.setContentAreaFilled(false);
-        btnGestionNeg.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGestionNegMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnGestionNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 280, -1, -1));
-
-        btnNotasNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-notas.png"))); // NOI18N
-        btnNotasNeg.setBorder(null);
-        btnNotasNeg.setBorderPainted(false);
-        btnNotasNeg.setContentAreaFilled(false);
-        btnNotasNeg.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnNotasNegMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnNotasNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 340, -1, -1));
-
-        btnHorarioNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-horario.png"))); // NOI18N
-        btnHorarioNeg.setBorder(null);
-        btnHorarioNeg.setBorderPainted(false);
-        btnHorarioNeg.setContentAreaFilled(false);
-        btnHorarioNeg.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnHorarioNegMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnHorarioNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 400, -1, -1));
-
-        btnAjustesNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-ajustes.png"))); // NOI18N
-        btnAjustesNeg.setBorder(null);
-        btnAjustesNeg.setBorderPainted(false);
-        btnAjustesNeg.setContentAreaFilled(false);
-        btnAjustesNeg.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAjustesNegMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnAjustesNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 460, -1, -1));
-
-        btnSalirNeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-salir.png"))); // NOI18N
-        btnSalirNeg.setBorder(null);
-        btnSalirNeg.setBorderPainted(false);
-        btnSalirNeg.setContentAreaFilled(false);
-        jPanel1.add(btnSalirNeg, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
-
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 560));
 
-        VistaPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        VistaPrincipal.setLayout(new java.awt.CardLayout());
-        jPanel2.add(VistaPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
+        ParentPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ParentPanel.setLayout(new java.awt.CardLayout());
+
+        PnlPerfilAlumno.setBackground(new java.awt.Color(255, 255, 255));
+        PnlPerfilAlumno.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel2.setText("Información Personal");
+        PnlPerfilAlumno.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel3.setText("Nombre:");
+        PnlPerfilAlumno.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        PnlPerfilAlumno.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 170, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel6.setText("Apellidos: ");
+        PnlPerfilAlumno.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        PnlPerfilAlumno.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 170, -1));
+        PnlPerfilAlumno.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 270, 200, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel7.setText("Fecha de nacimiento: ");
+        PnlPerfilAlumno.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel8.setText("Email:");
+        PnlPerfilAlumno.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel4.setText("Cédula:");
+        PnlPerfilAlumno.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+        PnlPerfilAlumno.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 170, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel5.setText("CIF:");
+        PnlPerfilAlumno.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
+        PnlPerfilAlumno.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 200, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel9.setText("Dirección:");
+        PnlPerfilAlumno.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, -1));
+        PnlPerfilAlumno.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 160, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlPerfilAlumno.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+
+        javax.swing.GroupLayout PnlPerfilLayout = new javax.swing.GroupLayout(PnlPerfil);
+        PnlPerfil.setLayout(PnlPerfilLayout);
+        PnlPerfilLayout.setHorizontalGroup(
+            PnlPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(PnlPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PnlPerfilLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(PnlPerfilAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        PnlPerfilLayout.setVerticalGroup(
+            PnlPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(PnlPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PnlPerfilLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(PnlPerfilAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        ParentPanel.add(PnlPerfil, "card3");
+
+        PnlMatricula.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel11.setText("MATRICULA");
+
+        javax.swing.GroupLayout PnlMatriculaLayout = new javax.swing.GroupLayout(PnlMatricula);
+        PnlMatricula.setLayout(PnlMatriculaLayout);
+        PnlMatriculaLayout.setHorizontalGroup(
+            PnlMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlMatriculaLayout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addComponent(jLabel11)
+                .addContainerGap(366, Short.MAX_VALUE))
+        );
+        PnlMatriculaLayout.setVerticalGroup(
+            PnlMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlMatriculaLayout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jLabel11)
+                .addContainerGap(423, Short.MAX_VALUE))
+        );
+
+        ParentPanel.add(PnlMatricula, "card3");
+
+        jLabel12.setText("GESTION");
+
+        javax.swing.GroupLayout PnlGestionLayout = new javax.swing.GroupLayout(PnlGestion);
+        PnlGestion.setLayout(PnlGestionLayout);
+        PnlGestionLayout.setHorizontalGroup(
+            PnlGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlGestionLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jLabel12)
+                .addContainerGap(478, Short.MAX_VALUE))
+        );
+        PnlGestionLayout.setVerticalGroup(
+            PnlGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlGestionLayout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addComponent(jLabel12)
+                .addContainerGap(342, Short.MAX_VALUE))
+        );
+
+        ParentPanel.add(PnlGestion, "card4");
+
+        jLabel13.setText("NOTAS");
+
+        javax.swing.GroupLayout PnlNotasLayout = new javax.swing.GroupLayout(PnlNotas);
+        PnlNotas.setLayout(PnlNotasLayout);
+        PnlNotasLayout.setHorizontalGroup(
+            PnlNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlNotasLayout.createSequentialGroup()
+                .addGap(274, 274, 274)
+                .addComponent(jLabel13)
+                .addContainerGap(365, Short.MAX_VALUE))
+        );
+        PnlNotasLayout.setVerticalGroup(
+            PnlNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlNotasLayout.createSequentialGroup()
+                .addGap(233, 233, 233)
+                .addComponent(jLabel13)
+                .addContainerGap(311, Short.MAX_VALUE))
+        );
+
+        ParentPanel.add(PnlNotas, "card5");
+
+        jLabel14.setText("Horario");
+
+        javax.swing.GroupLayout PnlHorarioLayout = new javax.swing.GroupLayout(PnlHorario);
+        PnlHorario.setLayout(PnlHorarioLayout);
+        PnlHorarioLayout.setHorizontalGroup(
+            PnlHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlHorarioLayout.createSequentialGroup()
+                .addGap(233, 233, 233)
+                .addComponent(jLabel14)
+                .addContainerGap(405, Short.MAX_VALUE))
+        );
+        PnlHorarioLayout.setVerticalGroup(
+            PnlHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlHorarioLayout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(jLabel14)
+                .addContainerGap(347, Short.MAX_VALUE))
+        );
+
+        ParentPanel.add(PnlHorario, "card6");
+
+        PnlAjustes.setBackground(new java.awt.Color(255, 255, 255));
+        PnlAjustes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/llave.png"))); // NOI18N
+        PnlAjustes.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel16.setText("Ajustes");
+        PnlAjustes.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel17.setText("Cambio de contraseña");
+        PnlAjustes.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel18.setText("Se recomienda usar una contraseña segura que no uses para ningún otro sitio");
+        PnlAjustes.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 145, 380, 20));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlAjustes.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+
+        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
+        btnEditar1.setBorder(null);
+        btnEditar1.setBorderPainted(false);
+        btnEditar1.setContentAreaFilled(false);
+        btnEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditar1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditar1MouseExited(evt);
+            }
+        });
+        PnlAjustes.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        btnNegEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
+        btnNegEditar1.setBorder(null);
+        btnNegEditar1.setBorderPainted(false);
+        btnNegEditar1.setContentAreaFilled(false);
+        btnNegEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNegEditar1MouseClicked(evt);
+            }
+        });
+        PnlAjustes.add(btnNegEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        btnEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
+        btnEditar2.setBorder(null);
+        btnEditar2.setBorderPainted(false);
+        btnEditar2.setContentAreaFilled(false);
+        btnEditar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseExited(evt);
+            }
+        });
+        PnlAjustes.add(btnEditar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
+
+        btnNegEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
+        btnNegEditar2.setBorder(null);
+        btnNegEditar2.setBorderPainted(false);
+        btnNegEditar2.setContentAreaFilled(false);
+        PnlAjustes.add(btnNegEditar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
+
+        btnEditar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
+        btnEditar3.setBorder(null);
+        btnEditar3.setBorderPainted(false);
+        btnEditar3.setContentAreaFilled(false);
+        btnEditar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditar3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditar3MouseExited(evt);
+            }
+        });
+        PnlAjustes.add(btnEditar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
+
+        btnNegEditar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Neg-editar.png"))); // NOI18N
+        btnNegEditar3.setBorder(null);
+        btnNegEditar3.setBorderPainted(false);
+        btnNegEditar3.setContentAreaFilled(false);
+        PnlAjustes.add(btnNegEditar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel21.setText("Cambio de la foto de perfil");
+        PnlAjustes.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/ayuda.png"))); // NOI18N
+        PnlAjustes.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/camara.png"))); // NOI18N
+        PnlAjustes.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(106, 151, 197));
+        jLabel24.setText("academicdesktopapplication@gmail.com");
+        PnlAjustes.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 450, 200, 20));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 420, -1));
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel26.setText("Ayuda y asistencia");
+        PnlAjustes.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel27.setText("Envia tus dudas o sugerencias a: ");
+        PnlAjustes.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, 20));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 420, -1));
+
+        ParentPanel.add(PnlAjustes, "card8");
+
+        jPanel2.add(ParentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -332,202 +534,84 @@ public class alumnoPerfil extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 
-    private void btnPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseEntered
-        btnPerfil.setVisible(false);
-        btnPerfilNeg.setVisible(true);
-    }//GEN-LAST:event_btnPerfilMouseEntered
+    private void btnEditar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseEntered
+        btnEditar1.setVisible(false);
+        btnNegEditar1.setVisible(true);
+    }//GEN-LAST:event_btnEditar1MouseEntered
 
-    private void btnPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseExited
-        btnPerfil.setVisible(true);
-        btnPerfilNeg.setVisible(false);
-    }//GEN-LAST:event_btnPerfilMouseExited
+    private void btnEditar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseExited
+        btnEditar1.setVisible(true);
+        btnNegEditar1.setVisible(false);
+    }//GEN-LAST:event_btnEditar1MouseExited
 
-    private void btnMatriculaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseEntered
-        btnMatricula.setVisible(false);
-        btnMatriculaNeg.setVisible(true);
-    }//GEN-LAST:event_btnMatriculaMouseEntered
+    private void btnNegEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNegEditar1MouseClicked
+        Contraseña3 contra = new Contraseña3();
+        contra.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnNegEditar1MouseClicked
 
-    private void btnMatriculaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseExited
-        btnMatricula.setVisible(true);
-        btnMatriculaNeg.setVisible(false);
-    }//GEN-LAST:event_btnMatriculaMouseExited
+    private void btnEditar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseEntered
+        btnEditar2.setVisible(false);
+        btnNegEditar2.setVisible(true);
+    }//GEN-LAST:event_btnEditar2MouseEntered
 
-    private void btnGestionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseEntered
-        btnGestion.setVisible(false);
-        btnGestionNeg.setVisible(true);
-    }//GEN-LAST:event_btnGestionMouseEntered
+    private void btnEditar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseExited
+        btnEditar2.setVisible(true);
+        btnNegEditar2.setVisible(false);
+    }//GEN-LAST:event_btnEditar2MouseExited
 
-    private void btnGestionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseExited
-        btnGestion.setVisible(true);
-        btnGestionNeg.setVisible(false);
-    }//GEN-LAST:event_btnGestionMouseExited
+    private void btnEditar3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar3MouseEntered
+        btnEditar3.setVisible(false);
+        btnNegEditar3.setVisible(true);
+    }//GEN-LAST:event_btnEditar3MouseEntered
 
-    private void btnNotasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseEntered
-        btnNotas.setVisible(false);
-        btnNotasNeg.setVisible(true);
-    }//GEN-LAST:event_btnNotasMouseEntered
+    private void btnEditar3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar3MouseExited
+        btnEditar3.setVisible(true);
+        btnNegEditar3.setVisible(false);
+    }//GEN-LAST:event_btnEditar3MouseExited
 
-    private void btnNotasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseExited
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-    }//GEN-LAST:event_btnNotasMouseExited
-
-    private void btnHorarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseEntered
-        btnHorario.setVisible(false);
-        btnHorarioNeg.setVisible(true);
-    }//GEN-LAST:event_btnHorarioMouseEntered
-
-    private void btnHorarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseExited
-        btnHorario.setVisible(true);
-        btnHorarioNeg.setVisible(false);
-    }//GEN-LAST:event_btnHorarioMouseExited
-
-    private void btnAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseEntered
-        btnAjustes.setVisible(false);
-        btnAjustesNeg.setVisible(true);
-    }//GEN-LAST:event_btnAjustesMouseEntered
-
-    private void btnAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseExited
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
-    }//GEN-LAST:event_btnAjustesMouseExited
-
-    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
-        btnSalir.setVisible(false);
-        btnSalirNeg.setVisible(true);
-    }//GEN-LAST:event_btnSalirMouseEntered
-
-    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-    }//GEN-LAST:event_btnSalirMouseExited
-
-    private void btnPerfilNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilNegMouseClicked
-        btnPerfilNeg.setVisible(true);
-        btnPerfil.setVisible(false);
-        btnMatriculaNeg.setVisible(false);
-        btnMatricula.setVisible(true);
-        btnHorario.setVisible(true);
-        btnHorarioNeg.setVisible(false);
-        btnGestion.setVisible(true);
-        btnGestionNeg.setVisible(false);
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlperfil, "Perfil Alumno");
-        vista.show(VistaPrincipal, "Perfil Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+    private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlPerfil);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
         
-    }//GEN-LAST:event_btnPerfilNegMouseClicked
+    }//GEN-LAST:event_btnPerfilMouseClicked
 
-    private void btnAjustesNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesNegMouseClicked
-        btnAjustesNeg.setVisible(true);
-        btnAjustes.setVisible(false);
-        btnPerfilNeg.setVisible(false);
-        btnPerfil.setVisible(true);
-        btnMatriculaNeg.setVisible(false);
-        btnMatricula.setVisible(true);
-        btnHorario.setVisible(true);
-        btnHorarioNeg.setVisible(false);
-        btnGestion.setVisible(true);
-        btnGestionNeg.setVisible(false);
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlajustes,"Ajustes Alumno");
-        vista.show(VistaPrincipal, "Ajustes Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }//GEN-LAST:event_btnAjustesNegMouseClicked
+    private void btnMatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaMouseClicked
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlMatricula);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
+    }//GEN-LAST:event_btnMatriculaMouseClicked
 
-    private void btnHorarioNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioNegMouseClicked
-        btnPerfilNeg.setVisible(false);
-        btnPerfil.setVisible(true);
-        btnMatriculaNeg.setVisible(false);
-        btnMatricula.setVisible(true);
-        btnHorario.setVisible(false);
-        btnHorarioNeg.setVisible(true);
-        btnGestion.setVisible(true);
-        btnGestionNeg.setVisible(false);
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlhorario,"Horario Alumno");
-        vista.show(VistaPrincipal, "Horario Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }//GEN-LAST:event_btnHorarioNegMouseClicked
+    private void btnGestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionMouseClicked
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlGestion);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
+    }//GEN-LAST:event_btnGestionMouseClicked
 
-    private void btnNotasNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasNegMouseClicked
-        btnPerfilNeg.setVisible(false);
-        btnPerfil.setVisible(true);
-        btnMatriculaNeg.setVisible(false);
-        btnMatricula.setVisible(true);
-        btnHorario.setVisible(true);
-        btnHorarioNeg.setVisible(false);
-        btnGestion.setVisible(true);
-        btnGestionNeg.setVisible(false);
-        btnNotas.setVisible(false);
-        btnNotasNeg.setVisible(true);
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlnotas,"Notas Alumno");
-        vista.show(VistaPrincipal,"Notas Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }//GEN-LAST:event_btnNotasNegMouseClicked
+    private void btnNotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseClicked
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlNotas);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
+    }//GEN-LAST:event_btnNotasMouseClicked
 
-    private void btnMatriculaNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMatriculaNegMouseClicked
-        btnPerfilNeg.setVisible(false);
-        btnPerfil.setVisible(true);
-        btnMatriculaNeg.setVisible(true);
-        btnMatricula.setVisible(false);
-        btnHorario.setVisible(true);
-        btnHorarioNeg.setVisible(false);
-        btnGestion.setVisible(true);
-        btnGestionNeg.setVisible(false);
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlmatricula, "Matricula Alumno");
-        vista.show(VistaPrincipal, "Matricula Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }//GEN-LAST:event_btnMatriculaNegMouseClicked
+    private void btnHorarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseClicked
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlHorario);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
+    }//GEN-LAST:event_btnHorarioMouseClicked
 
-    private void btnGestionNegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionNegMouseClicked
-        btnPerfilNeg.setVisible(false);
-        btnPerfil.setVisible(true);
-        btnMatriculaNeg.setVisible(false);
-        btnMatricula.setVisible(true);
-        btnHorario.setVisible(true);
-        btnHorarioNeg.setVisible(false);
-        btnGestion.setVisible(false);
-        btnGestionNeg.setVisible(true);
-        btnNotas.setVisible(true);
-        btnNotasNeg.setVisible(false);
-        btnAjustes.setVisible(true);
-        btnAjustesNeg.setVisible(false);
-        btnSalir.setVisible(true);
-        btnSalirNeg.setVisible(false);
-        VistaPrincipal.add(pnlgestion, "Gestion Alumno");
-        vista.show(VistaPrincipal, "Gestion Alumno");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }//GEN-LAST:event_btnGestionNegMouseClicked
+    private void btnAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseClicked
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlAjustes);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
+    }//GEN-LAST:event_btnAjustesMouseClicked
 
     //Mover el Frame
     int xx, xy;
@@ -566,26 +650,65 @@ public class alumnoPerfil extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel VistaPrincipal;
+    private javax.swing.JPanel ParentPanel;
+    private javax.swing.JPanel PnlAjustes;
+    private javax.swing.JPanel PnlGestion;
+    private javax.swing.JPanel PnlHorario;
+    private javax.swing.JPanel PnlMatricula;
+    private javax.swing.JPanel PnlNotas;
+    private javax.swing.JPanel PnlPerfil;
+    private javax.swing.JPanel PnlPerfilAlumno;
     private javax.swing.JLabel avatar;
     private javax.swing.JButton btnAjustes;
-    private javax.swing.JButton btnAjustesNeg;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnEditar2;
+    private javax.swing.JButton btnEditar3;
     private javax.swing.JButton btnGestion;
-    private javax.swing.JButton btnGestionNeg;
     private javax.swing.JButton btnHorario;
-    private javax.swing.JButton btnHorarioNeg;
     private javax.swing.JButton btnMatricula;
-    private javax.swing.JButton btnMatriculaNeg;
+    private javax.swing.JButton btnNegEditar1;
+    private javax.swing.JButton btnNegEditar2;
+    private javax.swing.JButton btnNegEditar3;
     private javax.swing.JButton btnNotas;
-    private javax.swing.JButton btnNotasNeg;
     private javax.swing.JButton btnPerfil;
-    private javax.swing.JButton btnPerfilNeg;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnSalirNeg;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel marcoAvatar;
     // End of variables declaration//GEN-END:variables
 }
