@@ -1,6 +1,7 @@
 
 package administrador;
 
+import java.awt.Component;
 import java.net.URL;
 import utilities.*;
 import javax.swing.ImageIcon;
@@ -17,6 +18,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
         ScaleImage.setScaleImage(avatar, imagen);
         iconoFormulario();
+        panelSelected();
     }
     
     //Establecer el icono
@@ -25,7 +27,70 @@ public final class adminPerfil extends javax.swing.JFrame {
         ImageIcon icono_formulario = new ImageIcon(url);
         setIconImage(icono_formulario.getImage()); 
     }
-
+    public void panelSelected(){
+        Component panelActual = ParentPanel.getComponent(0);
+        if(panelActual==PnlPerfil){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-perfil.png"));
+            btnPerfil.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnAsignacion.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/asignacion.png")));
+            btnGrupos.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/grupos.png")));
+            btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
+            btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlAsignacion){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-asignacion.png"));
+            btnAsignacion.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource ("/imagesEst/perfil.png")));
+            btnGrupos.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/grupos.png")));
+            btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
+            btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlEstudiantes){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-estudiantes.png"));
+            btnEstudiantes.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnAsignacion.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/asignacion.png")));
+            btnGrupos.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/grupos.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlGrupos){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-grupos.png"));
+            btnGrupos.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnAsignacion.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/asignacion.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
+            btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlProfesor){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-profesor.png"));
+            btnProfesor.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnAsignacion.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/asignacion.png")));
+            btnGrupos.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/grupos.png")));
+            btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+        }else if(panelActual==PnlAjustes){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-ajustes.png"));
+            btnAjustes.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnAsignacion.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/asignacion.png")));
+            btnGrupos.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/grupos.png")));
+            btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
+            btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,6 +179,12 @@ public final class adminPerfil extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPerfilMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPerfilMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPerfilMouseExited(evt);
+            }
         });
         jPanel1.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 160, -1, -1));
 
@@ -124,6 +195,12 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnAsignacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAsignacionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAsignacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAsignacionMouseExited(evt);
             }
         });
         jPanel1.add(btnAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 220, -1, -1));
@@ -137,6 +214,12 @@ public final class adminPerfil extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGruposMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGruposMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGruposMouseExited(evt);
+            }
         });
         jPanel1.add(btnGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 280, -1, -1));
 
@@ -147,6 +230,12 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEstudiantesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEstudiantesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEstudiantesMouseExited(evt);
             }
         });
         jPanel1.add(btnEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 340, -1, -1));
@@ -159,6 +248,12 @@ public final class adminPerfil extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProfesorMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnProfesorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnProfesorMouseExited(evt);
+            }
         });
         jPanel1.add(btnProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 400, -1, -1));
 
@@ -170,6 +265,12 @@ public final class adminPerfil extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAjustesMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAjustesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAjustesMouseExited(evt);
+            }
         });
         jPanel1.add(btnAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 460, -1, -1));
 
@@ -180,6 +281,12 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
             }
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
@@ -467,6 +574,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlPerfil);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnPerfilMouseClicked
 
     private void btnAsignacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsignacionMouseClicked
@@ -474,6 +582,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlAsignacion);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnAsignacionMouseClicked
 
     private void btnGruposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGruposMouseClicked
@@ -481,6 +590,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlGrupos);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnGruposMouseClicked
 
     private void btnEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstudiantesMouseClicked
@@ -488,6 +598,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlEstudiantes);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnEstudiantesMouseClicked
 
     private void btnProfesorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfesorMouseClicked
@@ -495,6 +606,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlProfesor);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnProfesorMouseClicked
 
     private void btnAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseClicked
@@ -502,6 +614,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         ParentPanel.add(PnlAjustes);
         ParentPanel.revalidate();
         ParentPanel.repaint();
+        panelSelected();
     }//GEN-LAST:event_btnAjustesMouseClicked
 
     private void btnEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseClicked
@@ -525,6 +638,68 @@ public final class adminPerfil extends javax.swing.JFrame {
     private void btnEditar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseExited
         btnEditar2.setIcon(new ImageIcon(getClass().getResource("/imagesEst/editar.png")));
     }//GEN-LAST:event_btnEditar2MouseExited
+
+    private void btnPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseEntered
+        btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-perfil.png")));
+    }//GEN-LAST:event_btnPerfilMouseEntered
+
+    private void btnPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseExited
+        btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/perfil.png")));
+        panelSelected();
+    }//GEN-LAST:event_btnPerfilMouseExited
+
+    private void btnAsignacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsignacionMouseEntered
+        btnAsignacion.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-asignacion.png")));
+    }//GEN-LAST:event_btnAsignacionMouseEntered
+
+    private void btnAsignacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsignacionMouseExited
+        btnAsignacion.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/asignacion.png")));
+        panelSelected();
+    }//GEN-LAST:event_btnAsignacionMouseExited
+
+    private void btnGruposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGruposMouseEntered
+        btnGrupos.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-grupos.png")));
+    }//GEN-LAST:event_btnGruposMouseEntered
+
+    private void btnGruposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGruposMouseExited
+        btnGrupos.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/grupos.png")));
+        panelSelected();
+    }//GEN-LAST:event_btnGruposMouseExited
+
+    private void btnEstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstudiantesMouseEntered
+        btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-estudiantes.png")));
+    }//GEN-LAST:event_btnEstudiantesMouseEntered
+
+    private void btnEstudiantesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstudiantesMouseExited
+        btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
+        panelSelected();
+    }//GEN-LAST:event_btnEstudiantesMouseExited
+
+    private void btnProfesorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfesorMouseEntered
+        btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-profesor.png")));
+    }//GEN-LAST:event_btnProfesorMouseEntered
+
+    private void btnProfesorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfesorMouseExited
+        btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
+        panelSelected();
+    }//GEN-LAST:event_btnProfesorMouseExited
+
+    private void btnAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseEntered
+        btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-ajustes.png")));
+    }//GEN-LAST:event_btnAjustesMouseEntered
+
+    private void btnAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseExited
+        btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/ajustes.png")));
+        panelSelected();
+    }//GEN-LAST:event_btnAjustesMouseExited
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-salir.png")));
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        btnSalir.setIcon(new ImageIcon(getClass().getResource("/imagesEst/salir.png")));
+    }//GEN-LAST:event_btnSalirMouseExited
 
     /**
      * @param args the command line arguments
