@@ -6,8 +6,14 @@
 package profesor;
 
 import java.awt.Component;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import login.Contraseña3;
 import login.Login;
 import utilities.ScaleImage;
@@ -22,6 +28,7 @@ public final class profePerfil extends javax.swing.JFrame {
         initComponents();
         ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
         ScaleImage.setScaleImage(avatar, imagen);
+        ScaleImage.setScaleImage(avatar1, imagen);
         iconoFormulario();
         panelSelected();
         
@@ -144,6 +151,10 @@ public final class profePerfil extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        PnlCambioFotoPerfil = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        avatar1 = new javax.swing.JLabel();
+        btnImportarFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -503,6 +514,9 @@ public final class profePerfil extends javax.swing.JFrame {
         btnEditar2.setBorderPainted(false);
         btnEditar2.setContentAreaFilled(false);
         btnEditar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEditar2MouseEntered(evt);
             }
@@ -545,6 +559,31 @@ public final class profePerfil extends javax.swing.JFrame {
         PnlAjustes.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 420, -1));
 
         ParentPanel.add(PnlAjustes, "card8");
+
+        PnlCambioFotoPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        PnlCambioFotoPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel32.setText("Cambiar Foto de Perfil");
+        PnlCambioFotoPerfil.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        avatar1.setMaximumSize(new java.awt.Dimension(102, 102));
+        avatar1.setMinimumSize(new java.awt.Dimension(102, 102));
+        avatar1.setPreferredSize(new java.awt.Dimension(102, 102));
+        PnlCambioFotoPerfil.add(avatar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 220, 220));
+
+        btnImportarFoto.setBackground(new java.awt.Color(255, 255, 255));
+        btnImportarFoto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnImportarFoto.setText("Importar Foto de Perfil");
+        btnImportarFoto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnImportarFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnImportarFotoMouseClicked(evt);
+            }
+        });
+        PnlCambioFotoPerfil.add(btnImportarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 310, 50));
+
+        ParentPanel.add(PnlCambioFotoPerfil, "card9");
 
         jPanel2.add(ParentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
 
@@ -664,7 +703,7 @@ public final class profePerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNotasMouseEntered
 
     private void btnNotasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotasMouseExited
-        btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-notas.png")));
+        btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
         panelSelected();
     }//GEN-LAST:event_btnNotasMouseExited
 
@@ -685,6 +724,41 @@ public final class profePerfil extends javax.swing.JFrame {
         btnSalir.setIcon(new ImageIcon(getClass().getResource("/imagesEst/salir.png")));
         panelSelected();
     }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnImportarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImportarFotoMouseClicked
+        JFileChooser filechooser = new JFileChooser();
+        filechooser.setDialogTitle("Elige la imagen");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG Images", "jpg", "png");
+        filechooser.setFileFilter(filter);
+        filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        int returnval = filechooser.showOpenDialog(this);
+        if (returnval == JFileChooser.APPROVE_OPTION)
+        {
+            File file = filechooser.getSelectedFile();
+            BufferedImage bi;
+            try {
+
+                bi = ImageIO.read(file);
+                avatar.setIcon(new ImageIcon(bi));
+                avatar1.setIcon(new ImageIcon(bi));
+                ScaleImage.setScaleImage(avatar, new ImageIcon(bi));
+                ScaleImage.setScaleImage(avatar1, new ImageIcon(bi));
+
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            this.pack();
+        }
+    }//GEN-LAST:event_btnImportarFotoMouseClicked
+
+    private void btnEditar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseClicked
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlCambioFotoPerfil);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
+        panelSelected();
+    }//GEN-LAST:event_btnEditar2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -724,15 +798,18 @@ public final class profePerfil extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ParentPanel;
     private javax.swing.JPanel PnlAjustes;
+    private javax.swing.JPanel PnlCambioFotoPerfil;
     private javax.swing.JPanel PnlHorario;
     private javax.swing.JPanel PnlNotas;
     private javax.swing.JPanel PnlPerfil;
     private javax.swing.JLabel avatar;
+    private javax.swing.JLabel avatar1;
     private javax.swing.JButton btnAjustes;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnEditar2;
     private javax.swing.JButton btnHorario;
+    private javax.swing.JButton btnImportarFoto;
     private javax.swing.JButton btnNotas;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnSalir;
@@ -767,6 +844,7 @@ public final class profePerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

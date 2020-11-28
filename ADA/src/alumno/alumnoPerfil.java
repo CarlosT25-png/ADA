@@ -1,9 +1,16 @@
 package alumno;
 
 import java.awt.Component;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import utilities.*;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import login.Contraseña3;
 import login.Login;
 
@@ -13,11 +20,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         initComponents();
         ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
         ScaleImage.setScaleImage(avatar, imagen);
-        iconoFormulario();
-        ParentPanel.removeAll();
-        ParentPanel.add(PnlPerfil);
-        ParentPanel.revalidate();
-        ParentPanel.repaint();
+        ScaleImage.setScaleImage(avatar1, imagen);
         panelSelected();
 
     }
@@ -95,13 +98,13 @@ public final class alumnoPerfil extends javax.swing.JFrame {
     }
     
     public void gestion(){
-        Component panelActual = ParentPanel.getComponent(0);
-        if(panelActual == PnlGestion){
+        Component panelActual = ParentPanelGestion.getComponent(0);
+        if(panelActual == PnlGestionRetiro){
             btnRetiroAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-retiro.png")));
             btnCambioAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/cambio.png")));
         }else if(panelActual == PnlGestionCambio){
-            btnRetiroAsignatura2.setIcon(new ImageIcon(getClass().getResource("/imagesEst/retiro.png")));
-            btnCambioAsignatura2.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-cambio.png")));
+            btnRetiroAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/retiro.png")));
+            btnCambioAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-cambio.png")));
         }
     }
 
@@ -159,41 +162,39 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         jButton19 = new javax.swing.JButton();
         jLabel65 = new javax.swing.JLabel();
         PnlGestion = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel66 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel72 = new javax.swing.JLabel();
         btnRetiroAsignatura = new javax.swing.JButton();
         btnCambioAsignatura = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jPanel19 = new javax.swing.JPanel();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
-        jButton29 = new javax.swing.JButton();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
-        jLabel67 = new javax.swing.JLabel();
+        ParentPanelGestion = new javax.swing.JPanel();
+        PnlGestionRetiro = new javax.swing.JPanel();
+        jButton23 = new javax.swing.JButton();
+        jPanel20 = new javax.swing.JPanel();
+        jButton24 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jButton35 = new javax.swing.JButton();
+        jButton36 = new javax.swing.JButton();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jLabel73 = new javax.swing.JLabel();
         PnlGestionCambio = new javax.swing.JPanel();
-        jPanel21 = new javax.swing.JPanel();
-        jLabel68 = new javax.swing.JLabel();
-        btnRetiroAsignatura2 = new javax.swing.JButton();
-        btnCambioAsignatura2 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
-        jPanel22 = new javax.swing.JPanel();
-        jButton31 = new javax.swing.JButton();
-        jButton32 = new javax.swing.JButton();
-        jButton33 = new javax.swing.JButton();
-        jButton34 = new javax.swing.JButton();
-        jCheckBox14 = new javax.swing.JCheckBox();
-        jCheckBox15 = new javax.swing.JCheckBox();
-        jCheckBox16 = new javax.swing.JCheckBox();
-        jCheckBox17 = new javax.swing.JCheckBox();
-        jLabel69 = new javax.swing.JLabel();
-        jComboBox14 = new javax.swing.JComboBox<>();
-        jLabel70 = new javax.swing.JLabel();
-        jComboBox15 = new javax.swing.JComboBox<>();
-        jLabel71 = new javax.swing.JLabel();
+        jButton37 = new javax.swing.JButton();
+        jPanel23 = new javax.swing.JPanel();
+        jButton38 = new javax.swing.JButton();
+        jButton39 = new javax.swing.JButton();
+        jButton40 = new javax.swing.JButton();
+        jButton41 = new javax.swing.JButton();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jLabel74 = new javax.swing.JLabel();
+        jComboBox16 = new javax.swing.JComboBox<>();
+        jLabel75 = new javax.swing.JLabel();
+        jComboBox17 = new javax.swing.JComboBox<>();
+        jLabel76 = new javax.swing.JLabel();
         PnlNotas = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -229,6 +230,10 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        PnlCambioFotoPerfil = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        avatar1 = new javax.swing.JLabel();
+        btnImportarFoto = new javax.swing.JButton();
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -575,18 +580,32 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
         ParentPanel.add(PnlMatricula, "card10");
 
-        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PnlGestion.setBackground(new java.awt.Color(255, 255, 255));
+        PnlGestion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel66.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel66.setText("Gestión");
-        jPanel18.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel72.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel72.setText("Gestión");
+        jPanel6.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         btnRetiroAsignatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/retiro.png"))); // NOI18N
         btnRetiroAsignatura.setBorder(null);
         btnRetiroAsignatura.setBorderPainted(false);
         btnRetiroAsignatura.setContentAreaFilled(false);
-        jPanel18.add(btnRetiroAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        btnRetiroAsignatura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRetiroAsignaturaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRetiroAsignaturaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRetiroAsignaturaMouseExited(evt);
+            }
+        });
+        jPanel6.add(btnRetiroAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         btnCambioAsignatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/cambio.png"))); // NOI18N
         btnCambioAsignatura.setBorder(null);
@@ -603,254 +622,217 @@ public final class alumnoPerfil extends javax.swing.JFrame {
                 btnCambioAsignaturaMouseExited(evt);
             }
         });
-        jPanel18.add(btnCambioAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
+        jPanel6.add(btnCambioAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
 
-        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesProf/btnGuardarCambios.png"))); // NOI18N
-        jButton20.setBorder(null);
-        jButton20.setBorderPainted(false);
-        jButton20.setContentAreaFilled(false);
-        jButton20.addActionListener(new java.awt.event.ActionListener() {
+        PnlGestion.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 140));
+
+        ParentPanelGestion.setBackground(new java.awt.Color(255, 255, 255));
+        ParentPanelGestion.setLayout(new java.awt.CardLayout());
+
+        PnlGestionRetiro.setBackground(new java.awt.Color(255, 255, 255));
+        PnlGestionRetiro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesProf/btnGuardarCambios.png"))); // NOI18N
+        jButton23.setBorder(null);
+        jButton23.setBorderPainted(false);
+        jButton23.setContentAreaFilled(false);
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
+                jButton23ActionPerformed(evt);
             }
         });
-        jPanel18.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
+        PnlGestionRetiro.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
 
-        jPanel19.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel20.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton21.setBackground(new java.awt.Color(255, 255, 255));
-        jButton21.setText("AV101 - Análisis Vectorial");
-        jButton21.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton21.setContentAreaFilled(false);
+        jButton24.setBackground(new java.awt.Color(255, 255, 255));
+        jButton24.setText("AV101 - Análisis Vectorial");
+        jButton24.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton24.setContentAreaFilled(false);
 
-        jButton22.setBackground(new java.awt.Color(255, 255, 255));
-        jButton22.setText("BD102 - Base De Datos");
-        jButton22.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton22.setContentAreaFilled(false);
+        jButton25.setBackground(new java.awt.Color(255, 255, 255));
+        jButton25.setText("BD102 - Base De Datos");
+        jButton25.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton25.setContentAreaFilled(false);
 
-        jButton28.setBackground(new java.awt.Color(255, 255, 255));
-        jButton28.setText("EN302 - Inglés Comunicativo");
-        jButton28.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton28.setContentAreaFilled(false);
+        jButton35.setBackground(new java.awt.Color(255, 255, 255));
+        jButton35.setText("EN302 - Inglés Comunicativo");
+        jButton35.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton35.setContentAreaFilled(false);
 
-        jButton29.setBackground(new java.awt.Color(255, 255, 255));
-        jButton29.setText("ES104 - Estadística II");
-        jButton29.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton29.setContentAreaFilled(false);
+        jButton36.setBackground(new java.awt.Color(255, 255, 255));
+        jButton36.setText("ES104 - Estadística II");
+        jButton36.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton36.setContentAreaFilled(false);
 
-        jCheckBox6.setContentAreaFilled(false);
+        jCheckBox10.setContentAreaFilled(false);
 
-        jCheckBox7.setContentAreaFilled(false);
+        jCheckBox11.setContentAreaFilled(false);
 
-        jCheckBox8.setContentAreaFilled(false);
+        jCheckBox12.setContentAreaFilled(false);
 
-        jCheckBox9.setContentAreaFilled(false);
+        jCheckBox13.setContentAreaFilled(false);
 
-        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
-        jPanel19.setLayout(jPanel19Layout);
-        jPanel19Layout.setHorizontalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox9, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCheckBox11, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCheckBox12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCheckBox13, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
-        jPanel19Layout.setVerticalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel19Layout.createSequentialGroup()
-                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(33, 33, 33)
-                                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCheckBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCheckBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
-                        .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCheckBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCheckBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
-        jPanel18.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 310, 360));
+        PnlGestionRetiro.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 310, 360));
 
-        jLabel67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
-        jPanel18.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+        jLabel73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlGestionRetiro.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, -1, -1));
 
-        javax.swing.GroupLayout PnlGestionLayout = new javax.swing.GroupLayout(PnlGestion);
-        PnlGestion.setLayout(PnlGestionLayout);
-        PnlGestionLayout.setHorizontalGroup(
-            PnlGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        PnlGestionLayout.setVerticalGroup(
-            PnlGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        ParentPanelGestion.add(PnlGestionRetiro, "card2");
 
-        ParentPanel.add(PnlGestion, "card11");
+        PnlGestionCambio.setBackground(new java.awt.Color(255, 255, 255));
+        PnlGestionCambio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesProf/btnGuardarCambios.png"))); // NOI18N
+        jButton37.setBorder(null);
+        jButton37.setBorderPainted(false);
+        jButton37.setContentAreaFilled(false);
+        PnlGestionCambio.add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, -1, -1));
 
-        jLabel68.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel68.setText("Gestión");
-        jPanel21.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        jPanel23.setBackground(new java.awt.Color(204, 204, 204));
 
-        btnRetiroAsignatura2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/retiro.png"))); // NOI18N
-        btnRetiroAsignatura2.setBorder(null);
-        btnRetiroAsignatura2.setBorderPainted(false);
-        btnRetiroAsignatura2.setContentAreaFilled(false);
-        btnRetiroAsignatura2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRetiroAsignatura2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnRetiroAsignatura2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnRetiroAsignatura2MouseExited(evt);
-            }
-        });
-        jPanel21.add(btnRetiroAsignatura2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        jButton38.setBackground(new java.awt.Color(255, 255, 255));
+        jButton38.setText("AV101 - Análisis Vectorial");
+        jButton38.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton38.setContentAreaFilled(false);
 
-        btnCambioAsignatura2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/cambio.png"))); // NOI18N
-        btnCambioAsignatura2.setBorder(null);
-        btnCambioAsignatura2.setBorderPainted(false);
-        btnCambioAsignatura2.setContentAreaFilled(false);
-        jPanel21.add(btnCambioAsignatura2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
+        jButton39.setBackground(new java.awt.Color(255, 255, 255));
+        jButton39.setText("BD102 - Base De Datos");
+        jButton39.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton39.setContentAreaFilled(false);
 
-        jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesProf/btnGuardarCambios.png"))); // NOI18N
-        jButton30.setBorder(null);
-        jButton30.setBorderPainted(false);
-        jButton30.setContentAreaFilled(false);
-        jPanel21.add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, -1, -1));
+        jButton40.setBackground(new java.awt.Color(255, 255, 255));
+        jButton40.setText("EN302 - Inglés Comunicativo");
+        jButton40.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton40.setContentAreaFilled(false);
 
-        jPanel22.setBackground(new java.awt.Color(204, 204, 204));
+        jButton41.setBackground(new java.awt.Color(255, 255, 255));
+        jButton41.setText("ES104 - Estadística II");
+        jButton41.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton41.setContentAreaFilled(false);
 
-        jButton31.setBackground(new java.awt.Color(255, 255, 255));
-        jButton31.setText("AV101 - Análisis Vectorial");
-        jButton31.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton31.setContentAreaFilled(false);
+        jCheckBox18.setContentAreaFilled(false);
 
-        jButton32.setBackground(new java.awt.Color(255, 255, 255));
-        jButton32.setText("BD102 - Base De Datos");
-        jButton32.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton32.setContentAreaFilled(false);
+        jCheckBox19.setContentAreaFilled(false);
 
-        jButton33.setBackground(new java.awt.Color(255, 255, 255));
-        jButton33.setText("EN302 - Inglés Comunicativo");
-        jButton33.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton33.setContentAreaFilled(false);
+        jCheckBox20.setContentAreaFilled(false);
 
-        jButton34.setBackground(new java.awt.Color(255, 255, 255));
-        jButton34.setText("ES104 - Estadística II");
-        jButton34.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton34.setContentAreaFilled(false);
+        jCheckBox21.setContentAreaFilled(false);
 
-        jCheckBox14.setContentAreaFilled(false);
-
-        jCheckBox15.setContentAreaFilled(false);
-
-        jCheckBox16.setContentAreaFilled(false);
-
-        jCheckBox17.setContentAreaFilled(false);
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox14, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox15, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox16, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox17, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox18, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCheckBox19, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCheckBox20, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCheckBox21, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox18, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(33, 33, 33)
-                                .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCheckBox15, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCheckBox19, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
-                        .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCheckBox16, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCheckBox20, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox17, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox21, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jPanel21.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 310, 330));
+        PnlGestionCambio.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 310, 330));
 
-        jLabel69.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel69.setText("Carrera:");
-        jPanel21.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        jLabel74.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel74.setText("Carrera:");
+        PnlGestionCambio.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
 
-        jComboBox14.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "I Semestre", "II Semestre", "III Semestre" }));
-        jComboBox14.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel21.add(jComboBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 150, -1));
+        jComboBox16.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "I Semestre", "II Semestre", "III Semestre" }));
+        jComboBox16.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        PnlGestionCambio.add(jComboBox16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 150, -1));
 
-        jLabel70.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel70.setText("Mostrar clases del:");
-        jPanel21.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
+        jLabel75.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel75.setText("Mostrar clases del:");
+        PnlGestionCambio.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, -1));
 
-        jComboBox15.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "I Semestre", "II Semestre", "III Semestre" }));
-        jComboBox15.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel21.add(jComboBox15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 150, -1));
+        jComboBox17.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "I Semestre", "II Semestre", "III Semestre" }));
+        jComboBox17.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        PnlGestionCambio.add(jComboBox17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 150, -1));
 
-        jLabel71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
-        jPanel21.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+        jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlGestionCambio.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, -1, -1));
 
-        javax.swing.GroupLayout PnlGestionCambioLayout = new javax.swing.GroupLayout(PnlGestionCambio);
-        PnlGestionCambio.setLayout(PnlGestionCambioLayout);
-        PnlGestionCambioLayout.setHorizontalGroup(
-            PnlGestionCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        PnlGestionCambioLayout.setVerticalGroup(
-            PnlGestionCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        ParentPanelGestion.add(PnlGestionCambio, "card3");
 
-        ParentPanel.add(PnlGestionCambio, "card12");
+        PnlGestion.add(ParentPanelGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 680, 420));
+
+        ParentPanel.add(PnlGestion, "card10");
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1017,6 +999,9 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         btnEditar2.setBorderPainted(false);
         btnEditar2.setContentAreaFilled(false);
         btnEditar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEditar2MouseEntered(evt);
             }
@@ -1059,6 +1044,31 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         PnlAjustes.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 420, -1));
 
         ParentPanel.add(PnlAjustes, "card8");
+
+        PnlCambioFotoPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        PnlCambioFotoPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel2.setText("Cambiar Foto de Perfil");
+        PnlCambioFotoPerfil.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        avatar1.setMaximumSize(new java.awt.Dimension(102, 102));
+        avatar1.setMinimumSize(new java.awt.Dimension(102, 102));
+        avatar1.setPreferredSize(new java.awt.Dimension(102, 102));
+        PnlCambioFotoPerfil.add(avatar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 220, 220));
+
+        btnImportarFoto.setBackground(new java.awt.Color(255, 255, 255));
+        btnImportarFoto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnImportarFoto.setText("Importar Foto de Perfil");
+        btnImportarFoto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnImportarFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnImportarFotoMouseClicked(evt);
+            }
+        });
+        PnlCambioFotoPerfil.add(btnImportarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 310, 50));
+
+        ParentPanel.add(PnlCambioFotoPerfil, "card9");
 
         jPanel2.add(ParentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 560));
 
@@ -1236,33 +1246,79 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEditar1MouseClicked
 
+    private void btnEditar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseClicked
+        ParentPanel.removeAll();
+        ParentPanel.add(PnlCambioFotoPerfil);
+        ParentPanel.revalidate();
+        ParentPanel.repaint();
+        panelSelected();
+    }//GEN-LAST:event_btnEditar2MouseClicked
+
     private void btnCambioAsignaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCambioAsignaturaMouseClicked
-        // TODO add your handling code here:
+        ParentPanelGestion.removeAll();
+        ParentPanelGestion.add(PnlGestionCambio);
+        ParentPanelGestion.revalidate();
+        ParentPanelGestion.repaint();
+        gestion();
     }//GEN-LAST:event_btnCambioAsignaturaMouseClicked
 
     private void btnCambioAsignaturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCambioAsignaturaMouseEntered
-        // TODO add your handling code here:
+       btnCambioAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-cambio.png")));
     }//GEN-LAST:event_btnCambioAsignaturaMouseEntered
 
     private void btnCambioAsignaturaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCambioAsignaturaMouseExited
-        // TODO add your handling code here:
+        btnCambioAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/cambio.png")));
+        gestion();
     }//GEN-LAST:event_btnCambioAsignaturaMouseExited
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton20ActionPerformed
+    }//GEN-LAST:event_jButton23ActionPerformed
 
-    private void btnRetiroAsignatura2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetiroAsignatura2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRetiroAsignatura2MouseClicked
+    private void btnRetiroAsignaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetiroAsignaturaMouseClicked
+        ParentPanelGestion.removeAll();
+        ParentPanelGestion.add(PnlGestionRetiro);
+        ParentPanelGestion.revalidate();
+        ParentPanelGestion.repaint();
+        gestion();
+    }//GEN-LAST:event_btnRetiroAsignaturaMouseClicked
 
-    private void btnRetiroAsignatura2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetiroAsignatura2MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRetiroAsignatura2MouseEntered
+    private void btnRetiroAsignaturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetiroAsignaturaMouseEntered
+        btnRetiroAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-retiro.png")));
+    }//GEN-LAST:event_btnRetiroAsignaturaMouseEntered
 
-    private void btnRetiroAsignatura2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetiroAsignatura2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRetiroAsignatura2MouseExited
+    private void btnRetiroAsignaturaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetiroAsignaturaMouseExited
+        btnRetiroAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/retiro.png")));
+        gestion();
+    }//GEN-LAST:event_btnRetiroAsignaturaMouseExited
+
+    private void btnImportarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImportarFotoMouseClicked
+        JFileChooser filechooser = new JFileChooser();
+        filechooser.setDialogTitle("Elige la imagen");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG Images", "jpg", "png");
+        filechooser.setFileFilter(filter);
+        filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        
+        int returnval = filechooser.showOpenDialog(this);
+        if (returnval == JFileChooser.APPROVE_OPTION)
+        {
+            File file = filechooser.getSelectedFile();
+            BufferedImage bi;
+            try {
+                
+                bi = ImageIO.read(file);
+                avatar.setIcon(new ImageIcon(bi));
+                avatar1.setIcon(new ImageIcon(bi));
+                ScaleImage.setScaleImage(avatar, new ImageIcon(bi));
+                ScaleImage.setScaleImage(avatar1, new ImageIcon(bi));
+                
+                
+            } catch(IOException e) {
+               e.printStackTrace(); 
+            }
+            this.pack();
+        }
+    }//GEN-LAST:event_btnImportarFotoMouseClicked
 
     //Mover el Frame
     int xx, xy;
@@ -1302,60 +1358,63 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ParentPanel;
+    private javax.swing.JPanel ParentPanelGestion;
     private javax.swing.JPanel PnlAjustes;
+    private javax.swing.JPanel PnlCambioFotoPerfil;
     private javax.swing.JPanel PnlGestion;
     private javax.swing.JPanel PnlGestionCambio;
+    private javax.swing.JPanel PnlGestionRetiro;
     private javax.swing.JPanel PnlHorario;
     private javax.swing.JPanel PnlMatricula;
     private javax.swing.JPanel PnlNotas;
     private javax.swing.JPanel PnlPerfil;
     private javax.swing.JPanel PnlPerfilAlumno1;
     private javax.swing.JLabel avatar;
+    private javax.swing.JLabel avatar1;
     private javax.swing.JButton btnAjustes;
     private javax.swing.JButton btnCambioAsignatura;
-    private javax.swing.JButton btnCambioAsignatura2;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnEditar2;
     private javax.swing.JButton btnGestion;
     private javax.swing.JButton btnHorario;
+    private javax.swing.JButton btnImportarFoto;
     private javax.swing.JButton btnMatricula;
     private javax.swing.JButton btnNotas;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnRetiroAsignatura;
-    private javax.swing.JButton btnRetiroAsignatura2;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
-    private javax.swing.JCheckBox jCheckBox14;
-    private javax.swing.JCheckBox jCheckBox15;
-    private javax.swing.JCheckBox jCheckBox16;
-    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
+    private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
+    private javax.swing.JButton jButton40;
+    private javax.swing.JButton jButton41;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox21;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
     private javax.swing.JComboBox<String> jComboBox13;
-    private javax.swing.JComboBox<String> jComboBox14;
-    private javax.swing.JComboBox<String> jComboBox15;
+    private javax.swing.JComboBox<String> jComboBox16;
+    private javax.swing.JComboBox<String> jComboBox17;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -1367,6 +1426,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1393,22 +1453,20 @@ public final class alumnoPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
