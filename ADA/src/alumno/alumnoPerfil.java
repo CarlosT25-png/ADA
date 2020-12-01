@@ -5,11 +5,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import utilities.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import login.Contraseña3;
 import login.Login;
@@ -22,8 +25,9 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         ScaleImage.setScaleImage(avatar, imagen);
         ScaleImage.setScaleImage(avatar1, imagen);
         panelSelected();
-
+        iconoFormulario();
     }
+    
 
     //Establecer el iconono
     public void iconoFormulario() {
@@ -94,6 +98,16 @@ public final class alumnoPerfil extends javax.swing.JFrame {
             btnHorario.setIcon(new ImageIcon(getClass().getResource("/imagesEst/horario.png")));
             btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
             btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+        }else if (panelActual == PnlCambioFotoPerfil) {
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-ajustes.png"));
+            btnAjustes.setIcon(imagen);
+
+            //Aqui es para que los demas botones esten grises
+            btnMatricula.setIcon(new ImageIcon(getClass().getResource("/imagesEst/matricula.png")));
+            btnGestion.setIcon(new ImageIcon(getClass().getResource("/imagesEst/gestion.png")));
+            btnHorario.setIcon(new ImageIcon(getClass().getResource("/imagesEst/horario.png")));
+            btnNotas.setIcon(new ImageIcon(getClass().getResource("/imagesEst/notas.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
         }
     }
     
@@ -146,6 +160,8 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         jLabel50 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jSeparator13 = new javax.swing.JSeparator();
         PnlMatricula = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jLabel61 = new javax.swing.JLabel();
@@ -233,7 +249,9 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         PnlCambioFotoPerfil = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         avatar1 = new javax.swing.JLabel();
-        btnImportarFoto = new javax.swing.JButton();
+        btnGuardarFoto = new javax.swing.JButton();
+        jLabel53 = new javax.swing.JLabel();
+        btnSubirFoto = new javax.swing.JButton();
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -444,8 +462,8 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         PnlPerfilAlumno1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 170, -1));
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel49.setText("CIF:");
-        PnlPerfilAlumno1.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
+        jLabel49.setText("Carrera:");
+        PnlPerfilAlumno1.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
         PnlPerfilAlumno1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 200, -1));
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
@@ -455,6 +473,11 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
         jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
         PnlPerfilAlumno1.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+
+        jLabel52.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel52.setText("CIF:");
+        PnlPerfilAlumno1.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
+        PnlPerfilAlumno1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 170, 10));
 
         javax.swing.GroupLayout PnlPerfilLayout = new javax.swing.GroupLayout(PnlPerfil);
         PnlPerfil.setLayout(PnlPerfilLayout);
@@ -1057,16 +1080,34 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         avatar1.setPreferredSize(new java.awt.Dimension(102, 102));
         PnlCambioFotoPerfil.add(avatar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 220, 220));
 
-        btnImportarFoto.setBackground(new java.awt.Color(255, 255, 255));
-        btnImportarFoto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnImportarFoto.setText("Importar Foto de Perfil");
-        btnImportarFoto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnImportarFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGuardarFoto.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardarFoto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGuardarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/GuardarCambios.png"))); // NOI18N
+        btnGuardarFoto.setBorder(null);
+        btnGuardarFoto.setBorderPainted(false);
+        btnGuardarFoto.setContentAreaFilled(false);
+        btnGuardarFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnImportarFotoMouseClicked(evt);
+                btnGuardarFotoMouseClicked(evt);
             }
         });
-        PnlCambioFotoPerfil.add(btnImportarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 310, 50));
+        PnlCambioFotoPerfil.add(btnGuardarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 140, 50));
+
+        jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlCambioFotoPerfil.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+
+        btnSubirFoto.setBackground(new java.awt.Color(255, 255, 255));
+        btnSubirFoto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSubirFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/subirfoto.png"))); // NOI18N
+        btnSubirFoto.setBorder(null);
+        btnSubirFoto.setBorderPainted(false);
+        btnSubirFoto.setContentAreaFilled(false);
+        btnSubirFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubirFotoMouseClicked(evt);
+            }
+        });
+        PnlCambioFotoPerfil.add(btnSubirFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 110, 50));
 
         ParentPanel.add(PnlCambioFotoPerfil, "card9");
 
@@ -1116,6 +1157,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnEditar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar1MouseExited
         btnEditar1.setIcon(new ImageIcon(getClass().getResource("/imagesEst/editar.png")));
+        panelSelected();
     }//GEN-LAST:event_btnEditar1MouseExited
 
     private void btnEditar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseEntered
@@ -1124,6 +1166,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
 
     private void btnEditar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditar2MouseExited
         btnEditar2.setIcon(new ImageIcon(getClass().getResource("/imagesEst/editar.png")));
+        panelSelected();
     }//GEN-LAST:event_btnEditar2MouseExited
 
     private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
@@ -1291,8 +1334,30 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         btnRetiroAsignatura.setIcon(new ImageIcon(getClass().getResource("/imagesEst/retiro.png")));
         gestion();
     }//GEN-LAST:event_btnRetiroAsignaturaMouseExited
+    
+    private BufferedImage bi;
+    private int contador=0;
+    
+    private void btnGuardarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarFotoMouseClicked
+        panelSelected();
+        if(contador==0){
+            JOptionPane.showMessageDialog(null,"Error.\nNo ha seleccionado ninguna foto","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            File path = new File("src/imagesEst/avatarDef.png");
+            avatar.setIcon(new ImageIcon(bi));
+            ScaleImage.setScaleImage(avatar, new ImageIcon(bi));
+            try {
+                ImageIO.write(bi,"PNG",path);
+            } catch (IOException ex) {
+                Logger.getLogger(alumnoPerfil.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_btnGuardarFotoMouseClicked
 
-    private void btnImportarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImportarFotoMouseClicked
+    private void btnSubirFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubirFotoMouseClicked
+        panelSelected();
+        contador++;
         JFileChooser filechooser = new JFileChooser();
         filechooser.setDialogTitle("Elige la imagen");
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG Images", "jpg", "png");
@@ -1300,53 +1365,27 @@ public final class alumnoPerfil extends javax.swing.JFrame {
         filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         
         int returnval = filechooser.showOpenDialog(this);
-        if (returnval == JFileChooser.APPROVE_OPTION)
-        {
+        if (returnval == JFileChooser.APPROVE_OPTION){
             File file = filechooser.getSelectedFile();
-            BufferedImage bi;
+            
             try {
-                
-                bi = ImageIO.read(file);
-                avatar.setIcon(new ImageIcon(bi));
-                avatar1.setIcon(new ImageIcon(bi));
-                ScaleImage.setScaleImage(avatar, new ImageIcon(bi));
-                ScaleImage.setScaleImage(avatar1, new ImageIcon(bi));
-                
-                
+            bi = ImageIO.read(file);
+            ScaleImage.setScaleImage(avatar1, new ImageIcon(bi));
+     
             } catch(IOException e) {
-               e.printStackTrace(); 
+              
             }
-            this.pack();
         }
-    }//GEN-LAST:event_btnImportarFotoMouseClicked
+    }//GEN-LAST:event_btnSubirFotoMouseClicked
 
     //Mover el Frame
     int xx, xy;
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(alumnoPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(alumnoPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(alumnoPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(alumnoPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
         }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1377,13 +1416,14 @@ public final class alumnoPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnEditar2;
     private javax.swing.JButton btnGestion;
+    private javax.swing.JButton btnGuardarFoto;
     private javax.swing.JButton btnHorario;
-    private javax.swing.JButton btnImportarFoto;
     private javax.swing.JButton btnMatricula;
     private javax.swing.JButton btnNotas;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnRetiroAsignatura;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnSubirFoto;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
@@ -1448,6 +1488,8 @@ public final class alumnoPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
@@ -1473,6 +1515,7 @@ public final class alumnoPerfil extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;

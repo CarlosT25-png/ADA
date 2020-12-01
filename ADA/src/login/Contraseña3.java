@@ -253,7 +253,7 @@ public final class Contraseña3 extends javax.swing.JFrame {
         int cont = 0, mayus = 0;
         int cont1 = 0, mayus1 = 0;
 
-        if (Pass1.getText().equals("") || Pass2.getText().equals("")) {
+        if (password.equals("") || password2.equals("")) {
             JOptionPane.showMessageDialog(null, "Los dos campos contraseña deben de ser rellenados.\nIntentalo de nuevo.", "ERROR", JOptionPane.PLAIN_MESSAGE,icono("/imagesLogin/lg2.png",40,40));
         } else {
             for (int i = 0; i < password.length; i++) {
