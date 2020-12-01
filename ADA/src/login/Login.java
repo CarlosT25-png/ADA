@@ -1,9 +1,17 @@
-
 package login;
 
+import administrador.adminPerfil;
+import alumno.alumnoPerfil;
 import java.awt.Color;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import profesor.profePerfil;
+import sql.Conexion;
+import sql.Cuenta;
 
 /**
  *
@@ -77,6 +85,11 @@ public final class Login extends javax.swing.JFrame {
         btnIngresar.setBorder(null);
         btnIngresar.setBorderPainted(false);
         btnIngresar.setContentAreaFilled(false);
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/cerrar.png"))); // NOI18N
@@ -231,6 +244,46 @@ public final class Login extends javax.swing.JFrame {
     private void btnOlvidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOlvidarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOlvidarActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        String password = String.valueOf(txtPass.getPassword());
+        int resul = 0;
+        if((txtCorreo.getText()=="" && txtPass.getText()=="") || (txtCorreo.getText()=="Correo electronico" && txtPass.getText()=="")){
+            JOptionPane.showMessageDialog(null, "Rellene los campos");
+        }else{
+            try {
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT * FROM [dbo].[PERSONAL] WHERE EMAIL_INSTITUCION='" + txtCorreo.getText() + "' AND CONTRASENA_SISTEMA='" + txtPass.getText() + "'";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            if(resultado.next()){
+                resul=1;
+            }
+            String CIF = resultado.getString("CIF");
+            int TCuenta = Cuenta.tipoCuenta(CIF);
+            
+            if(TCuenta==1 && resul==1){
+                alumnoPerfil ventana = new alumnoPerfil();
+                ventana.setVisible(true);
+                this.dispose();
+            }else if(TCuenta==2 && resul==1){
+                profePerfil ventana = new profePerfil();
+                ventana.setVisible(true);
+                this.dispose();
+            }else if(TCuenta==3 && resul==1){
+                adminPerfil ventana = new adminPerfil();
+                ventana.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Datos de la cuenta invalidos");
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Datos de la cuenta invalidos");
+        }
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -7,6 +7,7 @@ package login;
 import java.awt.Color;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
@@ -192,9 +193,13 @@ public class Contraseña2 extends javax.swing.JFrame {
     
     //Evento para que pasar al Frame Contraseña3
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        Contraseña3 mover = new Contraseña3();
-        mover.setVisible(true);
-        this.dispose();
+        if(Contraseña1.code.equals(txtCodigo.getText())){
+            Contraseña3 ventana = new Contraseña3();
+            ventana.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Código incorrecto");
+        }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     /**
