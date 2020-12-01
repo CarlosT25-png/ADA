@@ -7,8 +7,12 @@ package login;
 
 import java.awt.Color;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import sql.Conexion;
 import utilities.RandomString;
 import utilities.Mail;
 
@@ -19,6 +23,7 @@ import utilities.Mail;
 public class Contraseña1 extends javax.swing.JFrame {
     
     public static String code;
+    public static String correo;
     
     /**
      * Creates new form Contraseña1
@@ -189,46 +194,69 @@ public class Contraseña1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void btnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarMouseClicked
-        int arroba=0;
-        int punto=0;
-        boolean valido=false;
-        boolean mostrar=false;
         //Verificacion email
-        if(txtCorreo.getText().equals("") || txtCorreo.getText().equals("Correo electronico")){
-            JOptionPane.showMessageDialog(null, "Por favor introduzca un correo electronico");
-            mostrar=true;
-        }
-        
-        for (int i=0; i<txtCorreo.getText().length(); i++){
-            if(txtCorreo.getText().charAt(i) == '@'){
-                arroba +=1;
+
+        if (validarEmail()) {
+            try {
+                int retorno = 0;
+                Statement sql = Conexion.getConnection().createStatement();
+
+                String consulta = "SELECT * FROM PERSONAL WHERE EMAIL_INSTITUCION='" + txtCorreo.getText() + "'";
+                ResultSet resultado = sql.executeQuery(consulta);
+
+                while (resultado.next()) {
+                    retorno = 1;
+                }
+
+                if (retorno == 1) { //Aqui verifica si el email existe en la BD
+                    //Aqui guardamos el correo en una variable estatica
+                    correo=txtCorreo.getText();
+                    //**********************************************************************************************
+                    //Enviar email recuperacion
+                    code = RandomString.getRandomString(6);     //Se genera el codigo aleatorio con la clase RandomString en utilities
+                    String mensaje = "Hola, usuario de ADA\n\nSe ha solicitado restablecer tu contraseña, si has sido tu introduce el siguiente codigo en ADA\n\n"
+                            + code + "\n\nSi nos has sido tu, restablece tu contraseña lo más pronto posible. En caso de que nos podas accceder a tu cuenta contacte al siguiente "
+                            + "dirección de correo electrónico: academicdesktopapplication@gmail.com\n\nSoporte técnico de ADA";
+                    String asunto = "Restablecimiento de contraseña ADA";
+                    Mail.sendMail(txtCorreo.getText(), asunto, mensaje);
+                    JOptionPane.showMessageDialog(null, "Se ha enviado tu el código de recuperación a tu correo electrónico");
+                    Contraseña2 ventana = new Contraseña2();
+                    ventana.setVisible(true);
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Correo invalido");
+                }
+            } catch (SQLException ex) {
             }
-            
-            if(txtCorreo.getText().charAt(i) == '.' && arroba==1){
-                punto +=1;
-            }
-            
-            if(arroba == 1 && punto >=1){
-                valido = true;
-            }
-        }
-        //**********************************************************************************************
-        //Enviar email recuperacion
-        if(valido){
-           code = RandomString.getRandomString(6);     //Se genera el codigo aleatorio con la clase RandomString en utilities
-           String mensaje = "Hola, usuario de ADA\n\nSe ha solicitado restablecer tu contraseña, si has sido tu introduce el siguiente codigo en ADA\n\n"
-                   + code + "\n\nSi nos has sido tu, restablece tu contraseña lo más pronto posible. En caso de que nos podas accceder a tu cuenta contacte al siguiente "
-                   + "dirección de correo electrónico: academicdesktopapplication@gmail.com\n\nSoporte técnico de ADA";
-           String asunto = "Restablecimiento de contraseña ADA";
-           Mail.sendMail(txtCorreo.getText(), asunto, mensaje);
-           JOptionPane.showMessageDialog(null, "Se ha enviado tu el código de recuperación a tu correo electrónico");
-           
-           
-        }else if(mostrar==false){
+        } else {
             JOptionPane.showMessageDialog(null, "Por favor introduzca un correo electronico válido");
         }
     }//GEN-LAST:event_btnEnviarMouseClicked
 
+    public boolean validarEmail(){  //Este metodo se creo para verificar un emai con respecto a los arrobas, puntos y asi.
+        boolean mostrar = false, valido = false;
+        int arroba = 0, punto = 0;
+        if (txtCorreo.getText().equals("") || txtCorreo.getText().equals("Correo electronico")) {
+            JOptionPane.showMessageDialog(null, "Por favor introduzca un correo electronico");
+            mostrar = true;
+        }
+
+        for (int i = 0; i < txtCorreo.getText().length(); i++) {
+            if (txtCorreo.getText().charAt(i) == '@') {
+                arroba += 1;
+            }
+
+            if (txtCorreo.getText().charAt(i) == '.' && arroba == 1) {
+                punto += 1;
+            }
+
+            if (arroba == 1 && punto >= 1) {
+                valido = true;
+            }
+        }
+        
+        return valido;
+    }
     /**
      * @param args the command line arguments
      */

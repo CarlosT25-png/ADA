@@ -2,9 +2,16 @@
 package login;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.Icon;
+import sql.Conexion;
 
 /**
  *
@@ -254,7 +261,7 @@ public final class Contraseña3 extends javax.swing.JFrame {
         int cont1 = 0, mayus1 = 0;
 
         if (Pass1.getText().equals("") || Pass2.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Los dos campos contraseña deben de ser rellenados.\nIntentalo de nuevo.", "ERROR", JOptionPane.PLAIN_MESSAGE,icono("/imagesLogin/lg2.png",40,40));
+            JOptionPane.showMessageDialog(null, "Los dos campos contraseña deben de ser rellenados.\nIntentalo de nuevo.", "ERROR", JOptionPane.PLAIN_MESSAGE, icono("/imagesLogin/lg2.png", 40, 40));
         } else {
             for (int i = 0; i < password.length; i++) {
                 cont++;
@@ -274,10 +281,23 @@ public final class Contraseña3 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "La contraseña debe de tener 8 caracteres y 1 letra mayúscula como mínimo.\nIntentalo de nuevo.", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (Pass1.getText().equals(Pass2.getText())) {
-                    JOptionPane.showMessageDialog(null, "La nueva contraseña se ha restablecido con exito!", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
-                    Login guardar = new Login();
-                    guardar.setVisible(true);
-                    this.dispose();
+                    //Aqui se guardan la contraseña y el correo a cambiar su password
+                    String password6 = String.valueOf(Pass1.getPassword());
+                    String correo = Contraseña1.correo;
+                    
+                    try {
+                        //Aqui se hace un update del registro
+                        PreparedStatement pps = Conexion.getConnection().prepareStatement("UPDATE PERSONAL SET CONTRASENA_SISTEMA=? WHERE EMAIL_INSTITUCION=?");
+                        pps.setString(1, password6);
+                        pps.setString(2, correo);
+                        pps.executeUpdate();
+
+                        JOptionPane.showMessageDialog(null, "La nueva contraseña se ha restablecido con exito!");
+                        Login guardar = new Login();
+                        guardar.setVisible(true);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden, inténtelo de nuevo.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -408,4 +428,5 @@ public final class Contraseña3 extends javax.swing.JFrame {
     private javax.swing.JLabel lblContra1;
     private javax.swing.JLabel lblContra2;
     // End of variables declaration//GEN-END:variables
+
 }

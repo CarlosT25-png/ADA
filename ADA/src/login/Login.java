@@ -1,5 +1,6 @@
 package login;
 
+import administrador.adminPerfil;
 import alumno.alumnoPerfil;
 import java.awt.Color;
 import java.net.URL;
@@ -8,7 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import profesor.profePerfil;
 import sql.Conexion;
+import sql.Cuenta;
 
 /**
  *
@@ -257,8 +260,19 @@ public final class Login extends javax.swing.JFrame {
             if(resultado.next()){
                 resul=1;
             }
-            if(resul==1){
+            String CIF = resultado.getString("CIF");
+            int TCuenta = Cuenta.tipoCuenta(CIF);
+            
+            if(TCuenta==1 && resul==1){
                 alumnoPerfil ventana = new alumnoPerfil();
+                ventana.setVisible(true);
+                this.dispose();
+            }else if(TCuenta==2 && resul==1){
+                profePerfil ventana = new profePerfil();
+                ventana.setVisible(true);
+                this.dispose();
+            }else if(TCuenta==3 && resul==1){
+                adminPerfil ventana = new adminPerfil();
                 ventana.setVisible(true);
                 this.dispose();
             }else{
@@ -266,7 +280,7 @@ public final class Login extends javax.swing.JFrame {
             }
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString());
+            JOptionPane.showMessageDialog(null, "Datos de la cuenta invalidos");
         }
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
