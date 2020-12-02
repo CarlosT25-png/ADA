@@ -22,6 +22,8 @@ public final class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+    public static String correo = "";
     public Login() {
         initComponents();
         iconoFormulario();
@@ -234,8 +236,33 @@ public final class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPanel1FocusGained
     
+    private boolean validarCorreoRestablecer(){     //Esto valida si el correo es valido
+        boolean respuesta=false;
+        int punto=0,arroba=0;
+        
+        for(int i=0;i<txtCorreo.getText().length() ; i++){
+            if(txtCorreo.getText().charAt(i)=='@'){
+                arroba+=1;
+            }else if(txtCorreo.getText().charAt(i)=='.' && arroba==1){
+                punto+=1;
+            }
+        }
+        
+        if(arroba==1 && punto>=1){
+            respuesta = true;
+        }
+        
+        return respuesta;
+    }
+    
     //Evento para que al darle olvidar contraseña te lleve al Frame Contraseña1
     private void btnOlvidarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOlvidarMouseClicked
+        if(validarCorreoRestablecer()){
+            correo=txtCorreo.getText();
+        }else{
+            correo="";
+        }
+        
         Contraseña1 volver = new Contraseña1();
         volver.setVisible(true);
         this.dispose();

@@ -32,6 +32,11 @@ public class Contraseña1 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         iconoFormulario();
+        System.out.println(Login.correo);
+        if(!Login.correo.equals("")){
+            txtCorreo.setText(Login.correo);
+            txtCorreo.setForeground(new Color(56,51,51));
+        }
     }
     
     //Establecer el icono
