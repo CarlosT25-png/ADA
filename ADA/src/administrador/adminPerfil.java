@@ -6,21 +6,34 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import utilities.*;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import login.Contraseña3;
 import login.Login;
+import sql.Conexion;
 
 public final class adminPerfil extends javax.swing.JFrame {
 
     /**
      * Creates new form adminPerfil
      */
+    private static int limp=0;
     public adminPerfil() {
         initComponents();
         ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
@@ -28,6 +41,99 @@ public final class adminPerfil extends javax.swing.JFrame {
         ScaleImage.setScaleImage(avatar1, imagen);
         iconoFormulario();
         panelSelected();
+        
+        cmbCarrera.setEnabled(false);
+        cmbFacultad.addItem("Elegir Facultad");
+        cmbFacultadE.addItem("Elegir Facultad");
+        agregarFaculatades(cmbFacultad);
+        agregarFaculatades(cmbFacultadE);
+        setCIF(id_max());
+    }
+    
+    private void exeLimpiar(){
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtCedula.setText("");
+        txtDireccion.setText("");
+        lblCIF.setText(id_max() + "");
+        cmbFacultad.setSelectedIndex(0);
+
+        if (cmbFacultad.getSelectedIndex() != 0) {
+            cmbCarrera.setEnabled(true);
+            String item = cmbFacultad.getSelectedItem().toString();
+            consultaComboCarrera(item,cmbCarrera);
+        } else {
+            cmbCarrera.setEnabled(false);
+        }
+        
+        jdtIngreso.setCalendar(null);
+        jdtNacimiento.setCalendar(null);
+        cmbCarrera.removeAllItems();
+    }
+    
+    private int getID_CARRERA(){
+        int id=0;
+        try {
+            Statement sql = Conexion.getConnection().createStatement();
+            String consulta = "SELECT * FROM CARRERA WHERE NOMBRE_CARRERA='" + cmbCarrera.getSelectedItem().toString() + "'";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            if(resultado.next()){
+                id = resultado.getInt(1);
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString() + " hola");
+        }
+        return id;
+    }
+    
+    private void agregarFaculatades(JComboBox cmb){
+        ArrayList<String> Lista = new ArrayList<>();
+        
+        try {
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT * FROM FACULTAD";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            while(resultado.next()){
+                Lista.add(resultado.getString(1));
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        
+        for(int i=0; i<Lista.size();i++){
+            cmb.addItem(Lista.get(i));
+        }
+    }
+    
+    public void setCIF(int n_CIF){
+        lblCIF.setText(n_CIF + "");
+    }
+    
+    public int id_max (){
+        int id=1;
+        
+        try {
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT MAX(CIF) FROM PERSONAL";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            while(resultado.next()){
+                id = resultado.getInt(1) + 1;
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        
+        return id;
     }
     
     //Establecer el icono
@@ -312,17 +418,19 @@ public final class adminPerfil extends javax.swing.JFrame {
         jSeparator67 = new javax.swing.JSeparator();
         btnCrearEst12 = new javax.swing.JButton();
         jLabel144 = new javax.swing.JLabel();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jTextField42 = new javax.swing.JTextField();
-        jTextField43 = new javax.swing.JTextField();
-        jTextField44 = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
-        jSeparator13 = new javax.swing.JSeparator();
         jLabel50 = new javax.swing.JLabel();
-        jSeparator14 = new javax.swing.JSeparator();
         jLabel165 = new javax.swing.JLabel();
+        cmbFacultad = new javax.swing.JComboBox<>();
+        cmbCarrera = new javax.swing.JComboBox<>();
+        jdtNacimiento = new com.toedter.calendar.JDateChooser();
+        jdtIngreso = new com.toedter.calendar.JDateChooser();
+        lblCIF = new javax.swing.JLabel();
         PnlModificacionEst = new javax.swing.JPanel();
         jLabel145 = new javax.swing.JLabel();
         jSeparator68 = new javax.swing.JSeparator();
@@ -349,13 +457,13 @@ public final class adminPerfil extends javax.swing.JFrame {
         jTextField50 = new javax.swing.JTextField();
         PnlEliminarEst = new javax.swing.JPanel();
         jLabel154 = new javax.swing.JLabel();
-        jComboBox41 = new javax.swing.JComboBox<>();
+        cmbFacultadE = new javax.swing.JComboBox<>();
         jLabel155 = new javax.swing.JLabel();
-        jComboBox42 = new javax.swing.JComboBox<>();
-        btnCrearEst14 = new javax.swing.JButton();
+        cmbCarreraE = new javax.swing.JComboBox<>();
+        btnEliminar = new javax.swing.JButton();
         jLabel156 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        jtEliminar = new javax.swing.JTable();
         PnlProfesor = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -1149,42 +1257,59 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnCrearEst12.setBorder(null);
         btnCrearEst12.setBorderPainted(false);
         btnCrearEst12.setContentAreaFilled(false);
+        btnCrearEst12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearEst12ActionPerformed(evt);
+            }
+        });
         PnlCrearEst.add(btnCrearEst12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, -1));
 
         jLabel144.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
         PnlCrearEst.add(jLabel144, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
 
-        jTextField25.setBorder(null);
-        PnlCrearEst.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 170, -1));
+        txtApellido.setBorder(null);
+        PnlCrearEst.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 170, 20));
 
-        jTextField40.setBorder(null);
-        PnlCrearEst.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 160, -1));
+        txtDireccion.setBorder(null);
+        PnlCrearEst.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 160, 20));
 
-        jTextField41.setBorder(null);
-        PnlCrearEst.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 170, -1));
+        txtNombre.setAutoscrolls(false);
+        txtNombre.setBorder(null);
+        PnlCrearEst.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 170, 20));
 
         jTextField42.setBorder(null);
-        PnlCrearEst.add(jTextField42, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 200, -1));
+        PnlCrearEst.add(jTextField42, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 210, -1));
 
-        jTextField43.setBorder(null);
-        PnlCrearEst.add(jTextField43, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 170, -1));
-
-        jTextField44.setBorder(null);
-        PnlCrearEst.add(jTextField44, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 200, -1));
+        txtCedula.setBorder(null);
+        PnlCrearEst.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 170, 20));
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel49.setText("Carrera:");
         PnlCrearEst.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
-        PnlCrearEst.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 170, 10));
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel50.setText("Facultad:");
         PnlCrearEst.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 90, -1));
-        PnlCrearEst.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 180, 10));
 
         jLabel165.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel165.setText("Fecha de nacimiento: ");
         PnlCrearEst.add(jLabel165, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
+
+        cmbFacultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultadActionPerformed(evt);
+            }
+        });
+        PnlCrearEst.add(cmbFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 190, 30));
+
+        PnlCrearEst.add(cmbCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 170, 30));
+
+        jdtNacimiento.setDateFormatString("dd/MM/yyyy");
+        PnlCrearEst.add(jdtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
+
+        jdtIngreso.setDateFormatString("dd/MM/yyyy");
+        PnlCrearEst.add(jdtIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, -1, -1));
+        PnlCrearEst.add(lblCIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 190, 20));
 
         ParentPanelEst.add(PnlCrearEst, "card2");
 
@@ -1268,44 +1393,55 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel154.setText("Facultad");
         PnlEliminarEst.add(jLabel154, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        jComboBox41.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingenieria y Arquitectura", "Medicina", "Administración" }));
-        PnlEliminarEst.add(jComboBox41, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        cmbFacultadE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultadEActionPerformed(evt);
+            }
+        });
+        PnlEliminarEst.add(cmbFacultadE, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 170, -1));
 
         jLabel155.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel155.setText("Carrera");
         PnlEliminarEst.add(jLabel155, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
-        jComboBox42.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economía", "Ingeniería Civil", "Computación", "Diseño" }));
-        PnlEliminarEst.add(jComboBox42, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
+        cmbCarreraE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCarreraEActionPerformed(evt);
+            }
+        });
+        PnlEliminarEst.add(cmbCarreraE, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
 
-        btnCrearEst14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/GuardarCambios.png"))); // NOI18N
-        btnCrearEst14.setBorder(null);
-        btnCrearEst14.setBorderPainted(false);
-        btnCrearEst14.setContentAreaFilled(false);
-        PnlEliminarEst.add(btnCrearEst14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, -1));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/GuardarCambios.png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        PnlEliminarEst.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, -1));
 
         jLabel156.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
         PnlEliminarEst.add(jLabel156, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jtEliminar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Michelle Prado", null},
-                {"Carlos Torres", null},
-                {"Ismael Castillo", null}
+
             },
             new String [] {
-                "Nombre del Estudiante", "Eliminar"
+                "CIF", "Nombre", "Cedula"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(jtEliminar);
 
         PnlEliminarEst.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 320, 140));
 
@@ -2010,6 +2146,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
     
     //Mover el Frame
@@ -2429,6 +2566,166 @@ public final class adminPerfil extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGuardarFotoMouseClicked
 
+    private void cmbFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadActionPerformed
+        if(cmbFacultad.getSelectedIndex()!=0){
+            cmbCarrera.setEnabled(true);
+            String item = cmbFacultad.getSelectedItem().toString();
+            consultaComboCarrera(item,cmbCarrera);
+        }else{
+            cmbCarrera.removeAllItems();
+            cmbCarrera.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmbFacultadActionPerformed
+
+    private void btnCrearEst12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEst12ActionPerformed
+        //Aqui extraemos las fechas de los JDateChooser
+        Date nacimiento = jdtNacimiento.getDate();
+        Date ingreso = jdtIngreso.getDate();
+        
+        //Aqui validamos que todo los campos esten llenos
+        if((!txtNombre.getText().equals("") && (!txtApellido.getText().equals("")) && (!txtCedula.getText().equals("")) && (!txtDireccion.getText().equals("")) && (cmbFacultad.getSelectedIndex()!=0) && (cmbCarrera.getSelectedIndex()!=0)) && (nacimiento!= null) && (ingreso!=null)){
+            long dn = nacimiento.getTime();
+            long di = ingreso.getTime();
+            
+            //Aqui convertimos las Date de Java a Date de SQL
+            java.sql.Date snacimiento = new java.sql.Date(dn);
+            java.sql.Date singreso = new java.sql.Date(di);
+            
+            //Aqui creamos objetos de tipo Alumno
+            alumno.Alumno est = new alumno.Alumno(id_max(), cmbFacultad.getSelectedItem().toString(), (txtNombre.getText() + " " + txtApellido.getText()), txtCedula.getText(), txtDireccion.getText(), snacimiento, singreso, getID_CARRERA());
+            GuardarEst ventanaE = new GuardarEst(est);
+            ventanaE.setVisible(true);
+            exeLimpiar();
+        }
+    }//GEN-LAST:event_btnCrearEst12ActionPerformed
+
+    private void cmbFacultadEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadEActionPerformed
+        if(cmbFacultadE.getSelectedIndex()!=0){
+            consultaTabla(cmbFacultadE);
+            cmbCarreraE.setEnabled(true);
+            String item = cmbFacultadE.getSelectedItem().toString();
+            consultaComboCarrera(item,cmbCarreraE);
+        }else{
+            cmbCarreraE.removeAllItems();
+            cmbCarreraE.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmbFacultadEActionPerformed
+
+    private void cmbCarreraEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarreraEActionPerformed
+        if(cmbCarreraE.getSelectedIndex()!=0){
+            consultaTabla(cmbFacultadE, cmbCarreraE);
+        }
+    }//GEN-LAST:event_cmbCarreraEActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int row=jtEliminar.getSelectedRow();
+        String cif = jtEliminar.getModel().getValueAt(row, 0).toString();
+        
+        try {
+            //Aqui se hace un update del registro
+            PreparedStatement pps = Conexion.getConnection().prepareStatement("DELETE PERSONAL WHERE CIF=?");
+            pps.setString(1, cif);
+            pps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "El registro se ha elminado correctamente");
+            jtEliminar.removeAll();
+            cmbCarreraE.removeAllItems();
+            cmbCarreraE.setEnabled(false);
+            cmbFacultadE.setSelectedIndex(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+    
+    private void consultaTabla(JComboBox cmb){
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jtEliminar.setModel(model);
+            
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT P.CIF,P.NOMBRE,P.CEDULA FROM PERSONAL AS P INNER JOIN ESTUDIANTE AS E ON P.CIF=E.CIF WHERE P.COD_FACULTAD='" + cmb.getSelectedItem().toString()+"'";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            ResultSetMetaData rsMd = resultado.getMetaData();
+            int cantCol = rsMd.getColumnCount();
+            
+            model.addColumn("CIF");
+            model.addColumn("Nombre");
+            model.addColumn("Cedula");
+            
+            while(resultado.next()){
+                Object[] filas = new Object[cantCol];
+                
+                for(int i=0;i<cantCol;i++){
+                    filas[i] = resultado.getObject(i+1);
+                    
+                }
+                model.addRow(filas);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+    
+    private void consultaTabla(JComboBox cmb, JComboBox cmb1){
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jtEliminar.setModel(model);
+            
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT P.CIF,P.NOMBRE,P.CEDULA FROM PERSONAL AS P JOIN ESTUDIANTE AS E ON P.CIF=E.CIF JOIN CARRERA AS C ON E.CARRERA=C.ID_CARRERA WHERE P.COD_FACULTAD='" + cmb.getSelectedItem().toString()+"'"
+                    + " AND C.NOMBRE_CARRERA='" + cmb1.getSelectedItem().toString()+"'";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            ResultSetMetaData rsMd = resultado.getMetaData();
+            int cantCol = rsMd.getColumnCount();
+            
+            model.addColumn("CIF");
+            model.addColumn("Nombre");
+            model.addColumn("Cedula");
+            
+            while(resultado.next()){
+                Object[] filas = new Object[cantCol];
+                
+                for(int i=0;i<cantCol;i++){
+                    filas[i] = resultado.getObject(i+1);
+                    
+                }
+                model.addRow(filas);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+    
+    
+    private void consultaComboCarrera(String item, JComboBox cmb){
+        ArrayList<String> Lista = new ArrayList<String>();
+        
+        try {
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT * FROM CARRERA WHERE ID_FACULTAD='" + item + "'";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            while(resultado.next()){
+                Lista.add(resultado.getString(3));
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        cmb.removeAllItems();
+        cmb.addItem("Elegir Carrera");
+        for(int i=0; i<Lista.size();i++){
+            cmb.addItem(Lista.get(i));
+        }
+    }
     /**
      * @param args the command line arguments
      *
@@ -2485,12 +2782,12 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearEst11;
     private javax.swing.JButton btnCrearEst12;
     private javax.swing.JButton btnCrearEst13;
-    private javax.swing.JButton btnCrearEst14;
     private javax.swing.JButton btnCrearEst15;
     private javax.swing.JButton btnCrearG;
     private javax.swing.JButton btnCrearProf;
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnEditar2;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminarEst;
     private javax.swing.JButton btnEliminarProf;
     private javax.swing.JButton btnEstudiantes;
@@ -2505,6 +2802,10 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnRetiroG;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSubirFoto;
+    private javax.swing.JComboBox<String> cmbCarrera;
+    private javax.swing.JComboBox<String> cmbCarreraE;
+    private javax.swing.JComboBox<String> cmbFacultad;
+    private javax.swing.JComboBox<String> cmbFacultadE;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton16;
@@ -2547,8 +2848,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox36;
     private javax.swing.JComboBox<String> jComboBox37;
     private javax.swing.JComboBox<String> jComboBox39;
-    private javax.swing.JComboBox<String> jComboBox41;
-    private javax.swing.JComboBox<String> jComboBox42;
     private javax.swing.JComboBox<String> jComboBox43;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
@@ -2687,8 +2986,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator13;
-    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
@@ -2729,14 +3026,12 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator79;
     private javax.swing.JSeparator jSeparator80;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
@@ -2746,11 +3041,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField38;
     private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
     private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField jTextField46;
     private javax.swing.JTextField jTextField47;
@@ -2769,6 +3060,14 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private com.toedter.calendar.JDateChooser jdtIngreso;
+    private com.toedter.calendar.JDateChooser jdtNacimiento;
+    private javax.swing.JTable jtEliminar;
+    private javax.swing.JLabel lblCIF;
     private javax.swing.JLabel marcoAvatar;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

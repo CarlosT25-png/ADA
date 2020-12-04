@@ -54,7 +54,7 @@ public class TestConnection extends javax.swing.JFrame {
         try {
             Statement sql = Conexion.getConnection().createStatement();
             
-            String consulta = "SELECT  ID_ASIGNATURA FROM ASIGNATURA";
+            String consulta = "SELECT ID_ASIGNATURA FROM ASIGNATURA";
             ResultSet resultado = sql.executeQuery(consulta);
             
             while(resultado.next()){
