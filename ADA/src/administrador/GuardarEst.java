@@ -23,6 +23,8 @@ public class GuardarEst extends javax.swing.JFrame {
      * Creates new form GuardarEst
      */
     private alumno.Alumno est;
+    private profesor.Profesor prf;
+    private int tipo=0;
     
     public GuardarEst() {
         this.setUndecorated(true);
@@ -31,15 +33,29 @@ public class GuardarEst extends javax.swing.JFrame {
     }
     
     public GuardarEst(alumno.Alumno est){
+        tipo = 1;
         this.setUndecorated(true);
         initComponents();  
         this.est=est;
         asignarTextoLbl();
     }
     
+    public GuardarEst(profesor.Profesor prf){
+        tipo=2;
+        this.setUndecorated(true);
+        initComponents();  
+        this.prf=prf;
+        asignarTextoLbl();
+    }
+    
     private void asignarTextoLbl(){
-        lblNombre.setText(est.getNOMBRE());
-        lblCIF.setText(est.getCIF() + "");
+        if(tipo==1){
+            lblNombre.setText(est.getNOMBRE());
+            lblCIF.setText(est.getCIF() + "");
+        }else if(tipo==2){
+            lblNombre.setText(prf.getNOMBRE());
+            lblCIF.setText(prf.getCIF() + "");
+        }
     }
 
     /**
@@ -157,39 +173,75 @@ public class GuardarEst extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        boolean facultad=false, alumno=false;
-        
-        if((!txtCorreo.getText().equals("")) && (!txtPassword.getText().equals(""))){
-            est.setEMAIL_INSTITUCION(txtCorreo.getText());
-            est.setCONTRASENA_SISTEMA(txtPassword.getText());
-            
-            try {
-                String consulta = "INSERT INTO PERSONAL VALUES("+est.getCIF()+",'"+est.getCOD_FACULTAD()+"','"+est.getNOMBRE()+"','"+est.getCEDULA()+ "','" + est.getDIRECCION()
-                        + "','" + est.getFECHA_NACIMIENTO() + "','" + est.getEMAIL_INSTITUCION() + "','" + est.getCONTRASENA_SISTEMA()+"')";
-                
-                PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
-                
-                sql.executeUpdate();
-                facultad=true;
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex.toString());
+        boolean facultad = false, alumno = false;
+
+        if (tipo == 1) {
+            if ((!txtCorreo.getText().equals("")) && (!txtPassword.getText().equals(""))) {
+                est.setEMAIL_INSTITUCION(txtCorreo.getText());
+                est.setCONTRASENA_SISTEMA(txtPassword.getText());
+
+                try {
+                    String consulta = "INSERT INTO PERSONAL VALUES(" + est.getCIF() + ",'" + est.getCOD_FACULTAD() + "','" + est.getNOMBRE() + "','" + est.getCEDULA() + "','" + est.getDIRECCION()
+                            + "','" + est.getFECHA_NACIMIENTO() + "','" + est.getEMAIL_INSTITUCION() + "','" + est.getCONTRASENA_SISTEMA() + "')";
+
+                    PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+                    sql.executeUpdate();
+                    facultad = true;
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex.toString());
+                }
+
+                try {
+                    String consulta2 = "INSERT INTO ESTUDIANTE VALUES(" + est.getCIF() + "," + est.getID_CARRERA() + ",'" + est.getFECHA_INGRESO() + "')";
+                    PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta2);
+
+                    sql.executeUpdate();
+                    alumno = true;
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex.toString());
+                }
+
+                if (alumno == true && facultad == true) {
+                    JOptionPane.showMessageDialog(this, "El alumno " + est.getNOMBRE() + " con CIF: " + est.getCIF() + ", ha sido creado correctamente");
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error, no se pudo crear el alumno");
+                }
             }
-            
-            try {
-                String consulta2 = "INSERT INTO ESTUDIANTE VALUES(" + est.getCIF() + "," + est.getID_CARRERA() + ",'" + est.getFECHA_INGRESO() + "')";
-                PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta2);
-                 
-                sql.executeUpdate();
-                alumno=true;
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex.toString());
-            }
-            
-            if(alumno==true  &&  facultad==true){
-                JOptionPane.showMessageDialog(this, "El alumno " + est.getNOMBRE() + " con CIF: " + est.getCIF() + ", ha sido creado correctamente");
-                this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, "Error, no se pudo crear el alumno");
+        } else if (tipo == 2) {
+            if ((!txtCorreo.getText().equals("")) && (!txtPassword.getText().equals(""))) {
+                prf.setEMAIL_INSTITUCION(txtCorreo.getText());
+                prf.setCONTRASENA_SISTEMA(txtPassword.getText());
+
+                try {
+                    String consulta = "INSERT INTO PERSONAL VALUES(" + prf.getCIF() + ",'" + prf.getCOD_FACULTAD() + "','" + prf.getNOMBRE() + "','" + prf.getCEDULA() + "','" + prf.getDIRECCION()
+                            + "','" + prf.getFECHA_NACIMIENTO() + "','" + prf.getEMAIL_INSTITUCION() + "','" + prf.getCONTRASENA_SISTEMA() + "')";
+
+                    PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+                    sql.executeUpdate();
+                    facultad = true;
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex.toString());
+                }
+
+                try {
+                    String consulta2 = "INSERT INTO DOCENTE VALUES(" + prf.getCIF() + ",'" + prf.getESTADO() + "','" + prf.getESPECIALIDAD() + "')";
+                    PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta2);
+
+                    sql.executeUpdate();
+                    alumno = true;
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex.toString());
+                }
+
+                if (alumno == true && facultad == true) {
+                    JOptionPane.showMessageDialog(this, "El profesor " + prf.getNOMBRE() + " con CIF: " + prf.getCIF() + ", ha sido creado correctamente");
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error, no se pudo crear el profesor");
+                }
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
