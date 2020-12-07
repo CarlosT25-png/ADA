@@ -309,6 +309,9 @@ public final class adminPerfil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         marcoAvatar = new javax.swing.JLabel();
         avatar = new javax.swing.JLabel();
@@ -471,10 +474,12 @@ public final class adminPerfil extends javax.swing.JFrame {
         cmbFacultadE = new javax.swing.JComboBox<>();
         jLabel155 = new javax.swing.JLabel();
         cmbCarreraE = new javax.swing.JComboBox<>();
-        btnEliminar = new javax.swing.JButton();
-        jLabel156 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jtEliminar = new javax.swing.JTable();
+        jLabel156 = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
+        jTextField13 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         PnlProfesor = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -632,6 +637,12 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         btnSubirFoto = new javax.swing.JButton();
         btnGuardarFoto = new javax.swing.JButton();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1402,39 +1413,25 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         jLabel154.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel154.setText("Facultad");
-        PnlEliminarEst.add(jLabel154, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        PnlEliminarEst.add(jLabel154, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         cmbFacultadE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbFacultadEActionPerformed(evt);
             }
         });
-        PnlEliminarEst.add(cmbFacultadE, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 170, -1));
+        PnlEliminarEst.add(cmbFacultadE, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 170, -1));
 
         jLabel155.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel155.setText("Carrera");
-        PnlEliminarEst.add(jLabel155, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        PnlEliminarEst.add(jLabel155, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
         cmbCarreraE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCarreraEActionPerformed(evt);
             }
         });
-        PnlEliminarEst.add(cmbCarreraE, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
-
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/GuardarCambios.png"))); // NOI18N
-        btnEliminar.setBorder(null);
-        btnEliminar.setBorderPainted(false);
-        btnEliminar.setContentAreaFilled(false);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        PnlEliminarEst.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, -1));
-
-        jLabel156.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
-        PnlEliminarEst.add(jLabel156, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
+        PnlEliminarEst.add(cmbCarreraE, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 170, -1));
 
         jtEliminar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1454,7 +1451,33 @@ public final class adminPerfil extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jtEliminar);
 
-        PnlEliminarEst.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 320, 140));
+        PnlEliminarEst.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 320, 140));
+
+        jLabel156.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlEliminarEst.add(jLabel156, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
+
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/EliminarEst.png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        PnlEliminarEst.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, -1, -1));
+        PnlEliminarEst.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 220, 30));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/Lupa.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        PnlEliminarEst.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 60, 50));
 
         ParentPanelEst.add(PnlEliminarEst, "card4");
 
@@ -2635,26 +2658,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbCarreraEActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int row=jtEliminar.getSelectedRow();
-        String cif = jtEliminar.getModel().getValueAt(row, 0).toString();
-        
-        try {
-            //Aqui se hace un update del registro
-            PreparedStatement pps = Conexion.getConnection().prepareStatement("DELETE PERSONAL WHERE CIF=?");
-            pps.setString(1, cif);
-            pps.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "El registro se ha elminado correctamente");
-            jtEliminar.removeAll();
-            cmbCarreraE.removeAllItems();
-            cmbCarreraE.setEnabled(false);
-            cmbFacultadE.setSelectedIndex(0);
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void btnCrearProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearProfesorActionPerformed
         if((!txtNombreP.getText().equals("")) && (!txtApellidosP.getText().equals("")) && (!txtCedulaP.getText().equals("")) && (!txtDireccionP.getText().equals("")) && (!txtEspecialidadP.getText().equals("")) && (jdtNacimientoP!=null) && (cmbFacultadP.getSelectedIndex()!=0)){
             Date nacimientoP = jdtNacimientoP.getDate();
@@ -2699,6 +2702,30 @@ public final class adminPerfil extends javax.swing.JFrame {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEliminarPActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int row=jtEliminar.getSelectedRow();
+        String cif = jtEliminar.getModel().getValueAt(row, 0).toString();
+
+        try {
+            //Aqui se hace un update del registro
+            PreparedStatement pps = Conexion.getConnection().prepareStatement("DELETE PERSONAL WHERE CIF=?");
+            pps.setString(1, cif);
+            pps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "El registro se ha elminado correctamente");
+            jtEliminar.removeAll();
+            cmbCarreraE.removeAllItems();
+            cmbCarreraE.setEnabled(false);
+            cmbFacultadE.setSelectedIndex(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void consultaTabla(JComboBox cmb){
         try {
@@ -2905,6 +2932,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbFacultad;
     private javax.swing.JComboBox<String> cmbFacultadE;
     private javax.swing.JComboBox<String> cmbFacultadP;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton16;
@@ -3072,6 +3100,9 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
@@ -3126,6 +3157,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField33;
