@@ -45,15 +45,27 @@ public final class adminPerfil extends javax.swing.JFrame {
         panelSelected();
         
         cmbCarrera.setEnabled(false);
+        cmbCarreraA.setEnabled(false);
         agregarFacultades(cmbFacultad);
         agregarFacultades(cmbFacultadE);
         agregarFacultades(cmbFacultadP);
         agregarFacultades(cmbEliminarP);
+        agregarFacultades(cmbFacultadA);
+        agregarFacultades(cmbFacultadAR);
         setCIF(id_max(), lblCIF);
         setCIF(id_max(), lblCifP);
+        lblIDA.setText(id_maxA()+"");
     }
     
     private void exeLimpiar(){
+        txtNombreA.setText("");
+        txtDescripcionA.setText("");
+        lblIDA.setText(id_maxA()+"");
+        cmbSemestreA.setSelectedIndex(0);
+        cmbFacultadA.setSelectedIndex(0);
+        cmbCarreraA.removeAllItems();
+        cmbCarreraA.setEnabled(false);
+        
         txtNombre.setText("");
         txtNombreP.setText("");
         txtApellido.setText("");
@@ -147,6 +159,29 @@ public final class adminPerfil extends javax.swing.JFrame {
         return id;
     }
     
+    public int id_maxA(){
+        int id=1;
+        
+        try {
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT MAX(ID_ASIGNATURA) FROM ASIGNATURA";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            while(resultado.next()){
+                id = resultado.getInt(1) + 1;
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        if(id==0){
+            return 1;
+        }
+        return id;
+    }
+    
     //Establecer el icono
     public void iconoFormulario() {
         URL url = getClass().getResource("/imagesLogin/logoLoginXL.png");
@@ -166,6 +201,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
             btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
             btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+            btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesEst/pensum.png")));
         }else if(panelActual==PnlAsignacion){
             ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-asignacion.png"));
             btnAsignacion.setIcon(imagen);
@@ -176,6 +212,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
             btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
             btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+            btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesEst/pensum.png")));
         }else if(panelActual==PnlEstudiantes){
             ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-estudiantes.png"));
             btnEstudiantes.setIcon(imagen);
@@ -186,6 +223,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
             btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
             btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+            btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesEst/pensum.png")));
         }else if(panelActual==PnlGrupos){
             ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-grupos.png"));
             btnGrupos.setIcon(imagen);
@@ -196,6 +234,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
             btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
             btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+            btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesEst/pensum.png")));
         }else if(panelActual==PnlProfesor){
             ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesAdmin/Neg-profesor.png"));
             btnProfesor.setIcon(imagen);
@@ -206,6 +245,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
             btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
             btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+            btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesEst/pensum.png")));
         }else if(panelActual==PnlAjustes){
             ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-ajustes.png"));
             btnAjustes.setIcon(imagen);
@@ -216,6 +256,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
             btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
             btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesEst/pensum.png")));
         }else if(panelActual==PnlCambioFotoPerfil){
             ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-ajustes.png"));
             btnAjustes.setIcon(imagen);
@@ -226,6 +267,18 @@ public final class adminPerfil extends javax.swing.JFrame {
             btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
             btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
             btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesEst/pensum.png")));
+        }else if(panelActual==PnlPensum){
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/Neg-pensum.png"));
+            btnPensum.setIcon(imagen);
+            
+            //Aqui es para que los demas botones esten grises
+            btnAsignacion.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/asignacion.png")));
+            btnGrupos.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/grupos.png")));
+            btnEstudiantes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/estudiantes.png")));
+            btnProfesor.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/profesor.png")));
+            btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesEst/perfil.png")));
+            btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
         }
     }
     
@@ -320,8 +373,9 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnGrupos = new javax.swing.JButton();
         btnEstudiantes = new javax.swing.JButton();
         btnProfesor = new javax.swing.JButton();
-        btnAjustes = new javax.swing.JButton();
+        btnPensum = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        btnAjustes = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         ParentPanel = new javax.swing.JPanel();
@@ -348,28 +402,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnCambio = new javax.swing.JButton();
         btnRetiro = new javax.swing.JButton();
         ParentPanelAsignacion = new javax.swing.JPanel();
-        PnlCrearAsignatura = new javax.swing.JPanel();
-        jLabel70 = new javax.swing.JLabel();
-        jLabel75 = new javax.swing.JLabel();
-        jSeparator23 = new javax.swing.JSeparator();
-        jLabel76 = new javax.swing.JLabel();
-        jSeparator24 = new javax.swing.JSeparator();
-        jSeparator25 = new javax.swing.JSeparator();
-        jLabel77 = new javax.swing.JLabel();
-        jLabel78 = new javax.swing.JLabel();
-        jLabel79 = new javax.swing.JLabel();
-        jSeparator26 = new javax.swing.JSeparator();
-        jLabel80 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
-        jComboBox19 = new javax.swing.JComboBox<>();
-        jComboBox20 = new javax.swing.JComboBox<>();
-        jComboBox21 = new javax.swing.JComboBox<>();
-        jLabel81 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
         PnlCambioAsignatura = new javax.swing.JPanel();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
@@ -395,20 +427,32 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel68 = new javax.swing.JLabel();
         jLabel82 = new javax.swing.JLabel();
         jLabel83 = new javax.swing.JLabel();
-        jComboBox22 = new javax.swing.JComboBox<>();
-        jComboBox23 = new javax.swing.JComboBox<>();
-        jComboBox24 = new javax.swing.JComboBox<>();
+        cmbSemestreAR = new javax.swing.JComboBox<>();
+        cmbFacultadAR = new javax.swing.JComboBox<>();
+        cmbCarreraAR = new javax.swing.JComboBox<>();
         jLabel84 = new javax.swing.JLabel();
-        jPanel20 = new javax.swing.JPanel();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
-        jButton31 = new javax.swing.JButton();
-        jCheckBox10 = new javax.swing.JCheckBox();
-        jCheckBox11 = new javax.swing.JCheckBox();
-        jCheckBox12 = new javax.swing.JCheckBox();
-        jCheckBox13 = new javax.swing.JCheckBox();
         jButton16 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        PnlCrearAsignatura = new javax.swing.JPanel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jSeparator23 = new javax.swing.JSeparator();
+        jLabel76 = new javax.swing.JLabel();
+        jSeparator24 = new javax.swing.JSeparator();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jSeparator26 = new javax.swing.JSeparator();
+        jLabel80 = new javax.swing.JLabel();
+        btnCrearA = new javax.swing.JButton();
+        cmbSemestreA = new javax.swing.JComboBox<>();
+        cmbFacultadA = new javax.swing.JComboBox<>();
+        cmbCarreraA = new javax.swing.JComboBox<>();
+        jLabel81 = new javax.swing.JLabel();
+        txtNombreA = new javax.swing.JTextField();
+        txtDescripcionA = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        lblIDA = new javax.swing.JLabel();
         PnlEstudiantes = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -637,6 +681,10 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         btnSubirFoto = new javax.swing.JButton();
         btnGuardarFoto = new javax.swing.JButton();
+        PnlPensum = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        ParentPanelPensum = new javax.swing.JPanel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -746,6 +794,40 @@ public final class adminPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(btnProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 400, -1, -1));
 
+        btnPensum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/pensum.png"))); // NOI18N
+        btnPensum.setBorder(null);
+        btnPensum.setBorderPainted(false);
+        btnPensum.setContentAreaFilled(false);
+        btnPensum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPensumMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPensumMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPensumMouseExited(evt);
+            }
+        });
+        jPanel1.add(btnPensum, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
+
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/salir.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 580, -1, -1));
+
         btnAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/ajustes.png"))); // NOI18N
         btnAjustes.setBorder(null);
         btnAjustes.setBorderPainted(false);
@@ -763,24 +845,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(btnAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 460, -1, -1));
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/salir.png"))); // NOI18N
-        btnSalir.setBorder(null);
-        btnSalir.setBorderPainted(false);
-        btnSalir.setContentAreaFilled(false);
-        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalirMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSalirMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSalirMouseExited(evt);
-            }
-        });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 520, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 610));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 640));
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/cerrar.png"))); // NOI18N
         btnCerrar.setBorderPainted(false);
@@ -921,76 +986,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         ParentPanelAsignacion.setBackground(new java.awt.Color(255, 255, 255));
         ParentPanelAsignacion.setLayout(new java.awt.CardLayout());
 
-        PnlCrearAsignatura.setBackground(new java.awt.Color(255, 255, 255));
-        PnlCrearAsignatura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel70.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel70.setText("Nombre:");
-        PnlCrearAsignatura.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
-
-        jLabel75.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel75.setText("Carrera:");
-        PnlCrearAsignatura.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
-        PnlCrearAsignatura.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 170, -1));
-
-        jLabel76.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel76.setText("Descripción:");
-        PnlCrearAsignatura.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
-        PnlCrearAsignatura.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 140, -1));
-        PnlCrearAsignatura.add(jSeparator25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 130, -1));
-
-        jLabel77.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel77.setText("Semestre:");
-        PnlCrearAsignatura.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
-
-        jLabel78.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel78.setText("Horas totales:");
-        PnlCrearAsignatura.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-
-        jLabel79.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel79.setText("ID Asignatura:");
-        PnlCrearAsignatura.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
-        PnlCrearAsignatura.add(jSeparator26, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 120, 10));
-
-        jLabel80.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel80.setText("Facultad:");
-        PnlCrearAsignatura.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
-
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/CrearAsignacion.png"))); // NOI18N
-        jButton12.setBorder(null);
-        jButton12.setBorderPainted(false);
-        jButton12.setContentAreaFilled(false);
-        PnlCrearAsignatura.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
-
-        jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre I", "Semestre II", "Semestre III", "Semestre IV" }));
-        PnlCrearAsignatura.add(jComboBox19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 150, -1));
-
-        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingenieria y Arquitectura", "Medicina", "Administración" }));
-        PnlCrearAsignatura.add(jComboBox20, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
-
-        jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economía", "Ingeniería Civil", "Computación", "Diseño" }));
-        PnlCrearAsignatura.add(jComboBox21, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 170, -1));
-
-        jLabel81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
-        PnlCrearAsignatura.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
-
-        jTextField2.setBorder(null);
-        PnlCrearAsignatura.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 120, -1));
-
-        jTextField6.setBorder(null);
-        PnlCrearAsignatura.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 170, -1));
-
-        jTextField7.setBorder(null);
-        PnlCrearAsignatura.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 140, -1));
-
-        jTextField8.setBorder(null);
-        PnlCrearAsignatura.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 140, -1));
-
-        jTextField9.setBorder(null);
-        PnlCrearAsignatura.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 130, -1));
-
-        ParentPanelAsignacion.add(PnlCrearAsignatura, "card2");
-
         PnlCambioAsignatura.setBackground(new java.awt.Color(255, 255, 255));
         PnlCambioAsignatura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1073,92 +1068,26 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel83.setText("Carrera");
         PnlRetiroAsignatura.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
-        jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre I", "Semestre II", "Semestre III", "Semestre IV" }));
-        PnlRetiroAsignatura.add(jComboBox22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 170, -1));
+        cmbSemestreAR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre I", "Semestre II", "Semestre III", "Semestre IV", "Semestre V", "Semestre VI", "Semestre VII", "Semestre VIII", "Semestre IX", "Semestre X" }));
+        PnlRetiroAsignatura.add(cmbSemestreAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 170, -1));
 
-        jComboBox23.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingenieria y Arquitectura", "Medicina", "Administración" }));
-        PnlRetiroAsignatura.add(jComboBox23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+        cmbFacultadAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultadARActionPerformed(evt);
+            }
+        });
+        PnlRetiroAsignatura.add(cmbFacultadAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 170, -1));
 
-        jComboBox24.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economía", "Ingeniería Civil", "Computación", "Diseño" }));
-        PnlRetiroAsignatura.add(jComboBox24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, -1));
+        cmbCarreraAR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economía", "Ingeniería Civil", "Computación", "Diseño" }));
+        cmbCarreraAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCarreraARActionPerformed(evt);
+            }
+        });
+        PnlRetiroAsignatura.add(cmbCarreraAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, -1));
 
         jLabel84.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
         PnlRetiroAsignatura.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
-
-        jPanel20.setBackground(new java.awt.Color(204, 204, 204));
-
-        jButton23.setBackground(new java.awt.Color(255, 255, 255));
-        jButton23.setText("AV101 - Análisis Vectorial");
-        jButton23.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton23.setContentAreaFilled(false);
-
-        jButton24.setBackground(new java.awt.Color(255, 255, 255));
-        jButton24.setText("BD102 - Base De Datos");
-        jButton24.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton24.setContentAreaFilled(false);
-
-        jButton30.setBackground(new java.awt.Color(255, 255, 255));
-        jButton30.setText("EN302 - Inglés Comunicativo");
-        jButton30.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton30.setContentAreaFilled(false);
-
-        jButton31.setBackground(new java.awt.Color(255, 255, 255));
-        jButton31.setText("ES104 - Estadística II");
-        jButton31.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton31.setContentAreaFilled(false);
-
-        jCheckBox10.setContentAreaFilled(false);
-
-        jCheckBox11.setContentAreaFilled(false);
-
-        jCheckBox12.setContentAreaFilled(false);
-
-        jCheckBox13.setContentAreaFilled(false);
-
-        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-        jPanel20.setLayout(jPanel20Layout);
-        jPanel20Layout.setHorizontalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox10, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox11, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox12, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCheckBox13, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-        );
-        jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(33, 33, 33)
-                                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCheckBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCheckBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-
-        PnlRetiroAsignatura.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 310, 330));
 
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/GuardarCambios.png"))); // NOI18N
         jButton16.setBorder(null);
@@ -1166,7 +1095,89 @@ public final class adminPerfil extends javax.swing.JFrame {
         jButton16.setContentAreaFilled(false);
         PnlRetiroAsignatura.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID_ASIGNATURA", "Nombre"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        PnlRetiroAsignatura.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 400, 170));
+
         ParentPanelAsignacion.add(PnlRetiroAsignatura, "card4");
+
+        PnlCrearAsignatura.setBackground(new java.awt.Color(255, 255, 255));
+        PnlCrearAsignatura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel70.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel70.setText("Nombre:");
+        PnlCrearAsignatura.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+
+        jLabel75.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel75.setText("Carrera:");
+        PnlCrearAsignatura.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
+        PnlCrearAsignatura.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 170, -1));
+
+        jLabel76.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel76.setText("Descripción:");
+        PnlCrearAsignatura.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        PnlCrearAsignatura.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 140, -1));
+
+        jLabel77.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel77.setText("Semestre:");
+        PnlCrearAsignatura.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        jLabel79.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel79.setText("ID Asignatura:");
+        PnlCrearAsignatura.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
+        PnlCrearAsignatura.add(jSeparator26, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 120, 10));
+
+        jLabel80.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        jLabel80.setText("Facultad:");
+        PnlCrearAsignatura.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
+
+        btnCrearA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/CrearAsignacion.png"))); // NOI18N
+        btnCrearA.setBorder(null);
+        btnCrearA.setBorderPainted(false);
+        btnCrearA.setContentAreaFilled(false);
+        btnCrearA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearAActionPerformed(evt);
+            }
+        });
+        PnlCrearAsignatura.add(btnCrearA, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
+
+        cmbSemestreA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre I", "Semestre II", "Semestre III", "Semestre IV", "Semestre V", "Semestre VI", "Semestre VII", "Semestre VIII", "Semestre IX", "Semestre X" }));
+        PnlCrearAsignatura.add(cmbSemestreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 150, -1));
+
+        cmbFacultadA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultadAActionPerformed(evt);
+            }
+        });
+        PnlCrearAsignatura.add(cmbFacultadA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 160, -1));
+
+        PnlCrearAsignatura.add(cmbCarreraA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 160, -1));
+
+        jLabel81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlCrearAsignatura.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
+
+        txtNombreA.setBorder(null);
+        PnlCrearAsignatura.add(txtNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 170, 30));
+
+        txtDescripcionA.setBorder(null);
+        PnlCrearAsignatura.add(txtDescripcionA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 140, 30));
+
+        jTextField8.setBorder(null);
+        PnlCrearAsignatura.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 140, -1));
+
+        lblIDA.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        PnlCrearAsignatura.add(lblIDA, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 120, 30));
+
+        ParentPanelAsignacion.add(PnlCrearAsignatura, "card2");
 
         PnlAsignacion.add(ParentPanelAsignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 680, 460));
 
@@ -1477,7 +1488,7 @@ public final class adminPerfil extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        PnlEliminarEst.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 60, 50));
+        PnlEliminarEst.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 36, 40, 40));
 
         ParentPanelEst.add(PnlEliminarEst, "card4");
 
@@ -2176,6 +2187,35 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         ParentPanel.add(PnlCambioFotoPerfil, "card9");
 
+        PnlPensum.setBackground(new java.awt.Color(255, 255, 255));
+        PnlPensum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel14.setText("Pensum");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        PnlPensum.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 80));
+
+        ParentPanelPensum.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout ParentPanelPensumLayout = new javax.swing.GroupLayout(ParentPanelPensum);
+        ParentPanelPensum.setLayout(ParentPanelPensumLayout);
+        ParentPanelPensumLayout.setHorizontalGroup(
+            ParentPanelPensumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+        );
+        ParentPanelPensumLayout.setVerticalGroup(
+            ParentPanelPensumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
+
+        PnlPensum.add(ParentPanelPensum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 680, 490));
+
+        ParentPanel.add(PnlPensum, "card9");
+
         getContentPane().add(ParentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 610));
 
         pack();
@@ -2254,13 +2294,13 @@ public final class adminPerfil extends javax.swing.JFrame {
         profesor();
     }//GEN-LAST:event_btnProfesorMouseClicked
 
-    private void btnAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseClicked
+    private void btnPensumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPensumMouseClicked
         ParentPanel.removeAll();
-        ParentPanel.add(PnlAjustes);
+        ParentPanel.add(PnlPensum);
         ParentPanel.revalidate();
         ParentPanel.repaint();
         panelSelected();
-    }//GEN-LAST:event_btnAjustesMouseClicked
+    }//GEN-LAST:event_btnPensumMouseClicked
 
     private void btnPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseEntered
         btnPerfil.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-perfil.png")));
@@ -2308,14 +2348,14 @@ public final class adminPerfil extends javax.swing.JFrame {
         panelSelected();
     }//GEN-LAST:event_btnProfesorMouseExited
 
-    private void btnAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseEntered
-        btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-ajustes.png")));
-    }//GEN-LAST:event_btnAjustesMouseEntered
+    private void btnPensumMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPensumMouseEntered
+        btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/Neg-pensum.png")));
+    }//GEN-LAST:event_btnPensumMouseEntered
 
-    private void btnAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseExited
-        btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/ajustes.png")));
+    private void btnPensumMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPensumMouseExited
+        btnPensum.setIcon(new ImageIcon(getClass().getResource("/imagesAdmin/pensum.png")));
         panelSelected();
-    }//GEN-LAST:event_btnAjustesMouseExited
+    }//GEN-LAST:event_btnPensumMouseExited
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
         btnSalir.setIcon(new ImageIcon(getClass().getResource("/imagesEst/Neg-salir.png")));
@@ -2726,6 +2766,69 @@ public final class adminPerfil extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmbFacultadAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadAActionPerformed
+        if(cmbFacultadA.getSelectedIndex()!=0){
+            cmbCarreraA.setEnabled(true);
+            String item = cmbFacultadA.getSelectedItem().toString();
+            consultaComboCarrera(item,cmbCarreraA);
+        }else{
+            cmbCarreraA.removeAllItems();
+            cmbCarreraA.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmbFacultadAActionPerformed
+
+    private void btnCrearAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAActionPerformed
+        if ((!txtNombreA.getText().equals("")) && (!txtDescripcionA.getText().equals("")) && (cmbFacultadA.getSelectedIndex() != 0) && (cmbCarrera.getSelectedIndex() != 0)) {
+
+            try {
+                String consulta = "INSERT INTO ASIGNATURA VALUES(" + id_maxA() + ",'" + cmbFacultadA.getSelectedItem().toString() + "','" + txtNombreA.getText() + "','" + txtDescripcionA.getText() + "','" + cmbSemestreA.getSelectedItem().toString() +"')";
+
+                PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+                sql.executeUpdate();
+                JOptionPane.showMessageDialog(null, "La asignatura se ha creado correctamente");
+                exeLimpiar();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+        }
+    }//GEN-LAST:event_btnCrearAActionPerformed
+
+    private void cmbFacultadARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadARActionPerformed
+        if(cmbFacultadAR.getSelectedIndex()!=0){
+            cmbCarreraAR.setEnabled(true);
+            String item = cmbFacultadAR.getSelectedItem().toString();
+            consultaTablaAR(1);
+            consultaComboCarrera(item,cmbCarreraAR);
+        }else{
+            cmbCarreraAR.removeAllItems();
+            cmbCarreraAR.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmbFacultadARActionPerformed
+
+    private void cmbCarreraARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarreraARActionPerformed
+        if(cmbCarreraAR.getSelectedIndex()!=0){
+            cmbSemestreAR.setEnabled(true);
+            consultaTablaAR(2);
+        }else{
+            cmbCarreraAR.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmbCarreraARActionPerformed
+
+    private void btnAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAjustesMouseClicked
+
+    private void btnAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAjustesMouseEntered
+
+    private void btnAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAjustesMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAjustesMouseExited
     
     private void consultaTabla(JComboBox cmb){
         try {
@@ -2757,6 +2860,44 @@ public final class adminPerfil extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+    
+    private void consultaTablaAR(int tipo){
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jtEliminarP.setModel(model);
+            
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            if(tipo==1){
+                String consulta = "SELECT A.ID_ASIGNATURA,A.NOMBRE FROM ASIGNATURA AS A WHERE COD_FACULTAD='" + cmbFacultadAR.getSelectedItem().toString()+"'";
+            }else if(tipo==2){
+                String consulta = "SELECT A.ID_ASIGNATURA,A.NOMBRE FROM ASIGNATURA AS A WHERE COD_FACULTAD='" + cmbFacultadAR.getSelectedItem().toString()+"' AND'" + cmbCarreraAR.getSelectedItem();
+            }
+            
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            ResultSetMetaData rsMd = resultado.getMetaData();
+            int cantCol = rsMd.getColumnCount();
+            
+            model.addColumn("CIF");
+            model.addColumn("Nombre");
+            model.addColumn("Cedula");
+            model.addColumn("Especialidad");
+            
+            while(resultado.next()){
+                Object[] filas = new Object[cantCol];
+                btnAjustes.setIcon(new ImageIcon(getClass().getResource("/imagesEst/ajustes.png")));
+                for(int i=0;i<cantCol;i++){
+                    filas[i] = resultado.getObject(i+1);
+                    
+                }
+                model.addRow(filas);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        } 
     }
     
     private void consultaTabla(JComboBox  cmb, int tipo){
@@ -2873,6 +3014,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JPanel ParentPanelAsignacion;
     private javax.swing.JPanel ParentPanelEst;
     private javax.swing.JPanel ParentPanelGrupos;
+    private javax.swing.JPanel ParentPanelPensum;
     private javax.swing.JPanel ParentPanelProf;
     private javax.swing.JPanel PnlAjustes;
     private javax.swing.JPanel PnlAsignacion;
@@ -2890,6 +3032,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JPanel PnlModificacionEst;
     private javax.swing.JPanel PnlModificacionGrupos;
     private javax.swing.JPanel PnlModificacionProf;
+    private javax.swing.JPanel PnlPensum;
     private javax.swing.JPanel PnlPerfil;
     private javax.swing.JPanel PnlProfesor;
     private javax.swing.JPanel PnlRetiroAsignatura;
@@ -2900,6 +3043,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnCambio;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnCrearA;
     private javax.swing.JButton btnCrearEst;
     private javax.swing.JButton btnCrearEst10;
     private javax.swing.JButton btnCrearEst12;
@@ -2919,6 +3063,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnModificacionEst;
     private javax.swing.JButton btnModificacionG;
     private javax.swing.JButton btnModificacionProf;
+    private javax.swing.JButton btnPensum;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnProfesor;
     private javax.swing.JButton btnRetiro;
@@ -2926,27 +3071,24 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSubirFoto;
     private javax.swing.JComboBox<String> cmbCarrera;
+    private javax.swing.JComboBox<String> cmbCarreraA;
+    private javax.swing.JComboBox<String> cmbCarreraAR;
     private javax.swing.JComboBox<String> cmbCarreraE;
     private javax.swing.JComboBox<String> cmbEliminarP;
     private javax.swing.JComboBox<String> cmbEstadoP;
     private javax.swing.JComboBox<String> cmbFacultad;
+    private javax.swing.JComboBox<String> cmbFacultadA;
+    private javax.swing.JComboBox<String> cmbFacultadAR;
     private javax.swing.JComboBox<String> cmbFacultadE;
     private javax.swing.JComboBox<String> cmbFacultadP;
+    private javax.swing.JComboBox<String> cmbSemestreA;
+    private javax.swing.JComboBox<String> cmbSemestreAR;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox11;
-    private javax.swing.JCheckBox jCheckBox12;
-    private javax.swing.JCheckBox jCheckBox13;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
@@ -2956,12 +3098,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox16;
     private javax.swing.JComboBox<String> jComboBox17;
     private javax.swing.JComboBox<String> jComboBox18;
-    private javax.swing.JComboBox<String> jComboBox19;
-    private javax.swing.JComboBox<String> jComboBox20;
-    private javax.swing.JComboBox<String> jComboBox21;
-    private javax.swing.JComboBox<String> jComboBox22;
-    private javax.swing.JComboBox<String> jComboBox23;
-    private javax.swing.JComboBox<String> jComboBox24;
     private javax.swing.JComboBox<String> jComboBox25;
     private javax.swing.JComboBox<String> jComboBox26;
     private javax.swing.JComboBox<String> jComboBox27;
@@ -2994,6 +3130,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel138;
     private javax.swing.JLabel jLabel139;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel140;
     private javax.swing.JLabel jLabel141;
     private javax.swing.JLabel jLabel142;
@@ -3080,7 +3217,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel80;
@@ -3105,10 +3241,11 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
@@ -3121,7 +3258,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator23;
     private javax.swing.JSeparator jSeparator24;
-    private javax.swing.JSeparator jSeparator25;
     private javax.swing.JSeparator jSeparator26;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -3153,12 +3289,12 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator79;
     private javax.swing.JSeparator jSeparator80;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
@@ -3176,10 +3312,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField49;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private com.toedter.calendar.JDateChooser jdtIngreso;
     private com.toedter.calendar.JDateChooser jdtNacimiento;
     private com.toedter.calendar.JDateChooser jdtNacimientoP;
@@ -3187,15 +3320,18 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JTable jtEliminarP;
     private javax.swing.JLabel lblCIF;
     private javax.swing.JLabel lblCifP;
+    private javax.swing.JLabel lblIDA;
     private javax.swing.JLabel marcoAvatar;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtApellidosP;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCedulaP;
+    private javax.swing.JTextField txtDescripcionA;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDireccionP;
     private javax.swing.JTextField txtEspecialidadP;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreA;
     private javax.swing.JTextField txtNombreP;
     // End of variables declaration//GEN-END:variables
 }
