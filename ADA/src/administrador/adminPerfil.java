@@ -37,6 +37,8 @@ public final class adminPerfil extends javax.swing.JFrame {
      */
     private static int limp=0;
     private int id_pensum;
+    private String cif_mp="-1";
+    
     public adminPerfil() {
         initComponents();
         ImageIcon imagen = new ImageIcon(getClass().getResource("/imagesEst/avatarDef.png"));
@@ -52,9 +54,10 @@ public final class adminPerfil extends javax.swing.JFrame {
         agregarFacultades(cmbEliminarP);
         agregarFacultades(cmbFacultadA);
         agregarFacultades(cmbFacultadAR);
-        agregarFacultades(cmbFacultadP);
         agregarFacultades(cmbFacultadPC);
         agregarFacultades(cmbFacultadPB);
+        agregarFacultades(cmbFacultadMP);
+        agregarFacultades(cmbFacultadesMPN);
         agregarFacultades(cmbFacultadPS);
         setCIF(id_max("CIF","PERSONAL"), lblCIF);
         setCIF(id_max("CIF","PERSONAL"), lblCifP);
@@ -539,28 +542,30 @@ public final class adminPerfil extends javax.swing.JFrame {
         jSeparator55 = new javax.swing.JSeparator();
         jLabel73 = new javax.swing.JLabel();
         jSeparator56 = new javax.swing.JSeparator();
-        jSeparator57 = new javax.swing.JSeparator();
         jLabel129 = new javax.swing.JLabel();
-        jLabel130 = new javax.swing.JLabel();
         jLabel131 = new javax.swing.JLabel();
         jSeparator58 = new javax.swing.JSeparator();
         jLabel132 = new javax.swing.JLabel();
-        jSeparator59 = new javax.swing.JSeparator();
         jLabel133 = new javax.swing.JLabel();
         jSeparator60 = new javax.swing.JSeparator();
-        btnCrearEst10 = new javax.swing.JButton();
+        btnGuardarCambiosMP = new javax.swing.JButton();
         jLabel134 = new javax.swing.JLabel();
         jLabel135 = new javax.swing.JLabel();
         jSeparator61 = new javax.swing.JSeparator();
         jLabel136 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jTextField33 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
-        jTextField35 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
-        jTextField37 = new javax.swing.JTextField();
-        jTextField38 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
+        cmbEstadoMP = new javax.swing.JComboBox<>();
+        txtNombreMP = new javax.swing.JTextField();
+        txtEmailMP = new javax.swing.JTextField();
+        txtEspecialidadMP = new javax.swing.JTextField();
+        txtCedulaMP = new javax.swing.JTextField();
+        txtDireccionMP = new javax.swing.JTextField();
+        cmbFacultadMP = new javax.swing.JComboBox<>();
+        cmbFacultadesMPN = new javax.swing.JComboBox<>();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jtProfesorM = new javax.swing.JTable();
+        btnSeleccionarProfe = new javax.swing.JButton();
+        jLabel48 = new javax.swing.JLabel();
+        jdtNacimientoMP = new com.toedter.calendar.JDateChooser();
         PnlEliminarProf = new javax.swing.JPanel();
         jLabel157 = new javax.swing.JLabel();
         cmbEliminarP = new javax.swing.JComboBox<>();
@@ -634,23 +639,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         jComboBox39 = new javax.swing.JComboBox<>();
         jTextField4 = new javax.swing.JTextField();
         jLabel170 = new javax.swing.JLabel();
-        PnlAjustes = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        btnEditar1 = new javax.swing.JButton();
-        btnEditar2 = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         PnlCambioFotoPerfil = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         avatar1 = new javax.swing.JLabel();
@@ -678,6 +666,23 @@ public final class adminPerfil extends javax.swing.JFrame {
         cmbFacultadPS = new javax.swing.JComboBox<>();
         cmbCarreraPS = new javax.swing.JComboBox<>();
         btnEliminarPI = new javax.swing.JButton();
+        PnlAjustes = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        btnEditar1 = new javax.swing.JButton();
+        btnEditar2 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -1644,79 +1649,117 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         jLabel58.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel58.setText("Nombre:");
-        PnlModificacionProf.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
-        PnlModificacionProf.add(jSeparator55, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 170, -1));
+        PnlModificacionProf.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        PnlModificacionProf.add(jSeparator55, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 170, -1));
 
         jLabel73.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel73.setText("Apellidos: ");
-        PnlModificacionProf.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
-        PnlModificacionProf.add(jSeparator56, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 170, -1));
-        PnlModificacionProf.add(jSeparator57, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 200, -1));
+        jLabel73.setText("Email:");
+        PnlModificacionProf.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        PnlModificacionProf.add(jSeparator56, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 190, 10));
 
         jLabel129.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel129.setText("Fecha de nacimiento: ");
-        PnlModificacionProf.add(jLabel129, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
-
-        jLabel130.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel130.setText("Email:");
-        PnlModificacionProf.add(jLabel130, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        PnlModificacionProf.add(jLabel129, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
         jLabel131.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel131.setText("Cédula:");
-        PnlModificacionProf.add(jLabel131, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
-        PnlModificacionProf.add(jSeparator58, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 170, -1));
+        PnlModificacionProf.add(jLabel131, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
+        PnlModificacionProf.add(jSeparator58, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 170, -1));
 
         jLabel132.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        jLabel132.setText("CIF:");
-        PnlModificacionProf.add(jLabel132, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
-        PnlModificacionProf.add(jSeparator59, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 200, -1));
+        jLabel132.setText("Facultad: ");
+        PnlModificacionProf.add(jLabel132, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
 
         jLabel133.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel133.setText("Dirección:");
-        PnlModificacionProf.add(jLabel133, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
-        PnlModificacionProf.add(jSeparator60, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 160, -1));
+        PnlModificacionProf.add(jLabel133, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+        PnlModificacionProf.add(jSeparator60, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 160, -1));
 
-        btnCrearEst10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/GuardarCambios.png"))); // NOI18N
-        btnCrearEst10.setBorder(null);
-        btnCrearEst10.setBorderPainted(false);
-        btnCrearEst10.setContentAreaFilled(false);
-        PnlModificacionProf.add(btnCrearEst10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, -1));
+        btnGuardarCambiosMP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/GuardarCambios.png"))); // NOI18N
+        btnGuardarCambiosMP.setBorder(null);
+        btnGuardarCambiosMP.setBorderPainted(false);
+        btnGuardarCambiosMP.setContentAreaFilled(false);
+        btnGuardarCambiosMP.setEnabled(false);
+        btnGuardarCambiosMP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarCambiosMPActionPerformed(evt);
+            }
+        });
+        PnlModificacionProf.add(btnGuardarCambiosMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, -1, -1));
 
         jLabel134.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
         PnlModificacionProf.add(jLabel134, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
 
         jLabel135.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel135.setText("Especialidad:");
-        PnlModificacionProf.add(jLabel135, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
-        PnlModificacionProf.add(jSeparator61, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 130, -1));
+        PnlModificacionProf.add(jLabel135, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
+        PnlModificacionProf.add(jSeparator61, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 130, -1));
 
         jLabel136.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel136.setText("Estado:");
-        PnlModificacionProf.add(jLabel136, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        PnlModificacionProf.add(jLabel136, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        PnlModificacionProf.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 150, -1));
+        cmbEstadoMP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVO", "INACTIVO" }));
+        cmbEstadoMP.setEnabled(false);
+        PnlModificacionProf.add(cmbEstadoMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 150, -1));
 
-        jTextField33.setBorder(null);
-        PnlModificacionProf.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 96, 200, 20));
+        txtNombreMP.setBorder(null);
+        txtNombreMP.setEnabled(false);
+        PnlModificacionProf.add(txtNombreMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 170, 20));
 
-        jTextField34.setBorder(null);
-        PnlModificacionProf.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 170, -1));
+        txtEmailMP.setBorder(null);
+        txtEmailMP.setEnabled(false);
+        PnlModificacionProf.add(txtEmailMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 190, 20));
 
-        jTextField35.setBorder(null);
-        PnlModificacionProf.add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 170, -1));
+        txtEspecialidadMP.setBorder(null);
+        txtEspecialidadMP.setEnabled(false);
+        PnlModificacionProf.add(txtEspecialidadMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 130, 20));
 
-        jTextField36.setBorder(null);
-        PnlModificacionProf.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 200, -1));
+        txtCedulaMP.setBorder(null);
+        txtCedulaMP.setEnabled(false);
+        PnlModificacionProf.add(txtCedulaMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 170, 20));
 
-        jTextField37.setBorder(null);
-        PnlModificacionProf.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 130, -1));
+        txtDireccionMP.setBorder(null);
+        txtDireccionMP.setEnabled(false);
+        PnlModificacionProf.add(txtDireccionMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 160, 20));
 
-        jTextField38.setBorder(null);
-        PnlModificacionProf.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 170, -1));
+        cmbFacultadMP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultadMPActionPerformed(evt);
+            }
+        });
+        PnlModificacionProf.add(cmbFacultadMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 120, -1));
 
-        jTextField39.setBorder(null);
-        PnlModificacionProf.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 160, -1));
+        cmbFacultadesMPN.setEnabled(false);
+        PnlModificacionProf.add(cmbFacultadesMPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 160, -1));
+
+        jtProfesorM.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CIF", "Nombre"
+            }
+        ));
+        jScrollPane6.setViewportView(jtProfesorM);
+
+        PnlModificacionProf.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 210, 100));
+
+        btnSeleccionarProfe.setText("Seleccionar");
+        btnSeleccionarProfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarProfeActionPerformed(evt);
+            }
+        });
+        PnlModificacionProf.add(btnSeleccionarProfe, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
+
+        jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel48.setText("Facultad");
+        PnlModificacionProf.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+
+        jdtNacimientoMP.setDateFormatString("dd/MM/yyyy");
+        jdtNacimientoMP.setEnabled(false);
+        PnlModificacionProf.add(jdtNacimientoMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 80, -1));
 
         ParentPanelProf.add(PnlModificacionProf, "card2");
 
@@ -2046,95 +2089,6 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         ParentPanel.add(PnlGrupos, "card8");
 
-        PnlAjustes.setBackground(new java.awt.Color(255, 255, 255));
-        PnlAjustes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/llave.png"))); // NOI18N
-        PnlAjustes.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel16.setText("Ajustes");
-        PnlAjustes.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel17.setText("Cambio de contraseña");
-        PnlAjustes.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel18.setText("Se recomienda usar una contraseña segura que no uses para ningún otro sitio");
-        PnlAjustes.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 145, 380, 20));
-
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
-        PnlAjustes.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 540, -1, -1));
-
-        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
-        btnEditar1.setBorder(null);
-        btnEditar1.setBorderPainted(false);
-        btnEditar1.setContentAreaFilled(false);
-        btnEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditar1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEditar1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEditar1MouseExited(evt);
-            }
-        });
-        PnlAjustes.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
-
-        btnEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
-        btnEditar2.setBorder(null);
-        btnEditar2.setBorderPainted(false);
-        btnEditar2.setContentAreaFilled(false);
-        btnEditar2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditar2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEditar2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEditar2MouseExited(evt);
-            }
-        });
-        PnlAjustes.add(btnEditar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
-        PnlAjustes.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, -1));
-
-        jLabel21.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel21.setText("Cambio de la foto de perfil");
-        PnlAjustes.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/ayuda.png"))); // NOI18N
-        PnlAjustes.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
-
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/camara.png"))); // NOI18N
-        PnlAjustes.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
-
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(106, 151, 197));
-        jLabel24.setText("academicdesktopapplication@gmail.com");
-        PnlAjustes.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 450, 200, 20));
-
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
-        PnlAjustes.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 420, -1));
-
-        jLabel26.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel26.setText("Ayuda y asistencia");
-        PnlAjustes.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
-
-        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel27.setText("Envia tus dudas o sugerencias a: ");
-        PnlAjustes.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, 20));
-
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
-        PnlAjustes.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 420, -1));
-
-        ParentPanel.add(PnlAjustes, "card8");
-
         PnlCambioFotoPerfil.setBackground(new java.awt.Color(255, 255, 255));
         PnlCambioFotoPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2305,6 +2259,95 @@ public final class adminPerfil extends javax.swing.JFrame {
         PnlPensum.add(ParentPanelPensum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 680, 520));
 
         ParentPanel.add(PnlPensum, "card9");
+
+        PnlAjustes.setBackground(new java.awt.Color(255, 255, 255));
+        PnlAjustes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/llave.png"))); // NOI18N
+        PnlAjustes.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel16.setText("Ajustes");
+        PnlAjustes.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel17.setText("Cambio de contraseña");
+        PnlAjustes.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel18.setText("Se recomienda usar una contraseña segura que no uses para ningún otro sitio");
+        PnlAjustes.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 145, 380, 20));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        PnlAjustes.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 540, -1, -1));
+
+        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
+        btnEditar1.setBorder(null);
+        btnEditar1.setBorderPainted(false);
+        btnEditar1.setContentAreaFilled(false);
+        btnEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditar1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditar1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditar1MouseExited(evt);
+            }
+        });
+        PnlAjustes.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        btnEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/editar.png"))); // NOI18N
+        btnEditar2.setBorder(null);
+        btnEditar2.setBorderPainted(false);
+        btnEditar2.setContentAreaFilled(false);
+        btnEditar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditar2MouseExited(evt);
+            }
+        });
+        PnlAjustes.add(btnEditar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel21.setText("Cambio de la foto de perfil");
+        PnlAjustes.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/ayuda.png"))); // NOI18N
+        PnlAjustes.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/camara.png"))); // NOI18N
+        PnlAjustes.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(106, 151, 197));
+        jLabel24.setText("academicdesktopapplication@gmail.com");
+        PnlAjustes.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 450, 200, 20));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 420, -1));
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel26.setText("Ayuda y asistencia");
+        PnlAjustes.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel27.setText("Envia tus dudas o sugerencias a: ");
+        PnlAjustes.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, 20));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/CuadroAjustes.png"))); // NOI18N
+        PnlAjustes.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 420, -1));
+
+        ParentPanel.add(PnlAjustes, "card8");
 
         getContentPane().add(ParentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 610));
 
@@ -3063,7 +3106,146 @@ public final class adminPerfil extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnEliminarPIActionPerformed
+
+    private void cmbFacultadMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadMPActionPerformed
+        if(cmbFacultadMP.getSelectedIndex()!=0){
+            try {
+            DefaultTableModel model = new DefaultTableModel();
+            jtProfesorM.setModel(model);
+            
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT P.CIF, P.NOMBRE FROM PERSONAL AS P INNER JOIN DOCENTE AS D ON P.CIF=D.ID_DOCENTE";
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+            ResultSetMetaData rsMd = resultado.getMetaData();
+            int cantCol = rsMd.getColumnCount();
+            
+            model.addColumn("CIF");
+            model.addColumn("Nombre");
+            
+            while(resultado.next()){
+                Object[] filas = new Object[cantCol];
+                
+                for(int i=0;i<cantCol;i++){
+                    filas[i] = resultado.getObject(i+1);
+                    
+                }
+                model.addRow(filas);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        }
+    }//GEN-LAST:event_cmbFacultadMPActionPerformed
+
+    private void btnSeleccionarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarProfeActionPerformed
+        if(jtProfesorM.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(null, "Seleccione un registro");
+        }else{
+            int row = jtProfesorM.getSelectedRow();
+            cif_mp = jtProfesorM.getModel().getValueAt(row, 0).toString();
+            
+            rellenarMP(0,cif_mp);
+            rellenarMP(1,cif_mp);  
+        }
+    }//GEN-LAST:event_btnSeleccionarProfeActionPerformed
+
+    private void btnGuardarCambiosMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosMPActionPerformed
+        boolean personal=false, docente=false;
+        
+        try {
+            java.util.Date df = jdtNacimientoMP.getDate();
+            
+            long b = df.getTime();
+            
+            java.sql.Date fecha = new java.sql.Date(b);
+            
+            String consulta = "UPDATE PERSONAL SET NOMBRE='" + txtNombreMP.getText() + "', COD_FACULTAD='" + cmbFacultadesMPN.getSelectedItem().toString() + "', CEDULA='" + txtCedulaMP.getText() + "', DIRECCION='" + txtDireccionMP.getText() +"', EMAIL_INSTITUCION='" + txtEmailMP.getText() + "', FECHA_NACIMIENTO='" + fecha + "' WHERE CIF=" + cif_mp;
+
+            PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+            sql.executeUpdate();
+            personal = true;
+            consultaTablaPI();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        
+        try {
+            java.util.Date df = jdtNacimientoMP.getDate();
+            
+            long b = df.getTime();
+            
+            java.sql.Date fecha = new java.sql.Date(b);
+            
+            String consulta = "UPDATE DOCENTE SET ESTADO='" + cmbEstadoMP.getSelectedItem().toString()+ "', ESPECIALIDAD='" + txtEspecialidadMP.getText() + "' WHERE ID_DOCENTE=" + cif_mp;
+
+            PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+            sql.executeUpdate();
+            docente = true;
+            consultaTablaPI();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        
+        if(docente && personal){
+            JOptionPane.showMessageDialog(null, "Se han realizado los cambios correctamente");
+            rellenarMP(1, cif_mp);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error!!!");
+        }
+    }//GEN-LAST:event_btnGuardarCambiosMPActionPerformed
+
+    private void rellenarMP(int tipo, String cif){
+        if(tipo==1){
+            try {
+            Statement sql = Conexion.getConnection().createStatement();
+            
+            String consulta = "SELECT P.NOMBRE,P.CEDULA,P.EMAIL_INSTITUCION,P.COD_FACULTAD,P.DIRECCION,P.FECHA_NACIMIENTO,D.ESTADO,D.ESPECIALIDAD FROM PERSONAL AS P INNER JOIN DOCENTE AS D ON P.CIF=D.ID_DOCENTE WHERE P.CIF="+ cif;
+            ResultSet resultado = sql.executeQuery(consulta);
+            
+
+            while (resultado.next()) {                
+                txtNombreMP.setText(resultado.getString(1));
+                txtCedulaMP.setText(resultado.getString(2));
+                txtEmailMP.setText(resultado.getString(3));
+                cmbFacultadesMPN.setSelectedIndex(getIndex(cmbFacultadesMPN, resultado.getString(4)));
+                txtDireccionMP.setText(resultado.getString(5));
+                Date dt = resultado.getDate(6);
+                jdtNacimientoMP.setDate(dt);
+                cmbEstadoMP.setSelectedIndex(getIndex(cmbEstadoMP, resultado.getString(7)));
+                txtEspecialidadMP.setText(resultado.getString(8));
+            }
+                 
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+        }else{
+            txtNombreMP.setEnabled(true);
+            txtCedulaMP.setEnabled(true);
+            txtEmailMP.setEnabled(true);
+            cmbFacultadesMPN.setEnabled(true);
+            txtDireccionMP.setEnabled(true);
+            jdtNacimientoMP.setEnabled(true);
+            cmbEstadoMP.setEnabled(true);
+            txtEspecialidadMP.setEnabled(true);
+            btnGuardarCambiosMP.setEnabled(true);
+        }
+    }
     
+    private int getIndex(JComboBox cmb, String item){
+        int row=-1;
+         for(int i=0; i<cmb.getItemCount();i++){
+             if(cmb.getItemAt(i).toString().equals(item)){
+                 row=i;
+             }
+         }
+        
+        return row;
+    }
     private void consultaTablaPI(){
         try {
             DefaultTableModel model = new DefaultTableModel();
@@ -3444,7 +3626,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnCrearA;
     private javax.swing.JButton btnCrearEst;
-    private javax.swing.JButton btnCrearEst10;
     private javax.swing.JButton btnCrearEst12;
     private javax.swing.JButton btnCrearEst13;
     private javax.swing.JButton btnCrearG;
@@ -3461,6 +3642,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarProf;
     private javax.swing.JButton btnEstudiantes;
     private javax.swing.JButton btnGrupos;
+    private javax.swing.JButton btnGuardarCambiosMP;
     private javax.swing.JButton btnGuardarFoto;
     private javax.swing.JButton btnModificacionEst;
     private javax.swing.JButton btnModificacionG;
@@ -3472,21 +3654,25 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnRetiro;
     private javax.swing.JButton btnRetiroG;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnSeleccionarProfe;
     private javax.swing.JButton btnSubirFoto;
     private javax.swing.JComboBox<String> cmbCarrera;
     private javax.swing.JComboBox<String> cmbCarreraE;
     private javax.swing.JComboBox<String> cmbCarreraPC;
     private javax.swing.JComboBox<String> cmbCarreraPS;
     private javax.swing.JComboBox<String> cmbEliminarP;
+    private javax.swing.JComboBox<String> cmbEstadoMP;
     private javax.swing.JComboBox<String> cmbEstadoP;
     private javax.swing.JComboBox<String> cmbFacultad;
     private javax.swing.JComboBox<String> cmbFacultadA;
     private javax.swing.JComboBox<String> cmbFacultadAR;
     private javax.swing.JComboBox<String> cmbFacultadE;
+    private javax.swing.JComboBox<String> cmbFacultadMP;
     private javax.swing.JComboBox<String> cmbFacultadP;
     private javax.swing.JComboBox<String> cmbFacultadPB;
     private javax.swing.JComboBox<String> cmbFacultadPC;
     private javax.swing.JComboBox<String> cmbFacultadPS;
+    private javax.swing.JComboBox<String> cmbFacultadesMPN;
     private javax.swing.JComboBox<String> cmbSemestreA;
     private javax.swing.JComboBox<String> cmbSemestreP;
     private javax.swing.JButton jButton1;
@@ -3515,7 +3701,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox36;
     private javax.swing.JComboBox<String> jComboBox37;
     private javax.swing.JComboBox<String> jComboBox39;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
@@ -3526,7 +3711,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel132;
     private javax.swing.JLabel jLabel133;
@@ -3602,6 +3786,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
@@ -3656,6 +3841,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -3672,9 +3858,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator55;
     private javax.swing.JSeparator jSeparator56;
-    private javax.swing.JSeparator jSeparator57;
     private javax.swing.JSeparator jSeparator58;
-    private javax.swing.JSeparator jSeparator59;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator60;
     private javax.swing.JSeparator jSeparator61;
@@ -3703,13 +3887,6 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField42;
     private javax.swing.JTextField jTextField45;
@@ -3722,12 +3899,14 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private com.toedter.calendar.JDateChooser jdtIngreso;
     private com.toedter.calendar.JDateChooser jdtNacimiento;
+    private com.toedter.calendar.JDateChooser jdtNacimientoMP;
     private com.toedter.calendar.JDateChooser jdtNacimientoP;
     private javax.swing.JTable jtAsigIns;
     private javax.swing.JTable jtAsigNoIns;
     private javax.swing.JTable jtEliminar;
     private javax.swing.JTable jtEliminarP;
     private javax.swing.JTable jtElminarAR;
+    private javax.swing.JTable jtProfesorM;
     private javax.swing.JLabel lblCIF;
     private javax.swing.JLabel lblCifP;
     private javax.swing.JLabel lblIDA;
@@ -3736,13 +3915,18 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellidosP;
     private javax.swing.JTextField txtBuscarAR;
     private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCedulaMP;
     private javax.swing.JTextField txtCedulaP;
     private javax.swing.JTextField txtDescripcionA;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtDireccionMP;
     private javax.swing.JTextField txtDireccionP;
+    private javax.swing.JTextField txtEmailMP;
+    private javax.swing.JTextField txtEspecialidadMP;
     private javax.swing.JTextField txtEspecialidadP;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreA;
+    private javax.swing.JTextField txtNombreMP;
     private javax.swing.JTextField txtNombreP;
     // End of variables declaration//GEN-END:variables
 }
