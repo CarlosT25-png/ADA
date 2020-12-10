@@ -476,9 +476,9 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel165 = new javax.swing.JLabel();
         cmbFacultad = new javax.swing.JComboBox<>();
         cmbCarrera = new javax.swing.JComboBox<>();
+        lblCIF = new javax.swing.JLabel();
         jdtNacimiento = new com.toedter.calendar.JDateChooser();
         jdtIngreso = new com.toedter.calendar.JDateChooser();
-        lblCIF = new javax.swing.JLabel();
         PnlModificacionEst = new javax.swing.JPanel();
         jLabel145 = new javax.swing.JLabel();
         jSeparator68 = new javax.swing.JSeparator();
@@ -543,11 +543,11 @@ public final class adminPerfil extends javax.swing.JFrame {
         txtEspecialidadP = new javax.swing.JTextField();
         txtCedulaP = new javax.swing.JTextField();
         txtDireccionP = new javax.swing.JTextField();
-        jdtNacimientoP = new com.toedter.calendar.JDateChooser();
         lblCifP = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         cmbFacultadP = new javax.swing.JComboBox<>();
         jLabel139 = new javax.swing.JLabel();
+        jdtNacimientoP = new com.toedter.calendar.JDateChooser();
         PnlModificacionProf = new javax.swing.JPanel();
         jLabel58 = new javax.swing.JLabel();
         jSeparator55 = new javax.swing.JSeparator();
@@ -613,7 +613,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         btnAgregarH = new javax.swing.JButton();
-        jycAnio = new com.toedter.calendar.JYearChooser();
         lblIDG = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
@@ -621,6 +620,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         cmbFacultadGP = new javax.swing.JComboBox<>();
         jLabel89 = new javax.swing.JLabel();
         cmbDocenteG = new javax.swing.JComboBox<>();
+        jycAnio = new com.toedter.calendar.JYearChooser();
         PnlModificacionGrupos = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
@@ -664,27 +664,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         btnSubirFoto = new javax.swing.JButton();
         btnGuardarFoto = new javax.swing.JButton();
-        PnlPensum = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        ParentPanelPensum = new javax.swing.JPanel();
-        cmbFacultadPC = new javax.swing.JComboBox<>();
-        jLabel30 = new javax.swing.JLabel();
-        cmbCarreraPC = new javax.swing.JComboBox<>();
-        jLabel31 = new javax.swing.JLabel();
-        btnCrearPensum = new javax.swing.JButton();
-        jLabel33 = new javax.swing.JLabel();
-        cmbSemestreP = new javax.swing.JComboBox<>();
-        jLabel34 = new javax.swing.JLabel();
-        cmbFacultadPB = new javax.swing.JComboBox<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtAsigNoIns = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jtAsigIns = new javax.swing.JTable();
-        btnPasarA = new javax.swing.JButton();
-        cmbFacultadPS = new javax.swing.JComboBox<>();
-        cmbCarreraPS = new javax.swing.JComboBox<>();
-        btnEliminarPI = new javax.swing.JButton();
         PnlAjustes = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -702,6 +681,32 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        PnlPensum = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        ParentPanelPensum = new javax.swing.JPanel();
+        cmbFacultadPC = new javax.swing.JComboBox<>();
+        jLabel52 = new javax.swing.JLabel();
+        cmbCarreraPC = new javax.swing.JComboBox<>();
+        jLabel55 = new javax.swing.JLabel();
+        btnCrearPensum = new javax.swing.JButton();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        btnEliminarPI = new javax.swing.JButton();
+        jSeparator12 = new javax.swing.JSeparator();
+        jSeparator13 = new javax.swing.JSeparator();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        cmbFacultadPS = new javax.swing.JComboBox<>();
+        cmbCarreraPS = new javax.swing.JComboBox<>();
+        cmbSemestreP = new javax.swing.JComboBox<>();
+        cmbFacultadPB = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtAsigNoIns = new javax.swing.JTable();
+        btnPasarA = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtAsigIns = new javax.swing.JTable();
+        jLabel75 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -729,6 +734,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnPerfil.setBorder(null);
         btnPerfil.setBorderPainted(false);
         btnPerfil.setContentAreaFilled(false);
+        btnPerfil.setFocusable(false);
         btnPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPerfilMouseClicked(evt);
@@ -746,6 +752,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnAsignacion.setBorder(null);
         btnAsignacion.setBorderPainted(false);
         btnAsignacion.setContentAreaFilled(false);
+        btnAsignacion.setFocusable(false);
         btnAsignacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAsignacionMouseClicked(evt);
@@ -764,6 +771,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnGrupos.setBorderPainted(false);
         btnGrupos.setContentAreaFilled(false);
         btnGrupos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnGrupos.setFocusable(false);
         btnGrupos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGruposMouseClicked(evt);
@@ -781,6 +789,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnEstudiantes.setBorder(null);
         btnEstudiantes.setBorderPainted(false);
         btnEstudiantes.setContentAreaFilled(false);
+        btnEstudiantes.setFocusable(false);
         btnEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEstudiantesMouseClicked(evt);
@@ -798,6 +807,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnProfesor.setBorder(null);
         btnProfesor.setBorderPainted(false);
         btnProfesor.setContentAreaFilled(false);
+        btnProfesor.setFocusable(false);
         btnProfesor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProfesorMouseClicked(evt);
@@ -815,6 +825,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnPensum.setBorder(null);
         btnPensum.setBorderPainted(false);
         btnPensum.setContentAreaFilled(false);
+        btnPensum.setFocusable(false);
         btnPensum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPensumMouseClicked(evt);
@@ -832,6 +843,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnSalir.setBorder(null);
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
+        btnSalir.setFocusable(false);
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalirMouseClicked(evt);
@@ -849,6 +861,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnAjustes.setBorder(null);
         btnAjustes.setBorderPainted(false);
         btnAjustes.setContentAreaFilled(false);
+        btnAjustes.setFocusable(false);
         btnAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAjustesMouseClicked(evt);
@@ -1305,6 +1318,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnCrearEst12.setBorder(null);
         btnCrearEst12.setBorderPainted(false);
         btnCrearEst12.setContentAreaFilled(false);
+        btnCrearEst12.setFocusable(false);
         btnCrearEst12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearEst12ActionPerformed(evt);
@@ -1351,13 +1365,9 @@ public final class adminPerfil extends javax.swing.JFrame {
         PnlCrearEst.add(cmbFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 190, 30));
 
         PnlCrearEst.add(cmbCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 170, 30));
-
-        jdtNacimiento.setDateFormatString("dd/MM/yyyy");
-        PnlCrearEst.add(jdtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
-
-        jdtIngreso.setDateFormatString("dd/MM/yyyy");
-        PnlCrearEst.add(jdtIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, -1, -1));
         PnlCrearEst.add(lblCIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 190, 20));
+        PnlCrearEst.add(jdtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 130, -1));
+        PnlCrearEst.add(jdtIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 120, -1));
 
         ParentPanelEst.add(PnlCrearEst, "card2");
 
@@ -1645,9 +1655,6 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         txtDireccionP.setBorder(null);
         PnlCrearProf.add(txtDireccionP, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 160, -1));
-
-        jdtNacimientoP.setDateFormatString("dd/MM/yyyy");
-        PnlCrearProf.add(jdtNacimientoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 90, -1));
         PnlCrearProf.add(lblCifP, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 190, 20));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
@@ -1660,6 +1667,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel139.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel139.setText("Fecha de nacimiento: ");
         PnlCrearProf.add(jLabel139, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+        PnlCrearProf.add(jdtNacimientoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 140, -1));
 
         ParentPanelProf.add(PnlCrearProf, "card4");
 
@@ -1699,6 +1707,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnGuardarCambiosMP.setBorderPainted(false);
         btnGuardarCambiosMP.setContentAreaFilled(false);
         btnGuardarCambiosMP.setEnabled(false);
+        btnGuardarCambiosMP.setFocusable(false);
         btnGuardarCambiosMP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarCambiosMPActionPerformed(evt);
@@ -1720,6 +1729,7 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         cmbEstadoMP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVO", "INACTIVO" }));
         cmbEstadoMP.setEnabled(false);
+        cmbEstadoMP.setFocusable(false);
         PnlModificacionProf.add(cmbEstadoMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 150, -1));
 
         txtNombreMP.setBorder(null);
@@ -1764,21 +1774,22 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         PnlModificacionProf.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 210, 100));
 
-        btnSeleccionarProfe.setText("Seleccionar");
+        btnSeleccionarProfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/seleccionar.png"))); // NOI18N
+        btnSeleccionarProfe.setBorder(null);
+        btnSeleccionarProfe.setBorderPainted(false);
+        btnSeleccionarProfe.setContentAreaFilled(false);
+        btnSeleccionarProfe.setFocusable(false);
         btnSeleccionarProfe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarProfeActionPerformed(evt);
             }
         });
-        PnlModificacionProf.add(btnSeleccionarProfe, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
+        PnlModificacionProf.add(btnSeleccionarProfe, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 40));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel48.setText("Facultad");
         PnlModificacionProf.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
-
-        jdtNacimientoMP.setDateFormatString("dd/MM/yyyy");
-        jdtNacimientoMP.setEnabled(false);
-        PnlModificacionProf.add(jdtNacimientoMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 80, -1));
+        PnlModificacionProf.add(jdtNacimientoMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 140, -1));
 
         ParentPanelProf.add(PnlModificacionProf, "card2");
 
@@ -1842,6 +1853,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnCrearG.setBorder(null);
         btnCrearG.setBorderPainted(false);
         btnCrearG.setContentAreaFilled(false);
+        btnCrearG.setFocusable(false);
         btnCrearG.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCrearGMouseClicked(evt);
@@ -1859,6 +1871,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnModificacionG.setBorder(null);
         btnModificacionG.setBorderPainted(false);
         btnModificacionG.setContentAreaFilled(false);
+        btnModificacionG.setFocusable(false);
         btnModificacionG.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnModificacionGMouseClicked(evt);
@@ -1876,6 +1889,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         btnRetiroG.setBorder(null);
         btnRetiroG.setBorderPainted(false);
         btnRetiroG.setContentAreaFilled(false);
+        btnRetiroG.setFocusable(false);
         btnRetiroG.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRetiroGMouseClicked(evt);
@@ -1927,7 +1941,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         });
         PnlCrearGrupos.add(cmbAsignaturaG, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 190, -1));
 
-        btnCrearGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/CrearGrupo.png"))); // NOI18N
+        btnCrearGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesAdmin/btnCrearGrupo.png"))); // NOI18N
         btnCrearGrupo.setBorder(null);
         btnCrearGrupo.setBorderPainted(false);
         btnCrearGrupo.setContentAreaFilled(false);
@@ -2000,9 +2014,6 @@ public final class adminPerfil extends javax.swing.JFrame {
             }
         });
         PnlCrearGrupos.add(btnAgregarH, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, -1, -1));
-
-        jycAnio.setEnabled(false);
-        PnlCrearGrupos.add(jycAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, -1));
         PnlCrearGrupos.add(lblIDG, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 140, 20));
 
         jLabel53.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
@@ -2031,6 +2042,7 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         cmbDocenteG.setEnabled(false);
         PnlCrearGrupos.add(cmbDocenteG, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 190, -1));
+        PnlCrearGrupos.add(jycAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 90, -1));
 
         ParentPanelGrupos.add(PnlCrearGrupos, "card2");
 
@@ -2212,134 +2224,6 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         ParentPanel.add(PnlCambioFotoPerfil, "card9");
 
-        PnlPensum.setBackground(new java.awt.Color(255, 255, 255));
-        PnlPensum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel14.setText("Pensum");
-        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
-
-        PnlPensum.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 80));
-
-        ParentPanelPensum.setBackground(new java.awt.Color(255, 255, 255));
-        ParentPanelPensum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        cmbFacultadPC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbFacultadPCActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(cmbFacultadPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 120, -1));
-
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel30.setText("Facultad");
-        ParentPanelPensum.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
-
-        cmbCarreraPC.setEnabled(false);
-        cmbCarreraPC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCarreraPCActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(cmbCarreraPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 160, -1));
-
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel31.setText("Carrera");
-        ParentPanelPensum.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
-
-        btnCrearPensum.setText("Crear pensum");
-        btnCrearPensum.setEnabled(false);
-        btnCrearPensum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearPensumActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(btnCrearPensum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 130, 40));
-
-        jLabel33.setText("Seleccionar Semestre:");
-        ParentPanelPensum.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
-
-        cmbSemestreP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre I", "Semestre II", "Semestre III", "Semestre IV", "Semestre V", "Semestre VI", "Semestre VII", "Semestre VIII", "Semestre IX", "Semestre X" }));
-        cmbSemestreP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbSemestrePActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(cmbSemestreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 120, 40));
-
-        jLabel34.setText("Seleccionar Asignatura");
-        ParentPanelPensum.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
-
-        cmbFacultadPB.setEnabled(false);
-        cmbFacultadPB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbFacultadPBActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(cmbFacultadPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 140, -1));
-
-        jtAsigNoIns.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID_ASIGNATURA", "Nombre"
-            }
-        ));
-        jScrollPane2.setViewportView(jtAsigNoIns);
-
-        ParentPanelPensum.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 220, 130));
-
-        jtAsigIns.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID_ASIGNATURA", "Nombre"
-            }
-        ));
-        jScrollPane3.setViewportView(jtAsigIns);
-
-        ParentPanelPensum.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 230, 130));
-
-        btnPasarA.setText("->");
-        btnPasarA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPasarAActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(btnPasarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, -1, -1));
-
-        cmbFacultadPS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbFacultadPSActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(cmbFacultadPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 110, -1));
-
-        cmbCarreraPS.setEnabled(false);
-        cmbCarreraPS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCarreraPSActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(cmbCarreraPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 130, -1));
-
-        btnEliminarPI.setText("Eliminar");
-        btnEliminarPI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarPIActionPerformed(evt);
-            }
-        });
-        ParentPanelPensum.add(btnEliminarPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, -1, -1));
-
-        PnlPensum.add(ParentPanelPensum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 680, 520));
-
-        ParentPanel.add(PnlPensum, "card9");
-
         PnlAjustes.setBackground(new java.awt.Color(255, 255, 255));
         PnlAjustes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2354,7 +2238,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel17.setText("Cambio de contraseña");
         PnlAjustes.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel18.setText("Se recomienda usar una contraseña segura que no uses para ningún otro sitio");
         PnlAjustes.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 145, 380, 20));
 
@@ -2408,7 +2291,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesEst/camara.png"))); // NOI18N
         PnlAjustes.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(106, 151, 197));
         jLabel24.setText("academicdesktopapplication@gmail.com");
         PnlAjustes.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 450, 200, 20));
@@ -2420,7 +2302,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         jLabel26.setText("Ayuda y asistencia");
         PnlAjustes.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel27.setText("Envia tus dudas o sugerencias a: ");
         PnlAjustes.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, 20));
 
@@ -2428,6 +2309,155 @@ public final class adminPerfil extends javax.swing.JFrame {
         PnlAjustes.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 420, -1));
 
         ParentPanel.add(PnlAjustes, "card8");
+
+        PnlPensum.setBackground(new java.awt.Color(255, 255, 255));
+        PnlPensum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel14.setText("Pensum");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        PnlPensum.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 80));
+
+        ParentPanelPensum.setBackground(new java.awt.Color(255, 255, 255));
+        ParentPanelPensum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmbFacultadPC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultadPCActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(cmbFacultadPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 120, -1));
+
+        jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel52.setText("Seleccionar un pensum");
+        ParentPanelPensum.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        cmbCarreraPC.setEnabled(false);
+        cmbCarreraPC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCarreraPCActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(cmbCarreraPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 160, -1));
+
+        jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel55.setText("Carrera");
+        ParentPanelPensum.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
+
+        btnCrearPensum.setBorder(null);
+        btnCrearPensum.setBorderPainted(false);
+        btnCrearPensum.setContentAreaFilled(false);
+        btnCrearPensum.setEnabled(false);
+        btnCrearPensum.setFocusable(false);
+        btnCrearPensum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearPensumActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(btnCrearPensum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 130, 40));
+
+        jLabel63.setText("Seleccionar Semestre:");
+        ParentPanelPensum.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+
+        jLabel68.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel68.setText("Seleccionar Asignatura");
+        ParentPanelPensum.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        btnEliminarPI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesDecano/eliminar.png"))); // NOI18N
+        btnEliminarPI.setBorder(null);
+        btnEliminarPI.setBorderPainted(false);
+        btnEliminarPI.setContentAreaFilled(false);
+        btnEliminarPI.setFocusable(false);
+        btnEliminarPI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPIActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(btnEliminarPI, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, -1, -1));
+        ParentPanelPensum.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 600, -1));
+        ParentPanelPensum.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 600, -1));
+
+        jLabel71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesLogin/lg2.png"))); // NOI18N
+        ParentPanelPensum.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, 90, 60));
+
+        jLabel72.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel72.setText("Facultad");
+        ParentPanelPensum.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        cmbFacultadPS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultadPSActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(cmbFacultadPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 110, -1));
+
+        cmbCarreraPS.setEnabled(false);
+        cmbCarreraPS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCarreraPSActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(cmbCarreraPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 130, -1));
+
+        cmbSemestreP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre I", "Semestre II", "Semestre III", "Semestre IV", "Semestre V", "Semestre VI", "Semestre VII", "Semestre VIII", "Semestre IX", "Semestre X" }));
+        cmbSemestreP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSemestrePActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(cmbSemestreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 120, 20));
+
+        cmbFacultadPB.setEnabled(false);
+        cmbFacultadPB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacultadPBActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(cmbFacultadPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 140, -1));
+
+        jtAsigNoIns.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID_ASIGNATURA", "Nombre"
+            }
+        ));
+        jScrollPane2.setViewportView(jtAsigNoIns);
+
+        ParentPanelPensum.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 220, 130));
+
+        btnPasarA.setText("->");
+        btnPasarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasarAActionPerformed(evt);
+            }
+        });
+        ParentPanelPensum.add(btnPasarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, -1, -1));
+
+        jtAsigIns.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID_ASIGNATURA", "Nombre"
+            }
+        ));
+        jScrollPane3.setViewportView(jtAsigIns);
+
+        ParentPanelPensum.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 230, 130));
+
+        jLabel75.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel75.setText("Carrera");
+        ParentPanelPensum.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+
+        PnlPensum.add(ParentPanelPensum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 680, 530));
+
+        ParentPanel.add(PnlPensum, "card9");
 
         getContentPane().add(ParentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 680, 610));
 
@@ -2885,7 +2915,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             
             //Aqui creamos objetos de tipo Alumno
             alumno.Alumno est = new alumno.Alumno(id_max("CIF","PERSONAL"), cmbFacultad.getSelectedItem().toString(), (txtNombre.getText() + " " + txtApellido.getText()), txtCedula.getText(), txtDireccion.getText(), snacimiento, singreso, getID_CARRERA());
-            GuardarEst ventanaE = new GuardarEst(est);
+            Guardar ventanaE = new Guardar(est);
             ventanaE.setVisible(true);
             exeLimpiar();
         }else{
@@ -2921,7 +2951,7 @@ public final class adminPerfil extends javax.swing.JFrame {
             
             System.out.println(cmbEstadoP.getSelectedItem().toString());
             Profesor profe = new Profesor(id_max("CIF","PERSONAL"), cmbFacultadP.getSelectedItem().toString(), txtNombreP.getText() + " " + txtApellidosP.getText(), txtCedulaP.getText(), txtDireccionP.getText(), snacimientoP, txtEspecialidadP.getText(), cmbEstadoP.getSelectedItem().toString());
-            GuardarEst ventana = new GuardarEst(profe);
+            Guardar ventana = new Guardar(profe);
             ventana.setVisible(true);
             exeLimpiar();
         }else{
@@ -3048,49 +3078,6 @@ public final class adminPerfil extends javax.swing.JFrame {
         consultarTablaAR(txtBuscarAR.getText());
     }//GEN-LAST:event_btnBuscarARActionPerformed
 
-    private void cmbFacultadPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadPCActionPerformed
-        if(cmbFacultadPC.getSelectedIndex()!=0){
-            cmbCarreraPC.setEnabled(true);
-            consultaComboCarreraPC(cmbFacultadPC.getSelectedItem().toString());
-        }else{
-            cmbCarreraPC.setEnabled(false);
-            cmbCarreraPC.removeAllItems();
-        }
-    }//GEN-LAST:event_cmbFacultadPCActionPerformed
-
-    private void cmbCarreraPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarreraPCActionPerformed
-        if(cmbFacultadPC.getSelectedIndex()!=0  && cmbCarreraPC.getSelectedIndex()!=0){
-            btnCrearPensum.setEnabled(true);
-        }
-    }//GEN-LAST:event_cmbCarreraPCActionPerformed
-
-    private void btnCrearPensumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPensumActionPerformed
-        try {
-            int id_pensum = id_max("ID_PENSUM", "PENSUM");
-            String consulta = "INSERT INTO PENSUM VALUES(" + id_pensum +",'" + cmbFacultadPC.getSelectedItem().toString()+"'," + getIDCarrera(cmbCarreraPC.getSelectedItem().toString(), cmbFacultadPC.getSelectedItem().toString()) +")";
-
-            PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
-
-            sql.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null, "Pensum de la carrera de " + cmbCarreraPC.getSelectedItem().toString() + ", ha sido creado correctamente");
-            cmbCarreraPC.removeAllItems();;
-            cmbFacultadPC.setSelectedIndex(0);
-            cmbCarreraPC.setEnabled(false);
-            btnCrearPensum.setEnabled(false);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
-    }//GEN-LAST:event_btnCrearPensumActionPerformed
-
-
-    private void cmbFacultadPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadPBActionPerformed
-        if(cmbFacultadPB.getSelectedIndex()!=0){
-            consultaTablaPB(cmbFacultadPB);
-        }else{
-            jtAsigNoIns.removeAll();
-        }
-    }//GEN-LAST:event_cmbFacultadPBActionPerformed
 
     private void consultaTablaPB(JComboBox cmb){
         try {
@@ -3122,163 +3109,6 @@ public final class adminPerfil extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
-    private void cmbFacultadPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadPSActionPerformed
-        if(cmbFacultadPS.getSelectedIndex()!=0){
-            cmbCarreraPS.setEnabled(true);
-            consultaComboCarreraPS(cmbFacultadPS.getSelectedItem().toString());
-            
-        }else{
-            cmbCarreraPS.setEnabled(false);
-        }
-    }//GEN-LAST:event_cmbFacultadPSActionPerformed
-
-    private void cmbCarreraPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarreraPSActionPerformed
-        if(cmbCarreraPS.getSelectedIndex()!=0){
-            cmbFacultadPB.setEnabled(true);
-            setID_PENSUM(cmbCarreraPS.getSelectedItem().toString());
-            consultaTablaPI();
-        }else{
-            cmbFacultadPB.setEnabled(false);
-        }
-    }//GEN-LAST:event_cmbCarreraPSActionPerformed
-
-    private void btnPasarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasarAActionPerformed
-        int row = jtAsigNoIns.getSelectedRow();
-        String id_asignatura = jtAsigNoIns.getModel().getValueAt(row, 0).toString();
-
-        if (jtAsigNoIns.getSelectionModel().isSelectionEmpty()) {
-            JOptionPane.showMessageDialog(null, "Seleccione una asignatura");
-        } else {
-            try {
-                String consulta = "INSERT INTO ASIGNATURA_PENSUM VALUES(" +id_asignatura+","+id_pensum+",'" +cmbSemestreP.getSelectedItem().toString()+"')";
-
-                PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
-
-                sql.executeUpdate();
-                JOptionPane.showMessageDialog(null, "La asignatura se ha asignado correctamente");
-                consultaTablaPI();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex.toString());
-            }
-        }
-    }//GEN-LAST:event_btnPasarAActionPerformed
-
-    private void cmbSemestrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSemestrePActionPerformed
-        consultaTablaPI();
-    }//GEN-LAST:event_cmbSemestrePActionPerformed
-
-    private void btnEliminarPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPIActionPerformed
-        if(jtAsigIns.getSelectionModel().isSelectionEmpty()){
-            JOptionPane.showMessageDialog(null, "Seleccione un registro");
-        }else{
-            int row = jtAsigIns.getSelectedRow();
-            String id_delete = jtAsigIns.getModel().getValueAt(row, 0).toString();
-            
-            try {
-                String consulta = "DELETE FROM ASIGNATURA_PENSUM WHERE ID_PENSUM=" + id_delete;
-                PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
-
-                sql.executeUpdate();
-                
-                JOptionPane.showMessageDialog(null, "La asignatura se ha eliminado correctamente");
-                consultaTablaPI();
-            } catch (Exception e) {
-            }
-        }
-    }//GEN-LAST:event_btnEliminarPIActionPerformed
-
-    private void cmbFacultadMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadMPActionPerformed
-        if(cmbFacultadMP.getSelectedIndex()!=0){
-            try {
-            DefaultTableModel model = new DefaultTableModel();
-            jtProfesorM.setModel(model);
-            
-            Statement sql = Conexion.getConnection().createStatement();
-            
-            String consulta = "SELECT P.CIF, P.NOMBRE FROM PERSONAL AS P INNER JOIN DOCENTE AS D ON P.CIF=D.ID_DOCENTE";
-            ResultSet resultado = sql.executeQuery(consulta);
-            
-            ResultSetMetaData rsMd = resultado.getMetaData();
-            int cantCol = rsMd.getColumnCount();
-            
-            model.addColumn("CIF");
-            model.addColumn("Nombre");
-            
-            while(resultado.next()){
-                Object[] filas = new Object[cantCol];
-                
-                for(int i=0;i<cantCol;i++){
-                    filas[i] = resultado.getObject(i+1);
-                    
-                }
-                model.addRow(filas);
-            }
-            
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        }
-    }//GEN-LAST:event_cmbFacultadMPActionPerformed
-
-    private void btnSeleccionarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarProfeActionPerformed
-        if(jtProfesorM.getSelectionModel().isSelectionEmpty()){
-            JOptionPane.showMessageDialog(null, "Seleccione un registro");
-        }else{
-            int row = jtProfesorM.getSelectedRow();
-            cif_mp = jtProfesorM.getModel().getValueAt(row, 0).toString();
-            
-            rellenarMP(0,cif_mp);
-            rellenarMP(1,cif_mp);  
-        }
-    }//GEN-LAST:event_btnSeleccionarProfeActionPerformed
-
-    private void btnGuardarCambiosMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosMPActionPerformed
-        boolean personal=false, docente=false;
-        
-        try {
-            java.util.Date df = jdtNacimientoMP.getDate();
-            
-            long b = df.getTime();
-            
-            java.sql.Date fecha = new java.sql.Date(b);
-            
-            String consulta = "UPDATE PERSONAL SET NOMBRE='" + txtNombreMP.getText() + "', COD_FACULTAD='" + cmbFacultadesMPN.getSelectedItem().toString() + "', CEDULA='" + txtCedulaMP.getText() + "', DIRECCION='" + txtDireccionMP.getText() +"', EMAIL_INSTITUCION='" + txtEmailMP.getText() + "', FECHA_NACIMIENTO='" + fecha + "' WHERE CIF=" + cif_mp;
-
-            PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
-
-            sql.executeUpdate();
-            personal = true;
-            consultaTablaPI();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
-        
-        try {
-            java.util.Date df = jdtNacimientoMP.getDate();
-            
-            long b = df.getTime();
-            
-            java.sql.Date fecha = new java.sql.Date(b);
-            
-            String consulta = "UPDATE DOCENTE SET ESTADO='" + cmbEstadoMP.getSelectedItem().toString()+ "', ESPECIALIDAD='" + txtEspecialidadMP.getText() + "' WHERE ID_DOCENTE=" + cif_mp;
-
-            PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
-
-            sql.executeUpdate();
-            docente = true;
-            consultaTablaPI();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString());
-        }
-        
-        if(docente && personal){
-            JOptionPane.showMessageDialog(null, "Se han realizado los cambios correctamente");
-            rellenarMP(1, cif_mp);
-        }else{
-            JOptionPane.showMessageDialog(null, "Error!!!");
-        }
-    }//GEN-LAST:event_btnGuardarCambiosMPActionPerformed
-
     private void cmbFacultadGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadGActionPerformed
         if(cmbFacultadG.getSelectedIndex()!=0){
             cmbAsignaturaG.setEnabled(true);
@@ -3449,8 +3279,209 @@ public final class adminPerfil extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnCrearGrupoActionPerformed
+
+    private void cmbFacultadPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadPCActionPerformed
+        if(cmbFacultadPC.getSelectedIndex()!=0){
+            cmbCarreraPC.setEnabled(true);
+            consultaComboCarreraPC(cmbFacultadPC.getSelectedItem().toString());
+        }else{
+            cmbCarreraPC.setEnabled(false);
+            cmbCarreraPC.removeAllItems();
+        }
+    }//GEN-LAST:event_cmbFacultadPCActionPerformed
+
+    private void cmbCarreraPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarreraPCActionPerformed
+        if(cmbFacultadPC.getSelectedIndex()!=0  && cmbCarreraPC.getSelectedIndex()!=0){
+            btnCrearPensum.setEnabled(true);
+        }
+    }//GEN-LAST:event_cmbCarreraPCActionPerformed
+
+    private void btnCrearPensumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPensumActionPerformed
+        try {
+            int id_pensum = id_max("ID_PENSUM", "PENSUM");
+            String consulta = "INSERT INTO PENSUM VALUES(" + id_pensum +",'" + cmbFacultadPC.getSelectedItem().toString()+"'," + getIDCarrera(cmbCarreraPC.getSelectedItem().toString(), cmbFacultadPC.getSelectedItem().toString()) +")";
+
+            PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+            sql.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Pensum de la carrera de " + cmbCarreraPC.getSelectedItem().toString() + ", ha sido creado correctamente");
+            cmbCarreraPC.removeAllItems();
+            cmbFacultadPC.setSelectedIndex(0);
+            cmbCarreraPC.setEnabled(false);
+            btnCrearPensum.setEnabled(false);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnCrearPensumActionPerformed
+
+    private void btnEliminarPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPIActionPerformed
+        if(jtAsigIns.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(null, "Seleccione un registro");
+        }else{
+            int row = jtAsigIns.getSelectedRow();
+            String id_delete = jtAsigIns.getModel().getValueAt(row, 0).toString();
+
+            try {
+                String consulta = "DELETE FROM ASIGNATURA_PENSUM WHERE ID_PENSUM=" + id_delete;
+                PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+                sql.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "La asignatura se ha eliminado correctamente");
+                consultaTablaPI();
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_btnEliminarPIActionPerformed
+
+    private void cmbFacultadPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadPSActionPerformed
+        if(cmbFacultadPS.getSelectedIndex()!=0){
+            cmbCarreraPS.setEnabled(true);
+            consultaComboCarreraPS(cmbFacultadPS.getSelectedItem().toString());
+
+        }else{
+            cmbCarreraPS.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmbFacultadPSActionPerformed
+
+    private void cmbCarreraPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarreraPSActionPerformed
+        if(cmbCarreraPS.getSelectedIndex()!=0){
+            cmbFacultadPB.setEnabled(true);
+            setID_PENSUM(cmbCarreraPS.getSelectedItem().toString());
+            consultaTablaPI();
+        }else{
+            cmbFacultadPB.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmbCarreraPSActionPerformed
+
+    private void cmbSemestrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSemestrePActionPerformed
+        consultaTablaPI();
+    }//GEN-LAST:event_cmbSemestrePActionPerformed
+
+    private void cmbFacultadPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadPBActionPerformed
+        if(cmbFacultadPB.getSelectedIndex()!=0){
+            consultaTablaPB(cmbFacultadPB);
+        }else{
+            jtAsigNoIns.removeAll();
+        }
+    }//GEN-LAST:event_cmbFacultadPBActionPerformed
+
+    private void btnPasarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasarAActionPerformed
+        int row = jtAsigNoIns.getSelectedRow();
+        String id_asignatura = jtAsigNoIns.getModel().getValueAt(row, 0).toString();
+
+        if (jtAsigNoIns.getSelectionModel().isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Seleccione una asignatura");
+        } else {
+            try {
+                String consulta = "INSERT INTO ASIGNATURA_PENSUM VALUES(" +id_asignatura+","+id_pensum+",'" +cmbSemestreP.getSelectedItem().toString()+"')";
+
+                PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+                sql.executeUpdate();
+                JOptionPane.showMessageDialog(null, "La asignatura se ha asignado correctamente");
+                consultaTablaPI();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString());
+            }
+        }
+    }//GEN-LAST:event_btnPasarAActionPerformed
+
+    private void btnGuardarCambiosMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosMPActionPerformed
+        boolean personal=false, docente=false;
+
+        try {
+            java.util.Date df = jdtNacimientoMP.getDate();
+
+            long b = df.getTime();
+
+            java.sql.Date fecha = new java.sql.Date(b);
+
+            String consulta = "UPDATE PERSONAL SET NOMBRE='" + txtNombreMP.getText() + "', COD_FACULTAD='" + cmbFacultadesMPN.getSelectedItem().toString() + "', CEDULA='" + txtCedulaMP.getText() + "', DIRECCION='" + txtDireccionMP.getText() +"', EMAIL_INSTITUCION='" + txtEmailMP.getText() + "', FECHA_NACIMIENTO='" + fecha + "' WHERE CIF=" + cif_mp;
+
+            PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+            sql.executeUpdate();
+            personal = true;
+            consultaTablaPI();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+
+        try {
+            java.util.Date df = jdtNacimientoMP.getDate();
+
+            long b = df.getTime();
+
+            java.sql.Date fecha = new java.sql.Date(b);
+
+            String consulta = "UPDATE DOCENTE SET ESTADO='" + cmbEstadoMP.getSelectedItem().toString()+ "', ESPECIALIDAD='" + txtEspecialidadMP.getText() + "' WHERE ID_DOCENTE=" + cif_mp;
+
+            PreparedStatement sql = Conexion.getConnection().prepareStatement(consulta);
+
+            sql.executeUpdate();
+            docente = true;
+            consultaTablaPI();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+
+        if(docente && personal){
+            JOptionPane.showMessageDialog(null, "Se han realizado los cambios correctamente");
+            rellenarMP(1, cif_mp);
+            exeLimpiar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Error!!!");
+        }
+    }//GEN-LAST:event_btnGuardarCambiosMPActionPerformed
+
+    private void cmbFacultadMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacultadMPActionPerformed
+        if(cmbFacultadMP.getSelectedIndex()!=0){
+            try {
+                DefaultTableModel model = new DefaultTableModel();
+                jtProfesorM.setModel(model);
+
+                Statement sql = Conexion.getConnection().createStatement();
+
+                String consulta = "SELECT P.CIF, P.NOMBRE FROM PERSONAL AS P INNER JOIN DOCENTE AS D ON P.CIF=D.ID_DOCENTE";
+                ResultSet resultado = sql.executeQuery(consulta);
+
+                ResultSetMetaData rsMd = resultado.getMetaData();
+                int cantCol = rsMd.getColumnCount();
+
+                model.addColumn("CIF");
+                model.addColumn("Nombre");
+
+                while(resultado.next()){
+                    Object[] filas = new Object[cantCol];
+
+                    for(int i=0;i<cantCol;i++){
+                        filas[i] = resultado.getObject(i+1);
+
+                    }
+                    model.addRow(filas);
+                }
+
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
+    }//GEN-LAST:event_cmbFacultadMPActionPerformed
+
+    private void btnSeleccionarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarProfeActionPerformed
+        if(jtProfesorM.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(null, "Seleccione un registro");
+        }else{
+            int row = jtProfesorM.getSelectedRow();
+            cif_mp = jtProfesorM.getModel().getValueAt(row, 0).toString();
+
+            rellenarMP(0,cif_mp);
+            rellenarMP(1,cif_mp);
+        }
+    }//GEN-LAST:event_btnSeleccionarProfeActionPerformed
     private void getDocentes(JComboBox cmb, String item){
-        ArrayList<String> Lista = new ArrayList<String>();
+        ArrayList<String> Lista = new ArrayList<>();
         
         try {
             Statement sql = Conexion.getConnection().createStatement();
@@ -3473,7 +3504,7 @@ public final class adminPerfil extends javax.swing.JFrame {
         }
     }
     private void llenarAsignaturaG(JComboBox cmb, String item){
-        ArrayList<String> Lista = new ArrayList<String>();
+        ArrayList<String> Lista = new ArrayList<>();
         
         try {
             Statement sql = Conexion.getConnection().createStatement();
@@ -3797,7 +3828,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     
     
     private void consultaComboCarrera(String item, JComboBox cmb){
-        ArrayList<String> Lista = new ArrayList<String>();
+        ArrayList<String> Lista = new ArrayList<>();
         
         try {
             Statement sql = Conexion.getConnection().createStatement();
@@ -3821,7 +3852,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     }
     
     private void consultaComboCarreraPC(String item){
-        ArrayList<String> Lista = new ArrayList<String>();
+        ArrayList<String> Lista = new ArrayList<>();
         
         try {
             Statement sql = Conexion.getConnection().createStatement();
@@ -3845,7 +3876,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     }
     
     private void consultaComboCarreraPS(String item){
-        ArrayList<String> Lista = new ArrayList<String>();
+        ArrayList<String> Lista = new ArrayList<>();
         
         try {
             Statement sql = Conexion.getConnection().createStatement();
@@ -3880,6 +3911,7 @@ public final class adminPerfil extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new adminPerfil().setVisible(true);
             }
@@ -4063,11 +4095,7 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -4087,8 +4115,10 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
@@ -4097,15 +4127,20 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel79;
@@ -4146,6 +4181,8 @@ public final class adminPerfil extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
